@@ -1,0 +1,239 @@
+{
+  "clados": {
+    "Dinosauria": {
+      "name": "Dinosauria",
+      "displayName": "🦖 Dinossauros",
+      "description": "Clado que inclui todos os dinossauros, caracterizados por membros eretos e postura vertical.",
+      "period": "Triássico Superior - Presente (aves)",
+      "characteristics": [
+        "Membros posicionados diretamente abaixo do corpo",
+        "Articulação do tornozelo especializada",
+        "Postura ereta",
+        "Diversidade extrema de formas e tamanhos"
+      ],
+      "subclados": ["Saurischia", "Ornithischia"]
+    },
+    
+    "Saurischia": {
+      "name": "Saurischia",
+      "displayName": "🦕 Saurísquios",
+      "description": "Dinossauros com bacia de réptil (púbis apontando para frente). Este grupo inclui os gigantescos saurópodes e os terópodes carnívoros.",
+      "period": "Triássico Superior - Presente (aves)",
+      "characteristics": [
+        "Púbis para frente (como répteis modernos)",
+        "Inclui os maiores animais terrestres",
+        "Maioria carnívora (terópodes)",
+        "Alguns herbívoros gigantes (saurópodes)"
+      ],
+      "subclados": ["Sauropodomorpha", "Theropoda"]
+    },
+
+    "Sauropodomorpha": {
+      "name": "Sauropodomorpha",
+      "displayName": "🦕 Sauropodomorfos",
+      "description": "Herbívoros gigantescos de pescoço longo, os maiores animais a já terem caminhado sobre a Terra.",
+      "period": "Triássico Superior - Cretáceo Superior",
+      "characteristics": [
+        "Pescoço extremamente longo",
+        "Cabeça pequena",
+        "Corpo massivo",
+        "Membros colunares",
+        "Quadrúpedes obrigatórios"
+      ],
+      "famousSpecies": [
+        "Brachiosaurus",
+        "Diplodocus",
+        "Apatosaurus",
+        "Argentinosaurus",
+        "Mamenchisaurus"
+      ],
+      "subclados": ["Diplodocidae", "Brachiosauridae", "Titanosauria"]
+    },
+
+    "Diplodocidae": {
+      "name": "Diplodocidae",
+      "displayName": "🦕 Diplodocídeos",
+      "description": "Saurópodes de pescoço e cauda extremamente longos, com corpo relativamente esguio.",
+      "period": "Jurássico Superior",
+      "characteristics": [
+        "Pescoço muito longo",
+        "Cauda chicote",
+        "Corpo alongado",
+        "Dentes em forma de lápis"
+      ],
+      "famousSpecies": ["Diplodocus", "Apatosaurus", "Barosaurus"]
+    },
+
+    "Brachiosauridae": {
+      "name": "Brachiosauridae",
+      "displayName": "🦕 Braquiossaurídeos",
+      "description": "Saurópodes com membros anteriores mais longos que os posteriores, lembrando girafas.",
+      "period": "Jurássico Superior - Cretáceo Inferior",
+      "characteristics": [
+        "Membros anteriores mais longos",
+        "Pescoço inclinado para cima",
+        "Nostril no topo da cabeça",
+        "Corpo compacto"
+      ],
+      "famousSpecies": ["Brachiosaurus", "Giraffatitan"]
+    },
+
+    "Titanosauria": {
+      "name": "Titanosauria",
+      "displayName": "🦕 Titanossauros",
+      "description": "Últimos grandes saurópodes, incluindo os mais pesados de todos.",
+      "period": "Cretáceo Superior",
+      "characteristics": [
+        "Corpo muito largo",
+        "Ossos robustos",
+        "Pele com osteodermas",
+        "Muito diversos"
+      ],
+      "famousSpecies": ["Argentinosaurus", "Patagotitan", "Dreadnoughtus"]
+    },
+
+    "Theropoda": {
+      "name": "Theropoda",
+      "displayName": "🦖 Terópodes",
+      "description": "Dinossauros bípedes, predominantemente carnívoros. Incluem as aves modernas!",
+      "period": "Triássico Superior - Presente (aves)",
+      "characteristics": [
+        "Bípedes obrigatórios",
+        "Membros anteriores reduzidos (geralmente)",
+        "Garras afiadas",
+        "Dentes serrilhados (na maioria)",
+        "Muitos tinham penas"
+      ],
+      "famousSpecies": ["Tyrannosaurus", "Velociraptor", "Archaeopteryx"],
+      "subclados": ["Carnosauria", "Coelurosauria", "Aves"]
+    },
+
+    "Carnosauria": {
+      "name": "Carnosauria",
+      "displayName": "🦖 Carnossauros",
+      "description": "Grandes terópodes predadores, incluindo alguns dos maiores carnívoros terrestres.",
+      "period": "Jurássico - Cretáceo",
+      "characteristics": [
+        "Crânio grande e robusto",
+        "Dentes serrilhados",
+        "Membros anteriores reduzidos",
+        "Predadores ápice"
+      ],
+      "famousSpecies": ["Tyrannosaurus rex", "Allosaurus", "Spinosaurus"]
+    },
+
+    "Coelurosauria": {
+      "name": "Coelurosauria",
+      "displayName": "🦖 Celurosauros",
+      "description": "Terópodes menores e mais ágeis, muitos com penas e comportamento social complexo.",
+      "period": "Jurássico - Cretáceo",
+      "characteristics": [
+        "Penas em muitos",
+        "Cauda rígida",
+        "Cérebro relativamente grande",
+        "Agilidade"
+      ],
+      "famousSpecies": ["Velociraptor", "Deinonychus", "Troodon"]
+    },
+
+    "Dromaeosauridae": {
+      "name": "Dromaeosauridae",
+      "displayName": "🦖 Dromeossaurídeos",
+      "description": "Terópodes com uma garra em foice característica no segundo dedo do pé.",
+      "period": "Cretáceo",
+      "characteristics": [
+        "Garra em foice no pé",
+        "Penas completas",
+        "Possivelmente caçavam em grupo",
+        "Ágeis e rápidos"
+      ],
+      "famousSpecies": ["Velociraptor", "Deinonychus", "Microraptor"]
+    },
+
+    "Aves": {
+      "name": "Aves",
+      "displayName": "🕊️ Aves",
+      "description": "O único grupo de dinossauros que sobreviveu até os dias atuais! As aves SÃO dinossauros terópodes.",
+      "period": "Jurássico Superior - Presente",
+      "characteristics": [
+        "Penas para voo",
+        "Ossos ocos",
+        "Bico sem dentes (na maioria)",
+        "Asas",
+        "Metabolismo de sangue quente"
+      ],
+      "famousSpecies": ["Archaeopteryx", "Todas as aves modernas (galinhas, pombas, águias...)"]
+    },
+
+    "Ornithischia": {
+      "name": "Ornithischia",
+      "displayName": "🦕 Ornitísquios",
+      "description": "Dinossauros com bacia de ave (púbis apontando para trás). Todos herbívoros.",
+      "period": "Jurássico Inferior - Cretáceo Superior",
+      "characteristics": [
+        "Púbis para trás (como aves modernas)",
+        "Todos herbívoros",
+        "Dentição adaptada para plantas",
+        "Grande diversidade de formas"
+      ],
+      "subclados": ["Ceratopsia", "Hadrosauridae", "Thyreophora", "Ornithopoda"]
+    },
+
+    "Ceratopsia": {
+      "name": "Ceratopsia",
+      "displayName": "🦕 Ceratopsídeos",
+      "description": "Dinossauros com chifres e frilos, os 'rinocerontes' do Mesozoico.",
+      "period": "Cretáceo",
+      "characteristics": [
+        "Chifres no rosto",
+        "Frilos no crânio",
+        "Bico semelhante ao de papagaio",
+        "Herbívoros",
+        "Vida em rebanho"
+      ],
+      "famousSpecies": ["Triceratops", "Styracosaurus", "Protoceratops"]
+    },
+
+    "Hadrosauridae": {
+      "name": "Hadrosauridae",
+      "displayName": "🦕 Hadrossauros",
+      "description": "Dinossauros com bico de pato, conhecidos como as 'vacas do Cretáceo'.",
+      "period": "Cretáceo Superior",
+      "characteristics": [
+        "Bico achatado (bico de pato)",
+        "Centenas de dentes para triturar",
+        "Cristas elaboradas (em alguns)",
+        "Viviam em grandes rebanhos"
+      ],
+      "famousSpecies": ["Parasaurolophus", "Edmontosaurus", "Maiasaura"]
+    },
+
+    "Thyreophora": {
+      "name": "Thyreophora",
+      "displayName": "🛡️ Tireóforos",
+      "description": "Dinossauros blindados com placas ósseas e espinhos para defesa.",
+      "period": "Jurássico - Cretáceo",
+      "characteristics": [
+        "Armadura óssea",
+        "Placas ou espinhos",
+        "Corpo largo e baixo",
+        "Quadrúpedes obrigatórios"
+      ],
+      "famousSpecies": ["Stegosaurus", "Ankylosaurus"]
+    },
+
+    "Ornithopoda": {
+      "name": "Ornithopoda",
+      "displayName": "🦕 Ornitópodes",
+      "description": "Dinossauros herbívoros bípedes, os primeiros ornitísquios a se diversificarem.",
+      "period": "Jurássico - Cretáceo",
+      "characteristics": [
+        "Bípedes",
+        "Herbívoros",
+        "Dentes adaptados para moer",
+        "Membros anteriores com dedos"
+      ],
+      "famousSpecies": ["Iguanodon", "Camptosaurus"]
+    }
+  }
+}

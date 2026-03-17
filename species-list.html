@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore todas as espécies de dinossauros do Mesozoico - Filtre por período, clado, dieta e tamanho">
+    <meta name="keywords" content="dinossauros, espécies, lista, fósseis, triássico, jurássico, cretáceo">
+    <meta name="author" content="Dino Explorer">
+    <title>Espécies - Dino Explorer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🦖</text></svg>">
+    
+    <!-- CSS - Ajustado para GitHub Pages (raiz) -->
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="species-list.css">
+    
+    <style>
+        /* Estilos de fallback */
+        .loading-indicator { text-align: center; padding: 40px; color: #666; font-size: 1.2rem; }
+        .species-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+        .species-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 40px 0; }
+        .featured-card { text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; }
+        .featured-emoji { font-size: 48px; }
+        .view-toggle { display: flex; gap: 10px; margin-bottom: 20px; }
+        .view-btn { padding: 8px 16px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px; }
+        .view-btn.active { background: var(--primary-color, #0066cc); color: white; border-color: var(--primary-color, #0066cc); }
+        .comparison-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px 0; }
+        .comparison-slot { border: 2px dashed #ddd; border-radius: 8px; padding: 20px; min-height: 100px; cursor: pointer; }
+        .slot-placeholder { display: flex; align-items: center; justify-content: center; height: 100%; color: #999; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .stat-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .bar-item { margin-bottom: 10px; }
+        .bar-progress { height: 20px; background: var(--primary-color, #0066cc); border-radius: 10px; transition: width 0.3s; }
+        .pagination { display: flex; justify-content: center; align-items: center; gap: 20px; margin: 40px 0; }
+        .page-btn { padding: 8px 16px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px; }
+        .page-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .no-results { text-align: center; padding: 60px 20px; }
+        .no-results-icon { font-size: 64px; margin-bottom: 20px; }
+        .search-box { margin-bottom: 20px; }
+        .search-input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; }
+        .filters-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; margin-bottom: 20px; }
+        .filter-group { display: flex; flex-direction: column; gap: 5px; }
+        .filter-group select, .filter-group input { padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        .stats-bar { display: flex; justify-content: space-between; padding: 15px; background: #f8f9fa; border-radius: 8px; margin: 20px 0; }
+    </style>
+</head>
+<body>
+    <!-- HEADER / NAVEGAÇÃO -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">🦖 <span class="brand">Dino Explorer</span></a>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="index.html#explore" class="nav-link">Explorar</a>
+                <a href="timeline.html" class="nav-link">Linha do Tempo</a>
+                <a href="species-list.html" class="nav-link active">Espécies</a>
+                <a href="taxonomia.html" class="nav-link">Taxonomia</a> <!-- Ajustado de taxonomy.html para taxonomia.html -->
+                <a href="birds-dinosaurs.html" class="nav-link">Aves</a> <!-- Adicionado link para consistência -->
+                <a href="index.html#ciencia" class="nav-link">Ciência</a>
+            </nav>
+
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-btn" title="Alternar tema">🌙</button>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="species-list-hero">
+            <div class="hero-background">
+                <div class="hero-gradient"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content" data-aos="fade-up">
+                    <h1>🦖 Explore as Espécies</h1>
+                    <p>Descubra os dinossauros mais icônicos do Mesozoico com detalhes científicos</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTROLES E FILTROS -->
+        <section class="species-controls">
+            <div class="container">
+                <div class="controls-wrapper">
+                    <!-- BUSCA -->
+                    <div class="search-box">
+                        <input 
+                            type="text" 
+                            id="search-input" 
+                            class="search-input" 
+                            placeholder="🔍 Buscar por nome científico ou comum..."
+                        >
+                    </div>
+
+                    <!-- FILTROS -->
+                    <div class="filters-grid">
+                        <!-- Período -->
+                        <div class="filter-group">
+                            <label for="period-filter">📅 Período:</label>
+                            <select id="period-filter">
+                                <option value="">Todos</option>
+                                <option value="triassic">Triássico</option>
+                                <option value="jurassic">Jurássico</option>
+                                <option value="cretaceous">Cretáceo</option>
+                            </select>
+                        </div>
+
+                        <!-- Clado -->
+                        <div class="filter-group">
+                            <label for="clade-filter">🧬 Clado:</label>
+                            <select id="clade-filter">
+                                <option value="">Todos</option>
+                                <option value="saurischia">Saurischia</option>
+                                <option value="ornithischia">Ornithischia</option>
+                                <option value="theropoda">Terópodes</option>
+                                <option value="sauropodomorpha">Sauropodomorfos</option>
+                                <option value="ceratopsia">Ceratopsia</option>
+                                <option value="thyreophora">Thyreophora</option>
+                                <option value="ornithopoda">Ornithopoda</option>
+                            </select>
+                        </div>
+
+                        <!-- Dieta -->
+                        <div class="filter-group">
+                            <label for="diet-filter">🍖 Dieta:</label>
+                            <select id="diet-filter">
+                                <option value="">Todas</option>
+                                <option value="carnivoro">Carnívoro</option>
+                                <option value="herbivoro">Herbívoro</option>
+                                <option value="onivoro">Onívoro</option>
+                            </select>
+                        </div>
+
+                        <!-- Tamanho -->
+                        <div class="filter-group">
+                            <label for="size-filter">📏 Tamanho:</label>
+                            <select id="size-filter">
+                                <option value="">Todos</option>
+                                <option value="pequeno">Pequeno (&lt;3m)</option>
+                                <option value="medio">Médio (3-10m)</option>
+                                <option value="grande">Grande (10-20m)</option>
+                                <option value="gigante">Gigante (&gt;20m)</option>
+                            </select>
+                        </div>
+
+                        <!-- Ordenação -->
+                        <div class="filter-group">
+                            <label for="sort-filter">↕️ Ordenar por:</label>
+                            <select id="sort-filter">
+                                <option value="name">Nome (A-Z)</option>
+                                <option value="name_desc">Nome (Z-A)</option>
+                                <option value="period">Período (antigo)</option>
+                                <option value="period_desc">Período (recente)</option>
+                                <option value="size_desc">Tamanho (maior)</option>
+                                <option value="size_asc">Tamanho (menor)</option>
+                                <option value="weight_desc">Peso (maior)</option>
+                                <option value="weight_asc">Peso (menor)</option>
+                            </select>
+                        </div>
+
+                        <!-- Reset -->
+                        <div class="filter-group">
+                            <button class="btn btn-outline" id="reset-filters">🔄 Limpar Filtros</button>
+                        </div>
+                    </div>
+
+                    <!-- ESTATÍSTICAS -->
+                    <div class="stats-bar">
+                        <div class="stat-item">
+                            <span class="stat-label">Espécies Encontradas:</span>
+                            <span class="stat-value" id="species-count">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Total no Banco:</span>
+                            <span class="stat-value" id="total-species">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LISTAGEM DE ESPÉCIES -->
+        <section class="species-list-section">
+            <div class="container">
+                <!-- VISTA: GRID / LISTA / TABELA -->
+                <div class="view-toggle">
+                    <button class="view-btn active" data-view="grid" title="Visualização em grade" onclick="setView('grid')">⊞ Grade</button>
+                    <button class="view-btn" data-view="list" title="Visualização em lista" onclick="setView('list')">≡ Lista</button>
+                    <button class="view-btn" data-view="table" title="Visualização em tabela" onclick="setView('table')">☷ Tabela</button>
+                </div>
+
+                <!-- GRID DE ESPÉCIES -->
+                <div class="species-grid" id="species-grid">
+                    <!-- Carregado dinamicamente via JavaScript -->
+                    <div class="loading-indicator">Carregando espécies...</div>
+                </div>
+
+                <!-- LISTA DE ESPÉCIES -->
+                <div class="species-list" id="species-list" style="display: none;">
+                    <!-- Carregado dinamicamente via JavaScript -->
+                </div>
+
+                <!-- TABELA DE ESPÉCIES -->
+                <div class="species-table-wrapper" id="species-table-wrapper" style="display: none;">
+                    <table class="species-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Período</th>
+                                <th>Comprimento</th>
+                                <th>Peso</th>
+                                <th>Dieta</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody id="species-table-body">
+                            <!-- Carregado dinamicamente via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- PAGINAÇÃO -->
+                <div class="pagination" id="pagination">
+                    <button class="page-btn" id="prev-page" onclick="changePage('prev')" disabled>← Anterior</button>
+                    <span class="page-info" id="page-info">Página 1 de 1</span>
+                    <button class="page-btn" id="next-page" onclick="changePage('next')" disabled>Próxima →</button>
+                </div>
+
+                <!-- MENSAGEM VAZIA -->
+                <div class="no-results" id="no-results" style="display: none;">
+                    <div class="no-results-icon">🔍</div>
+                    <h3>Nenhuma espécie encontrada</h3>
+                    <p>Tente ajustar os filtros ou a busca</p>
+                    <button class="btn btn-primary" id="clear-all-filters" onclick="clearAllFilters()">Limpar Todos os Filtros</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPARAR ESPÉCIES -->
+        <section class="compare-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">⚖️ Comparar Espécies</h2>
+                <p class="section-subtitle">Selecione até 3 espécies para comparar lado a lado</p>
+
+                <div class="comparison-selector" data-aos="zoom-in">
+                    <div class="comparison-slots">
+                        <div class="comparison-slot" id="comparison-slot-1" onclick="selectComparisonSlot(1)">
+                            <div class="slot-placeholder">➕ Selecione uma espécie</div>
+                        </div>
+                        <div class="comparison-slot" id="comparison-slot-2" onclick="selectComparisonSlot(2)">
+                            <div class="slot-placeholder">➕ Selecione uma espécie</div>
+                        </div>
+                        <div class="comparison-slot" id="comparison-slot-3" onclick="selectComparisonSlot(3)">
+                            <div class="slot-placeholder">➕ Selecione uma espécie</div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-actions">
+                        <button class="btn btn-primary" id="start-comparison" onclick="startComparison()" disabled>
+                            ⚖️ Comparar Selecionadas
+                        </button>
+                        <button class="btn btn-outline" id="clear-comparison" onclick="clearComparison()">
+                            🔄 Limpar Seleção
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTATÍSTICAS GERAIS -->
+        <section class="general-stats">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">📊 Estatísticas Gerais</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card" data-aos="zoom-in">
+                        <h3>🦖 Por Período</h3>
+                        <div class="stat-bar">
+                            <div class="bar-item">
+                                <span class="bar-label">Triássico</span>
+                                <div class="bar-progress" id="stat-triassic-bar" style="width: 0%;"></div>
+                                <span class="bar-value" id="stat-triassic-value">0</span>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Jurássico</span>
+                                <div class="bar-progress" id="stat-jurassic-bar" style="width: 0%;"></div>
+                                <span class="bar-value" id="stat-jurassic-value">0</span>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Cretáceo</span>
+                                <div class="bar-progress" id="stat-cretaceous-bar" style="width: 0%;"></div>
+                                <span class="bar-value" id="stat-cretaceous-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+                        <h3>🍖 Por Dieta</h3>
+                        <div class="stat-bar">
+                            <div class="bar-item">
+                                <span class="bar-label">Carnívoro</span>
+                                <div class="bar-progress" id="stat-carnivore-bar" style="width: 0%;"></div>
+                                <span class="bar-value" id="stat-carnivore-value">0</span>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Herbívoro</span>
+                                <div class="bar-progress" id="stat-herbivore-bar" style="width: 0%;"></div>
+                                <span class="bar-value" id="stat-herbivore-value">0</span>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Onívoro</span>
+                                <div class="bar-progress" id="stat-omnivore-bar" style="width: 0%;"></div>
+                                <span class="bar-value" id="stat-omnivore-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+                        <h3>📏 Por Tamanho</h3>
+                        <div class="stat-bar">
+                            <div class="bar-item">
+                                <span class="bar-label">Pequeno</span>
+                                <div class="bar-progress" id="stat-small-bar" style="width: 0%;"></div>
+                                <span class="bar-value" id="stat-small-value">0</span>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Médio</span>
+                                <div class="bar-progress" id="stat-medium-bar" style="width: 0%;"></div>
+                                <span class="bar-value" id="stat-medium-value">0</span>
+                            </div>
+                            <div class="bar-item">
+                                <span class="bar-label">Grande</span>
+                                <div class="bar-progress" id="stat-large-bar" style="width: 0%;"></div>
+                                <span class="bar-value" id="stat-large-value">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESPÉCIES EM DESTAQUE -->
+        <section class="featured-species">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">⭐ Espécies em Destaque</h2>
+
+                <div class="featured-grid" id="featured-grid">
+                    <!-- Tyrannosaurus Rex -->
+                    <div class="featured-card" data-aos="fade-up">
+                        <div class="featured-image">
+                            <span class="featured-emoji">🦖</span>
+                        </div>
+                        <h3>Tyrannosaurus rex</h3>
+                        <p class="featured-period">Cretáceo Superior (68-66 Ma)</p>
+                        <p class="featured-desc">O predador mais famoso de todos os tempos</p>
+                        <a href="species.html?name=trex" class="btn btn-small">Ver detalhes →</a>
+                    </div>
+
+                    <!-- Triceratops -->
+                    <div class="featured-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="featured-image">
+                            <span class="featured-emoji">🦕</span>
+                        </div>
+                        <h3>Triceratops horridus</h3>
+                        <p class="featured-period">Cretáceo Superior (68-66 Ma)</p>
+                        <p class="featured-desc">Ceratopsídeo com três chifres característicos</p>
+                        <a href="species.html?name=triceratops" class="btn btn-small">Ver detalhes →</a>
+                    </div>
+
+                    <!-- Stegosaurus -->
+                    <div class="featured-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="featured-image">
+                            <span class="featured-emoji">🦕</span>
+                        </div>
+                        <h3>Stegosaurus stenops</h3>
+                        <p class="featured-period">Jurássico Superior (155-150 Ma)</p>
+                        <p class="featured-desc">Famoso pelas placas dorsais e espinhos na cauda</p>
+                        <a href="species.html?name=stegosaurus" class="btn btn-small">Ver detalhes →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Dino Explorer</h4>
+                    <p>Explore espécies de dinossauros com rigor científico.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="timeline.html">Linha do Tempo</a></li>
+                        <li><a href="species-list.html">Espécies</a></li>
+                        <li><a href="taxonomia.html">Taxonomia</a></li>
+                        <li><a href="birds-dinosaurs.html">Aves</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Contribuir</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dino Explorer. Desenvolvido com 🦕 e ciência.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts - Ajustado para GitHub Pages -->
+    <script src="theme-toggle.js"></script>
+    <script src="animations.js"></script>
+    <script src="species-list.js"></script>
+    
+    <!-- Script inline para funções essenciais -->
+    <script>
+        // Variáveis de estado (serão substituídas pelo species-list.js)
+        let currentView = 'grid';
+        let selectedSpecies = [];
+        let currentPage = 1;
+        let totalPages = 1;
+        
+        // Função para mudar a visualização
+        function setView(view) {
+            currentView = view;
+            
+            // Atualizar botões
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-view') === view) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Mostrar/esconder visualizações
+            document.getElementById('species-grid').style.display = view === 'grid' ? 'grid' : 'none';
+            document.getElementById('species-list').style.display = view === 'list' ? 'block' : 'none';
+            document.getElementById('species-table-wrapper').style.display = view === 'table' ? 'block' : 'none';
+            
+            console.log(`Visualização alterada para: ${view}`);
+        }
+        
+        // Funções de paginação (placeholder)
+        function changePage(direction) {
+            if (direction === 'prev' && currentPage > 1) {
+                currentPage--;
+            } else if (direction === 'next' && currentPage < totalPages) {
+                currentPage++;
+            }
+            console.log(`Mudando para página ${currentPage}`);
+        }
+        
+        // Funções de comparação (placeholder)
+        function selectComparisonSlot(slot) {
+            alert(`Selecionar espécie para slot ${slot}\n\nEsta funcionalidade será implementada no species-list.js`);
+        }
+        
+        function startComparison() {
+            alert('Iniciar comparação\n\nEsta funcionalidade será implementada no species-list.js');
+        }
+        
+        function clearComparison() {
+            selectedSpecies = [];
+            document.querySelectorAll('.comparison-slot .slot-placeholder').forEach(slot => {
+                slot.textContent = '➕ Selecione uma espécie';
+            });
+            document.getElementById('start-comparison').disabled = true;
+        }
+        
+        function clearAllFilters() {
+            document.getElementById('search-input').value = '';
+            document.getElementById('period-filter').value = '';
+            document.getElementById('clade-filter').value = '';
+            document.getElementById('diet-filter').value = '';
+            document.getElementById('size-filter').value = '';
+            document.getElementById('sort-filter').value = 'name';
+            
+            console.log('Filtros limpos');
+        }
+        
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar tema
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-theme');
+                    themeToggle.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+                });
+            }
+            
+            // Menu toggle para mobile
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Botão reset filters
+            document.getElementById('reset-filters')?.addEventListener('click', clearAllFilters);
+            
+            // Simular carregamento de dados (placeholder)
+            setTimeout(function() {
+                document.getElementById('species-count').textContent = '42';
+                document.getElementById('total-species').textContent = '127';
+                
+                // Simular estatísticas
+                document.getElementById('stat-triassic-value').textContent = '15';
+                document.getElementById('stat-jurassic-value').textContent = '32';
+                document.getElementById('stat-cretaceous-value').textContent = '80';
+                
+                document.getElementById('stat-triassic-bar').style.width = '15%';
+                document.getElementById('stat-jurassic-bar').style.width = '32%';
+                document.getElementById('stat-cretaceous-bar').style.width = '80%';
+                
+                // Simular grid de espécies
+                const speciesGrid = document.getElementById('species-grid');
+                speciesGrid.innerHTML = '';
+                
+                const sampleSpecies = [
+                    { name: 'Tyrannosaurus rex', period: 'Cretáceo', size: '12m', diet: 'Carnívoro' },
+                    { name: 'Triceratops horridus', period: 'Cretáceo', size: '9m', diet: 'Herbívoro' },
+                    { name: 'Stegosaurus stenops', period: 'Jurássico', size: '9m', diet: 'Herbívoro' },
+                    { name: 'Velociraptor mongoliensis', period: 'Cretáceo', size: '2m', diet: 'Carnívoro' },
+                    { name: 'Brachiosaurus altithorax', period: 'Jurássico', size: '25m', diet: 'Herbívoro' },
+                    { name: 'Spinosaurus aegyptiacus', period: 'Cretáceo', size: '15m', diet: 'Carnívoro' }
+                ];
+                
+                sampleSpecies.forEach(species => {
+                    const card = document.createElement('div');
+                    card.className = 'species-card';
+                    card.innerHTML = `
+                        <h3>${species.name}</h3>
+                        <p>📅 ${species.period}</p>
+                        <p>📏 ${species.size}</p>
+                        <p>🍖 ${species.diet}</p>
+                        <a href="species.html?name=${species.name.toLowerCase().replace(' ', '-')}" class="btn btn-small">Ver detalhes →</a>
+                    `;
+                    speciesGrid.appendChild(card);
+                });
+                
+                // Simular tabela
+                const tableBody = document.getElementById('species-table-body');
+                if (tableBody) {
+                    sampleSpecies.forEach(species => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${species.name}</td>
+                            <td>${species.period}</td>
+                            <td>${species.size}</td>
+                            <td>-</td>
+                            <td>${species.diet}</td>
+                            <td><a href="species.html?name=${species.name.toLowerCase().replace(' ', '-')}" class="btn btn-small">Ver</a></td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                }
+                
+                // Atualizar paginação
+                totalPages = 5;
+                currentPage = 1;
+                document.getElementById('page-info').textContent = `Página 1 de ${totalPages}`;
+                document.getElementById('prev-page').disabled = true;
+                document.getElementById('next-page').disabled = false;
+                
+            }, 500);
+        });
+    </script>
+</body>
+</html>

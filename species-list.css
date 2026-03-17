@@ -1,0 +1,1497 @@
+/* ============================================
+   DINO EXPLORER - SPECIES-LIST.CSS
+   Estilos para página de listagem de espécies
+   ============================================ */
+
+/* ============================================
+   VARIÁVEIS E RESET
+   ============================================ */
+
+:root {
+    /* Cores principais */
+    --hero-gradient-1: #233347;
+    --hero-gradient-2: #47827a;
+    --hero-gradient-3: #ffd700;
+    --accent-primary: #47827a;
+    --accent-secondary: #5a9e94;
+    --accent-rgb: 71, 130, 122;
+    --border-color: #e3eaf2;
+    --card-bg: #f6fafc;
+    --card-hover-bg: #e8f2f5;
+    --text-primary: #233347;
+    --text-secondary: #788894;
+    --bg-primary: #ffffff;
+    
+    /* Espaçamento */
+    --spacing-unit: 2rem;
+    --border-radius: 16px;
+    --transition: all 0.35s cubic-bezier(0.43, 0.96, 0.49, 1);
+    --max-width: 1200px;
+    
+    /* Cores de feedback */
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(var(--accent-rgb), 0.08);
+    --shadow-md: 0 4px 16px rgba(var(--accent-rgb), 0.12);
+    --shadow-lg: 0 8px 32px rgba(var(--accent-rgb), 0.16);
+    --shadow-hover: 0 22px 42px rgba(var(--accent-rgb), 0.22);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #fafffc;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--hero-gradient-3);
+    text-decoration: underline;
+}
+
+/* ============================================
+   UTILITÁRIOS
+   ============================================ */
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    background: transparent;
+    color: var(--text-primary);
+    gap: 0.5rem;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+.btn-primary:hover {
+    background: #3a6f68;
+    border-color: #3a6f68;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-outline {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: rgba(var(--accent-rgb), 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.species-list-hero {
+    position: relative;
+    padding: 4rem var(--spacing-unit);
+    background: linear-gradient(135deg, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 100%);
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border-radius: 0 0 32px 32px;
+}
+
+.species-list-hero .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.species-list-hero .hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 50%, var(--hero-gradient-3) 100%);
+    animation: gradientShift 16s ease-in-out infinite;
+    opacity: 0.85;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(2px) saturate(1.1);
+}
+
+@keyframes gradientShift {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+}
+
+.species-list-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.16);
+    backdrop-filter: blur(2px);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    box-shadow: var(--shadow-md);
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.species-list-hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    background: linear-gradient(120deg, var(--text-primary) 0%, var(--accent-primary) 37%, var(--hero-gradient-3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.species-list-hero p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   CONTROLES E FILTROS
+   ============================================ */
+
+.species-controls {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 2rem var(--spacing-unit);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+}
+
+.controls-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.search-box {
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition);
+    font-family: inherit;
+    box-shadow: var(--shadow-sm);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.2);
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.filter-group label {
+    font-weight: 600;
+    color: var(--accent-primary);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.filter-group select:hover,
+.filter-group select:focus,
+.filter-group input:focus {
+    border-color: var(--accent-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.2);
+}
+
+.stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(var(--accent-rgb), 0.08);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(var(--accent-rgb), 0.2);
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.stat-value {
+    color: var(--accent-primary);
+    font-weight: 700;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   VIEW TOGGLE
+   ============================================ */
+
+.view-toggle {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.view-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--border-color);
+    background: transparent;
+    color: var(--text-primary);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.view-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: rgba(var(--accent-rgb), 0.05);
+}
+
+.view-btn.active {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ============================================
+   SPECIES SECTION
+   ============================================ */
+
+.species-list-section {
+    padding: 4rem var(--spacing-unit);
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* ============================================
+   GRID VIEW
+   ============================================ */
+
+.species-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.species-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    height: 100%;
+}
+
+.species-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-hover);
+}
+
+.species-card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.15), rgba(var(--accent-rgb), 0.05));
+    overflow: hidden;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.species-image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.species-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.species-card:hover .species-image {
+    transform: scale(1.1);
+}
+
+.image-placeholder {
+    font-size: 4rem;
+    color: var(--accent-primary);
+    opacity: 0.3;
+}
+
+.species-card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.species-card-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+}
+
+.species-card-scientific {
+    font-size: 0.9rem;
+    color: var(--accent-primary);
+    font-style: italic;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.species-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+.species-card-info-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    padding: 0.25rem 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+
+.species-card-info-item:last-child {
+    border-bottom: none;
+}
+
+.species-card-info-value {
+    font-weight: 600;
+    color: var(--accent-primary);
+}
+
+.species-card-action {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.species-card-btn {
+    flex: 1;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent-primary);
+    color: white;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.species-card-btn:hover {
+    background: #3a6f68;
+    transform: translateY(-2px);
+}
+
+.compare-toggle {
+    width: 40px;
+    padding: 0.6rem;
+    border: 2px solid var(--accent-primary);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--accent-primary);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.compare-toggle:hover {
+    background: rgba(var(--accent-rgb), 0.1);
+    transform: translateY(-2px);
+}
+
+.compare-toggle[data-selected="true"] {
+    background: var(--accent-primary);
+    color: white;
+}
+
+/* ============================================
+   LIST VIEW
+   ============================================ */
+
+.species-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.species-list-item {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 100px 1fr auto auto;
+    gap: 2rem;
+    align-items: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.species-list-item:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.species-list-image {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.15), rgba(var(--accent-rgb), 0.05));
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.species-list-image .image-placeholder {
+    font-size: 3rem;
+}
+
+.species-list-info h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.species-list-scientific {
+    color: var(--accent-primary);
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.species-list-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.species-list-stats {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.species-list-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.species-list-stat-label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.species-list-stat-value {
+    color: var(--accent-primary);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.species-list-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.btn-success {
+    background: var(--success-color);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.btn-success:hover {
+    background: #0d9668;
+}
+
+/* ============================================
+   TABLE VIEW
+   ============================================ */
+
+.species-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+}
+
+.species-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    min-width: 800px;
+}
+
+.species-table thead {
+    background: rgba(var(--accent-rgb), 0.1);
+}
+
+.species-table th {
+    padding: 1rem;
+    text-align: left;
+    color: var(--accent-primary);
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.species-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.species-table tbody tr {
+    transition: var(--transition);
+}
+
+.species-table tbody tr:hover {
+    background: rgba(var(--accent-rgb), 0.05);
+}
+
+.table-link {
+    color: var(--accent-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.table-link:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.page-btn {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.page-btn:hover:not(:disabled) {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-info {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* ============================================
+   COMPARISON SLOTS
+   ============================================ */
+
+.compare-section {
+    padding: 4rem var(--spacing-unit);
+    background: rgba(var(--accent-rgb), 0.05);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.comparison-selector {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    box-shadow: var(--shadow-sm);
+}
+
+.comparison-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.comparison-slot {
+    background: rgba(var(--accent-rgb), 0.05);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    min-height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.comparison-slot:hover {
+    border-color: var(--accent-primary);
+    background: rgba(var(--accent-rgb), 0.1);
+}
+
+.slot-placeholder {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.slot-selected {
+    border: 2px solid var(--accent-primary);
+    background: rgba(var(--accent-rgb), 0.1);
+}
+
+.slot-species-info {
+    text-align: center;
+    width: 100%;
+}
+
+.slot-species-image {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(var(--accent-rgb), 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.slot-emoji {
+    font-size: 2.5rem;
+    color: var(--accent-primary);
+}
+
+.slot-species-name {
+    color: var(--accent-primary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.slot-remove-btn {
+    background: none;
+    border: none;
+    color: var(--error-color);
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.slot-remove-btn:hover {
+    background: rgba(var(--error-color), 0.1);
+}
+
+.comparison-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   STATISTICS CARDS
+   ============================================ */
+
+.general-stats {
+    padding: 4rem var(--spacing-unit);
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.stat-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.stat-card:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
+}
+
+.stat-card h3 {
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.stat-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.bar-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.bar-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.bar-progress {
+    height: 12px;
+    background: rgba(var(--accent-rgb), 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.bar-progress-fill {
+    height: 100%;
+    background: var(--accent-primary);
+    transition: width 0.5s ease;
+}
+
+/* ============================================
+   NO RESULTS
+   ============================================ */
+
+.no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--card-bg);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.no-results-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--text-secondary);
+}
+
+.no-results h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.no-results p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    z-index: 1000;
+    animation: slideUp 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+    box-shadow: var(--shadow-lg);
+}
+
+.toast-warning {
+    background: var(--warning-color);
+}
+
+.toast-info {
+    background: var(--accent-primary);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+
+.loading-indicator {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+}
+
+.error-message {
+    text-align: center;
+    padding: 3rem;
+    color: var(--error-color);
+}
+
+.error-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* ============================================
+   SELECTABLE CARDS
+   ============================================ */
+
+.selectable {
+    cursor: pointer;
+    position: relative;
+}
+
+.selectable::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid var(--accent-primary);
+    border-radius: var(--border-radius);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.selectable:hover::after {
+    opacity: 0.5;
+}
+
+/* ============================================
+   ANIMAÇÕES
+   ============================================ */
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(90deg, 
+        rgba(var(--accent-rgb), 0.1) 25%, 
+        rgba(var(--accent-rgb), 0.2) 50%, 
+        rgba(var(--accent-rgb), 0.1) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+img[loading="lazy"] {
+    background: linear-gradient(90deg, 
+        rgba(var(--accent-rgb), 0.1) 25%, 
+        rgba(var(--accent-rgb), 0.2) 50%, 
+        rgba(var(--accent-rgb), 0.1) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+img[loading="lazy"].loaded {
+    animation: none;
+    background: none;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+    :root {
+        --spacing-unit: 1.5rem;
+    }
+
+    .species-list-hero {
+        min-height: 35vh;
+        padding: 3rem var(--spacing-unit);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-unit: 1.2rem;
+        --border-radius: 12px;
+    }
+
+    .species-list-hero {
+        min-height: 30vh;
+        padding: 2rem var(--spacing-unit);
+        border-radius: 0 0 24px 24px;
+    }
+
+    .species-list-hero h1 {
+        font-size: 2rem;
+    }
+
+    .species-list-hero p {
+        font-size: 1rem;
+    }
+
+    .species-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1rem;
+    }
+
+    .species-list-item {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .species-list-image {
+        width: 80px;
+        height: 80px;
+    }
+
+    .species-list-stats {
+        flex-direction: row;
+        gap: 1rem;
+    }
+
+    .filters-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .comparison-slots {
+        grid-template-columns: 1fr;
+    }
+
+    .comparison-actions {
+        flex-direction: column;
+    }
+
+    .comparison-actions .btn {
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .stat-card {
+        padding: 1.5rem;
+    }
+
+    .view-toggle {
+        gap: 0.5rem;
+    }
+
+    .view-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-unit: 1rem;
+        --border-radius: 8px;
+    }
+
+    .species-list-hero {
+        min-height: 25vh;
+        padding: 1.5rem var(--spacing-unit);
+    }
+
+    .species-list-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .species-list-hero p {
+        font-size: 0.9rem;
+    }
+
+    .species-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .species-card-name {
+        font-size: 1.1rem;
+    }
+
+    .species-card-scientific {
+        font-size: 0.8rem;
+    }
+
+    .filters-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-group {
+        gap: 0.25rem;
+    }
+
+    .filter-group label {
+        font-size: 0.8rem;
+    }
+
+    .filter-group select,
+    .filter-group input {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .stats-bar {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .stat-item {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .stat-value {
+        font-size: 1.1rem;
+    }
+
+    .view-toggle {
+        gap: 0.25rem;
+    }
+
+    .view-btn {
+        flex: 1;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+
+    .species-table {
+        font-size: 0.8rem;
+    }
+
+    .species-table th,
+    .species-table td {
+        padding: 0.5rem;
+    }
+
+    .comparison-selector {
+        padding: 1rem;
+    }
+
+    .comparison-slot {
+        padding: 1rem;
+        min-height: 120px;
+    }
+
+    .slot-species-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .slot-emoji {
+        font-size: 2rem;
+    }
+
+    .no-results {
+        padding: 2rem 1rem;
+    }
+
+    .no-results-icon {
+        font-size: 2rem;
+    }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --card-bg: #1a2a33;
+        --card-hover-bg: #2a404a;
+        --border-color: #2a404a;
+        --text-primary: #ffffff;
+        --text-secondary: #b0c4d9;
+        --bg-primary: #142028;
+        --hero-gradient-1: #1a2a33;
+        --hero-gradient-2: #2a5a5a;
+        --hero-gradient-3: #d4a900;
+    }
+
+    body {
+        background: #142028;
+    }
+
+    .species-list-hero .hero-content {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .species-card,
+    .species-list-item,
+    .stat-card,
+    .comparison-selector {
+        background: #1e303a;
+    }
+
+    .filter-group select,
+    .filter-group input,
+    .search-input {
+        background: #1e303a;
+        color: var(--text-primary);
+        border-color: #2a404a;
+    }
+
+    .filter-group select option {
+        background: #1e303a;
+    }
+
+    .species-table {
+        background: #1e303a;
+    }
+
+    .species-table thead {
+        background: #2a404a;
+    }
+
+    .species-table tbody tr:hover {
+        background: #2a404a;
+    }
+
+    .stats-bar {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .comparison-slot {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .comparison-slot:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .slot-selected {
+        background: rgba(var(--accent-rgb), 0.2);
+    }
+
+    .btn-outline {
+        border-color: var(--accent-primary);
+        color: var(--accent-primary);
+    }
+
+    .btn-outline:hover {
+        background: rgba(var(--accent-rgb), 0.2);
+    }
+
+    .diet-badge.carnívoro,
+    .diet-badge.carnivoro {
+        background: rgba(239, 68, 68, 0.25);
+    }
+
+    .diet-badge.herbívoro,
+    .diet-badge.herbivoro {
+        background: rgba(16, 185, 129, 0.25);
+    }
+
+    .diet-badge.onívoro,
+    .diet-badge.onivoro {
+        background: rgba(245, 158, 11, 0.25);
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .navbar,
+    .footer,
+    .species-controls,
+    .view-toggle,
+    .pagination,
+    .compare-section,
+    .species-card-action,
+    .species-list-actions,
+    .btn {
+        display: none !important;
+    }
+
+    .species-list-hero {
+        min-height: auto;
+        padding: 2rem;
+        background: none;
+        box-shadow: none;
+    }
+
+    .species-list-hero .hero-gradient {
+        display: none;
+    }
+
+    .species-list-hero .hero-content {
+        background: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .species-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .species-card {
+        break-inside: avoid;
+        border: 1px solid #000;
+        box-shadow: none;
+    }
+
+    .species-card-image {
+        background: none;
+    }
+
+    .species-table {
+        border: 1px solid #000;
+    }
+
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    .stat-card {
+        border: 1px solid #000;
+        box-shadow: none;
+    }
+}
+
+/* ============================================
+   SCROLLBAR PERSONALIZADA
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--card-bg);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--hero-gradient-3);
+}
+
+/* ============================================
+   FIM DO ARQUIVO
+   ============================================ */

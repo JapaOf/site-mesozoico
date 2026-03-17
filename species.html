@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Detalhes completos sobre espécies de dinossauros - paleoarte, anatomia, taxonomia e controvérsias científicas">
+    <meta name="keywords" content="dinossauro, espécie, fóssil, paleontologia, anatomia, taxonomia">
+    <meta name="author" content="Dino Explorer">
+    <title>Espécie - Dino Explorer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🦖</text></svg>">
+    
+    <!-- CSS - Ajustado para GitHub Pages (raiz) -->
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="species.css">
+    
+    <style>
+        /* Estilos de fallback */
+        .breadcrumb { display: flex; align-items: center; gap: 8px; padding: 20px 0; }
+        .breadcrumb a { color: var(--link-color, #0066cc); text-decoration: none; }
+        .breadcrumb .separator { color: #999; }
+        
+        .placeholder-content { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 200px; background: #f0f0f0; border-radius: 8px; padding: 20px; }
+        .placeholder-emoji { font-size: 48px; margin-bottom: 10px; }
+        .placeholder-text { color: #666; font-size: 14px; }
+        
+        .paleoart-comparison { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; margin: 40px 0; }
+        .comparison-divider { font-size: 24px; font-weight: bold; color: var(--primary-color, #0066cc); }
+        
+        .tree-ascii { font-family: monospace; white-space: pre; line-height: 1.5; background: #f5f5f5; padding: 20px; border-radius: 8px; overflow-x: auto; }
+        
+        .skeleton-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; align-items: center; margin: 40px 0; }
+        .transformation-arrow { text-align: center; }
+        .arrow-icon { font-size: 32px; }
+        .arrow-label { font-size: 14px; color: #666; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 40px 0; }
+        .gallery-item { text-align: center; }
+        .gallery-placeholder { font-size: 48px; background: #f0f0f0; padding: 20px; border-radius: 8px; margin-bottom: 10px; }
+        
+        .species-nav-grid { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        
+        .info-badge { display: inline-block; background: rgba(0,0,0,0.05); padding: 8px 16px; border-radius: 20px; margin: 0 10px; }
+        .badge-label { font-weight: bold; margin-right: 5px; }
+    </style>
+</head>
+<body>
+    <!-- HEADER / NAVEGAÇÃO -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">🦖 <span class="brand">Dino Explorer</span></a>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="index.html#explore" class="nav-link">Explorar</a>
+                <a href="timeline.html" class="nav-link">Linha do Tempo</a>
+                <a href="species-list.html" class="nav-link active">Espécies</a>
+                <a href="taxonomia.html" class="nav-link">Taxonomia</a> <!-- Ajustado de taxonomy.html para taxonomia.html -->
+                <a href="birds-dinosaurs.html" class="nav-link">Aves</a>
+                <a href="index.html#ciencia" class="nav-link">Ciência</a>
+            </nav>
+
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-btn" title="Alternar tema">🌙</button>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- BREADCRUMB -->
+        <div class="breadcrumb-section">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span class="separator">/</span>
+                    <a href="species-list.html">Espécies</a>
+                    <span class="separator">/</span>
+                    <span id="species-name-breadcrumb">Carregando...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- HERO SECTION - ESPÉCIE -->
+        <section class="species-hero">
+            <div class="hero-background">
+                <div class="hero-gradient"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content" data-aos="fade-up">
+                    <div class="hero-title-section">
+                        <h1 id="species-common-name">Espécie Carregando...</h1>
+                        <p class="scientific-name" id="species-scientific-name"></p>
+                    </div>
+
+                    <div class="hero-quick-info">
+                        <div class="info-badge">
+                            <span class="badge-label">Período:</span>
+                            <span class="badge-value" id="species-period">---</span>
+                        </div>
+                        <div class="info-badge">
+                            <span class="badge-label">Tamanho:</span>
+                            <span class="badge-value" id="species-size">---</span>
+                        </div>
+                        <div class="info-badge">
+                            <span class="badge-label">Localização:</span>
+                            <span class="badge-value" id="species-location">---</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPARAÇÃO VISUAL - PALEOARTE -->
+        <section class="comparison-paleoart">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🎨 Paleoarte: Antiga vs Moderna</h2>
+                <p class="section-subtitle">Como nossa interpretação científica evoluiu</p>
+
+                <div class="paleoart-comparison" data-aos="zoom-in">
+                    <!-- Paleoarte Antiga -->
+                    <div class="paleoart-card ancient">
+                        <div class="paleoart-header">
+                            <h3>🕰️ Reconstrução Antiga (1990s)</h3>
+                            <p class="date-info">Baseado em conhecimento limitado</p>
+                        </div>
+                        <div class="paleoart-image-placeholder" id="ancient-image">
+                            <div class="placeholder-content">
+                                <span class="placeholder-emoji">🎨</span>
+                                <span class="placeholder-text">Ilustração antiga</span>
+                            </div>
+                        </div>
+                        <div class="paleoart-info">
+                            <h4>Características (Interpretação Antiga):</h4>
+                            <ul id="ancient-features">
+                                <li>Posição de lagarto</li>
+                                <li>Sem penas (maioria)</li>
+                                <li>Movimento lento</li>
+                                <li>Pele escamosa</li>
+                                <li>Cores monótonas</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- VS -->
+                    <div class="comparison-divider">
+                        <span class="vs-text">VS</span>
+                    </div>
+
+                    <!-- Paleoarte Moderna -->
+                    <div class="paleoart-card modern">
+                        <div class="paleoart-header">
+                            <h3>✨ Reconstrução Moderna (2025)</h3>
+                            <p class="date-info">Baseado em pesquisa recente</p>
+                        </div>
+                        <div class="paleoart-image-placeholder" id="modern-image">
+                            <div class="placeholder-content">
+                                <span class="placeholder-emoji">✨</span>
+                                <span class="placeholder-text">Ilustração moderna</span>
+                            </div>
+                        </div>
+                        <div class="paleoart-info">
+                            <h4>Características (Interpretação Moderna):</h4>
+                            <ul id="modern-features">
+                                <li>Posição mais ereta</li>
+                                <li>Penas em muitos</li>
+                                <li>Movimento dinâmico</li>
+                                <li>Comportamento ativo</li>
+                                <li>Padrões de cores</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- O que mudou -->
+                <div class="change-history" data-aos="fade-up">
+                    <h3>📊 Como Nossa Visão Evoluiu</h3>
+                    <div class="timeline-changes">
+                        <div class="change-item">
+                            <div class="year">1990s</div>
+                            <div class="description" id="change-1990s">Répteis lentos e escamosos</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="change-item">
+                            <div class="year">2000s</div>
+                            <div class="description" id="change-2000s">Descoberta de penas em terópodes</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="change-item">
+                            <div class="year">2020s</div>
+                            <div class="description" id="change-2020s">Animais ágeis, coloridos e com penas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPARAÇÃO: ESQUELETO vs RECONSTRUÇÃO VIVA -->
+        <section class="skeleton-reconstruction">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🦴 Esqueleto vs Reconstrução Viva</h2>
+                <p class="section-subtitle">Entenda a anatomia por trás da arte</p>
+
+                <div class="skeleton-grid" data-aos="zoom-in">
+                    <!-- Esqueleto -->
+                    <div class="skeleton-card">
+                        <div class="skeleton-header">
+                            <h3>🦴 Esqueleto</h3>
+                            <p>Estrutura óssea</p>
+                        </div>
+                        <div class="skeleton-image-placeholder" id="skeleton-image">
+                            <div class="placeholder-content">
+                                <span class="placeholder-emoji">💀</span>
+                                <span class="placeholder-text">Esqueleto fóssil</span>
+                            </div>
+                        </div>
+                        <div class="skeleton-features">
+                            <h4>Estrutura Óssea:</h4>
+                            <ul id="skeleton-features-list">
+                                <li>Crânio e mandíbula</li>
+                                <li>Coluna vertebral</li>
+                                <li>Membros e garras</li>
+                                <li>Cintura escapular</li>
+                                <li>Cintura pélvica</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Seta de transformação -->
+                    <div class="transformation-arrow">
+                        <div class="arrow-icon">→</div>
+                        <div class="arrow-label">Reconstrução</div>
+                    </div>
+
+                    <!-- Reconstrução Viva -->
+                    <div class="reconstruction-card">
+                        <div class="reconstruction-header">
+                            <h3>🎨 Reconstrução Viva</h3>
+                            <p>Com músculos, pele e penas</p>
+                        </div>
+                        <div class="reconstruction-image-placeholder" id="reconstruction-image">
+                            <div class="placeholder-content">
+                                <span class="placeholder-emoji">🦖</span>
+                                <span class="placeholder-text">Animal vivo</span>
+                            </div>
+                        </div>
+                        <div class="reconstruction-features">
+                            <h4>Músculos e Tecidos:</h4>
+                            <ul id="reconstruction-features-list">
+                                <li>Músculos massivos</li>
+                                <li>Pele e escamas</li>
+                                <li>Postura dinâmica</li>
+                                <li>Tecidos moles</li>
+                                <li>Órgãos internos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anatomia Comparada -->
+                <div class="anatomy-details" data-aos="fade-up">
+                    <h3>🔍 Detalhes Anatômicos</h3>
+                    <div class="anatomy-grid">
+                        <div class="anatomy-item">
+                            <h4>Crânio</h4>
+                            <p id="anatomy-skull">Estrutura craniana com adaptações para dieta específica</p>
+                        </div>
+                        <div class="anatomy-item">
+                            <h4>Coluna Vertebral</h4>
+                            <p id="anatomy-spine">Vértebras robustas com processos espinhosos desenvolvidos</p>
+                        </div>
+                        <div class="anatomy-item">
+                            <h4>Membros</h4>
+                            <p id="anatomy-limbs">Estrutura adaptada para locomoção bípede/quadrúpede</p>
+                        </div>
+                        <div class="anatomy-item">
+                            <h4>Cauda</h4>
+                            <p id="anatomy-tail">Longa e muscular, usada para equilíbrio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESCALA COM HUMANO -->
+        <section class="scale-comparison">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">📏 Escala Real com Humano</h2>
+                <p class="section-subtitle">Visualize o tamanho real do dinossauro</p>
+
+                <div class="scale-visualizer" data-aos="zoom-in">
+                    <div class="scale-comparison-visual">
+                        <div class="scale-item human" id="human-scale">
+                            <div class="scale-figure">👤</div>
+                            <div class="scale-label">Humano<br><span class="scale-height">1.7 m</span></div>
+                        </div>
+
+                        <div class="scale-separator">vs</div>
+
+                        <div class="scale-item dinosaur" id="dinosaur-scale">
+                            <div class="scale-figure">🦖</div>
+                            <div class="scale-label" id="dinosaur-scale-label">
+                                Espécie<br><span class="scale-height" id="dinosaur-height">---</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scale-info">
+                        <div class="scale-stat">
+                            <span class="stat-label">Comprimento:</span>
+                            <span class="stat-value" id="species-length">---</span>
+                        </div>
+                        <div class="scale-stat">
+                            <span class="stat-label">Altura:</span>
+                            <span class="stat-value" id="species-height">---</span>
+                        </div>
+                        <div class="scale-stat">
+                            <span class="stat-label">Peso:</span>
+                            <span class="stat-value" id="species-weight">---</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comparação com outros animais -->
+                <div class="size-comparison-table" data-aos="fade-up">
+                    <h3>Comparação com Outros Animais</h3>
+                    <div class="comparison-table">
+                        <div class="table-row header">
+                            <div class="table-col">Animal</div>
+                            <div class="table-col">Comprimento</div>
+                            <div class="table-col">Peso</div>
+                            <div class="table-col">Tamanho Relativo</div>
+                        </div>
+                        <div class="table-row" id="comparison-row-1">
+                            <div class="table-col">Elefante Africano</div>
+                            <div class="table-col">6-7 m</div>
+                            <div class="table-col">5-6 ton</div>
+                            <div class="table-col"><span class="relative-size">●○○○○</span></div>
+                        </div>
+                        <div class="table-row" id="comparison-row-2">
+                            <div class="table-col">Girafa</div>
+                            <div class="table-col">4-5 m</div>
+                            <div class="table-col">1-2 ton</div>
+                            <div class="table-col"><span class="relative-size">●○○○○</span></div>
+                        </div>
+                        <div class="table-row" id="comparison-row-3">
+                            <div class="table-col">Humano</div>
+                            <div class="table-col">1.7 m</div>
+                            <div class="table-col">70 kg</div>
+                            <div class="table-col"><span class="relative-size">●○○○○</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FICHA TÉCNICA -->
+        <section class="species-details">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">📋 Ficha Técnica</h2>
+
+                <div class="details-grid">
+                    <!-- Informações Gerais -->
+                    <div class="detail-card" data-aos="fade-up">
+                        <h3>📌 Informações Gerais</h3>
+                        <div class="detail-item">
+                            <span class="detail-label">Nome Científico:</span>
+                            <span class="detail-value" id="detail-scientific-name">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Período:</span>
+                            <span class="detail-value" id="detail-period">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Época:</span>
+                            <span class="detail-value" id="detail-epoch">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Idade (Ma):</span>
+                            <span class="detail-value" id="detail-age">---</span>
+                        </div>
+                    </div>
+
+                    <!-- Taxonomia -->
+                    <div class="detail-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>🧬 Taxonomia</h3>
+                        <div class="detail-item">
+                            <span class="detail-label">Reino:</span>
+                            <span class="detail-value">Animalia</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Filo:</span>
+                            <span class="detail-value">Chordata</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Classe:</span>
+                            <span class="detail-value">Reptilia</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Clado:</span>
+                            <span class="detail-value" id="detail-clade">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Família:</span>
+                            <span class="detail-value" id="detail-family">---</span>
+                        </div>
+                    </div>
+
+                    <!-- Tamanho e Peso -->
+                    <div class="detail-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3>📏 Morfometria</h3>
+                        <div class="detail-item">
+                            <span class="detail-label">Comprimento:</span>
+                            <span class="detail-value" id="detail-length">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Altura:</span>
+                            <span class="detail-value" id="detail-height">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Peso:</span>
+                            <span class="detail-value" id="detail-weight">---</span>
+                        </div>
+                    </div>
+
+                    <!-- Localização -->
+                    <div class="detail-card" data-aos="fade-up" data-aos-delay="300">
+                        <h3>🌍 Localização</h3>
+                        <div class="detail-item">
+                            <span class="detail-label">País:</span>
+                            <span class="detail-value" id="detail-location">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Formação Geológica:</span>
+                            <span class="detail-value" id="detail-formation">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Tipo de Rocha:</span>
+                            <span class="detail-value" id="detail-rock-type">---</span>
+                        </div>
+                    </div>
+
+                    <!-- Descoberta -->
+                    <div class="detail-card" data-aos="fade-up" data-aos-delay="400">
+                        <h3>🔍 Descoberta</h3>
+                        <div class="detail-item">
+                            <span class="detail-label">Descoberto em:</span>
+                            <span class="detail-value" id="detail-discovery-year">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Descobridor(es):</span>
+                            <span class="detail-value" id="detail-discoverer">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Tipo de Fóssil:</span>
+                            <span class="detail-value" id="detail-fossil-type">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Holótipo:</span>
+                            <span class="detail-value" id="detail-holotype">---</span>
+                        </div>
+                    </div>
+
+                    <!-- Ecologia -->
+                    <div class="detail-card" data-aos="fade-up" data-aos-delay="500">
+                        <h3>🌿 Ecologia</h3>
+                        <div class="detail-item">
+                            <span class="detail-label">Dieta:</span>
+                            <span class="detail-value" id="detail-diet">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Locomoção:</span>
+                            <span class="detail-value" id="detail-locomotion">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Habitat:</span>
+                            <span class="detail-value" id="detail-habitat">---</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Comportamento:</span>
+                            <span class="detail-value" id="detail-behavior">---</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AMBIENTE PALEOECOLÓGICO -->
+        <section class="paleoecology">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🌍 Ambiente Paleoecológico</h2>
+                <p class="section-subtitle">Saiba como era o mundo quando este dinossauro viveu</p>
+
+                <div class="paleoecology-grid">
+                    <div class="paleoecology-card" data-aos="fade-up">
+                        <h3>🌡️ Clima</h3>
+                        <p id="paleoecology-climate">Quente e úmido, com estações definidas</p>
+                    </div>
+
+                    <div class="paleoecology-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>🗺️ Continentes</h3>
+                        <p id="paleoecology-continents">Continentes em configuração diferente da atual</p>
+                    </div>
+
+                    <div class="paleoecology-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3>🌿 Vegetação</h3>
+                        <p id="paleoecology-vegetation">Florestas de coníferas, samambaias e cicadáceas</p>
+                    </div>
+
+                    <div class="paleoecology-card" data-aos="fade-up" data-aos-delay="300">
+                        <h3>🦕 Fauna Contemporânea</h3>
+                        <p id="paleoecology-fauna">Outras espécies de dinossauros, pterossauros e répteis marinhos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTROVÉRSIAS CIENTÍFICAS -->
+        <section class="controversies">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🤔 Controvérsias Científicas</h2>
+                <p class="section-subtitle">O que a ciência ainda debate sobre esta espécie</p>
+
+                <div class="controversies-list" id="controversies-container">
+                    <div class="controversy-item">
+                        <h4>Posição Filogenética</h4>
+                        <p>Debate sobre relações exatas com outros membros do grupo</p>
+                    </div>
+                    <div class="controversy-item">
+                        <h4>Presença de Penas</h4>
+                        <p>Evidências indiretas sugerem possível presença de estruturas dérmicas</p>
+                    </div>
+                    <div class="controversy-item">
+                        <h4>Comportamento Social</h4>
+                        <p>Interpretações sobre vida em grupo baseadas em achados fósseis</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MUDANÇAS HISTÓRICAS DE INTERPRETAÇÃO -->
+        <section class="interpretation-history">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">📚 Mudanças Históricas de Interpretação</h2>
+                <p class="section-subtitle">Como cientistas reinterpretaram este dinossauro ao longo do tempo</p>
+
+                <div class="history-timeline" id="history-timeline">
+                    <div class="history-item">
+                        <div class="history-year">1900</div>
+                        <div class="history-content">Primeira descrição como réptil lento e pesado</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-year">1950</div>
+                        <div class="history-content">Revisão anatômica, postura mais ereta</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-year">2000</div>
+                        <div class="history-content">Descoberta de parentes com penas</div>
+                    </div>
+                    <div class="history-item">
+                        <div class="history-year">2025</div>
+                        <div class="history-content">Interpretação moderna como animal ativo e possivelmente social</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FILOGENIA / RELACIONADOS -->
+        <section class="phylogeny">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🧬 Filogenia e Parentes</h2>
+                <p class="section-subtitle">Onde este dinossauro se encaixa na árvore evolutiva</p>
+
+                <div class="phylogeny-container" data-aos="zoom-in">
+                    <div class="phylogeny-tree">
+                        <pre id="phylogeny-tree" class="tree-ascii">
+Dinosauria
+├── Saurischia
+│   ├── Sauropodomorpha
+│   └── Theropoda
+│       ├── Carnosauria
+│       └── Coelurosauria
+│           └── Espécie Atual
+└── Ornithischia
+    ├── Thyreophora
+    ├── Ceratopsia
+    └── Ornithopoda
+                        </pre>
+                    </div>
+
+                    <div class="related-species">
+                        <h3>Espécies Relacionadas</h3>
+                        <div class="related-species-grid" id="related-species-grid">
+                            <div class="related-species-card">
+                                <h4>Espécie Relacionada 1</h4>
+                                <p>Período: ---</p>
+                            </div>
+                            <div class="related-species-card">
+                                <h4>Espécie Relacionada 2</h4>
+                                <p>Período: ---</p>
+                            </div>
+                            <div class="related-species-card">
+                                <h4>Espécie Relacionada 3</h4>
+                                <p>Período: ---</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REFERÊNCIAS E PAPERS -->
+        <section class="references">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">📖 Referências Científicas</h2>
+
+                <div class="references-list" id="references-list">
+                    <div class="reference-item">
+                        <p>Autor, A. et al. (2020). "Descrição da espécie". <em>Journal of Paleontology</em>, 94(3), 123-145.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p>Autor, B. (2015). "Revisão taxonômica". <em>Cretaceous Research</em>, 56, 78-92.</p>
+                    </div>
+                    <div class="reference-item">
+                        <p>Autor, C. et al. (2023). "Nova interpretação filogenética". <em>Nature</em>, 589, 234-239.</p>
+                    </div>
+                </div>
+
+                <div class="paper-search">
+                    <h3>🔍 Buscar Mais Papers</h3>
+                    <p>Clique no botão abaixo para buscar artigos científicos sobre esta espécie:</p>
+                    <button class="btn btn-primary" id="search-papers-btn" onclick="searchPapers()">Buscar no Crossref</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERIA DE IMAGENS -->
+        <section class="species-gallery">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🖼️ Galeria de Imagens</h2>
+
+                <div class="gallery-grid" id="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">🦴</div>
+                        <p>Esqueleto</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">🎨</div>
+                        <p>Reconstrução</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">🌍</div>
+                        <p>Ambiente</p>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">🦕</div>
+                        <p>Comparação</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NAVEGAÇÃO ENTRE ESPÉCIES -->
+        <section class="species-navigation">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🦖 Explore Outras Espécies</h2>
+
+                <div class="species-nav-grid">
+                    <button class="btn btn-secondary" id="prev-species" onclick="navigateSpecies('prev')">← Espécie Anterior</button>
+                    <a href="species-list.html" class="btn btn-outline">Ver Todas as Espécies</a>
+                    <button class="btn btn-secondary" id="next-species" onclick="navigateSpecies('next')">Próxima Espécie →</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Dino Explorer</h4>
+                    <p>Explorar espécies de dinossauros com rigor científico.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="timeline.html">Linha do Tempo</a></li>
+                        <li><a href="species-list.html">Espécies</a></li>
+                        <li><a href="taxonomia.html">Taxonomia</a></li>
+                        <li><a href="birds-dinosaurs.html">Aves</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Contribuir</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dino Explorer. Desenvolvido com 🦕 e ciência.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts - Ajustado para GitHub Pages -->
+    <script src="theme-toggle.js"></script>
+    <script src="animations.js"></script>
+    <script src="species.js"></script>
+    
+    <!-- Script inline para funções essenciais -->
+    <script>
+        // Função para navegar entre espécies (placeholder)
+        function navigateSpecies(direction) {
+            alert('Navegação entre espécies será implementada no species.js');
+        }
+        
+        // Função para buscar papers (placeholder)
+        function searchPapers() {
+            const speciesName = document.getElementById('species-scientific-name')?.textContent || 'dinossauro';
+            alert(`Buscando papers sobre ${speciesName}...\n\nEsta funcionalidade integrará com APIs como Crossref e Semantic Scholar no futuro.`);
+        }
+        
+        // Simular carregamento de dados quando a página abre com parâmetro ?id=...
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const speciesId = urlParams.get('id');
+            
+            // Se não houver ID, mostrar mensagem
+            if (!speciesId) {
+                document.getElementById('species-common-name').textContent = 'Selecione uma espécie';
+                document.getElementById('species-scientific-name').textContent = 'Use o parâmetro ?id=nome-da-especie na URL';
+                return;
+            }
+            
+            // Simular carregamento (será substituído pelo species.js)
+            document.getElementById('species-common-name').textContent = 'Carregando espécie...';
+            document.getElementById('species-name-breadcrumb').textContent = speciesId.replace(/-/g, ' ');
+            
+            // Placeholder - em produção, isso viria de um arquivo JSON ou API
+            console.log(`Carregando espécie: ${speciesId}`);
+        });
+        
+        // Inicializar tooltips e outros
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar tema (se necessário)
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-theme');
+                    themeToggle.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+                });
+            }
+            
+            // Menu toggle para mobile
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

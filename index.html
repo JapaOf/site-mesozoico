@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- Mudei para pt-BR já que o site está em português -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Adicionei viewport para mobile -->
+    <meta name="description" content="Explore a era Mesozoica com paleoarte atualizada, comparações evolutivas e ciência rigorosa">
+    <meta name="keywords" content="dinossauros, paleontologia, mesozoico, triássico, jurássico, cretáceo, fósseis">
+    <meta name="author" content="Dino Explorer">
+    <title>Dino Explorer - A Era Mesozoica</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🦖</text></svg>">
+    
+    <!-- CSS - Ajustado para GitHub Pages (raiz) -->
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Nota: Você precisará criar estes arquivos ou renomear para os nomes que realmente usar -->
+</head>
+
+<body>
+
+    <!-- Header/Navegação -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <h1>🦖 <span class="brand">Dino Explorer</span></h1>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="#explore" class="nav-link">Explorar</a>
+                <a href="#timeline" class="nav-link">Linha do Tempo</a>
+                <!-- Ajustado para GitHub Pages - removido 'pages/' -->
+                <a href="species-list.html" class="nav-link">Espécies</a>
+                <a href="#clados" class="nav-link">Taxonomia</a>
+                <a href="birds-dinosaurs.html" class="nav-link">Aves</a>
+                <a href="#ciencia" class="nav-link">Ciência</a>
+                <a href="#hard-mode" class="nav-link">Hard Mode</a>
+            </nav>
+
+            <div class="nav-control">
+                <button id="theme-toggle" class="theme-btn" title="Alternar Tema">🌙</button>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION - IMERSIVO -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-gradient"></div>
+            <div class="hero-particles"></div>
+        </div>
+
+        <div class="hero-content">
+            <h2 class="hero-title" data-aos="fade-up">Bem-vindo à Era Mesozoica</h2>
+            <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+                165 milhões de anos de evolução, dinossauros e descobertas científicas
+            </p>
+
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+                <div class="stat">
+                    <h3>165M</h3>
+                    <p>Anos de duração</p>
+                </div>
+                <div class="stat">
+                    <h3>1000+</h3>
+                    <p>Espécies conhecidas</p>
+                </div>
+                <div class="stat">
+                    <h3>3</h3>
+                    <p>Períodos principais</p>
+                </div>
+            </div>
+
+            <div class="hero-cta">
+                <button class="btn btn-primary"
+                    onclick="document.getElementById('explore').scrollIntoView({behavior: 'smooth'})">
+                    Começar Exploração
+                </button>
+                <!-- Ajustado para GitHub Pages - removido 'pages/' -->
+                <a href="timeline.html" class="btn btn-primary">
+                    Ver Linha do Tempo
+                </a>
+            </div>
+        </div>
+
+        <div class="hero-illustration">
+            <div class="dinosaur-silhouette"></div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: O QUE DIFERENCIA ESTE SITE -->
+    <section class="differentiators" id="explore">
+        <div class="container">
+            <h2 class="section-title">Por que este site é diferente?</h2>
+
+            <div class="diff-grid">
+                <div class="diff-card" data-aos="zoom-in">
+                    <div class="diff-icon">🎨</div>
+                    <h3>Paleoarte Responsável</h3>
+                    <p>Nenhum T. rex estilo 1993. Todas as reconstruções refletem o conhecimento científico atual com
+                        comparações lado-a-lado com arte antiga.</p>
+                </div>
+
+                <div class="diff-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="diff-icon">📊</div>
+                    <h3>Organização Taxonômica</h3>
+                    <p>Estruturado por clados e filogenia, não apenas "dinossauros famosos". Entenda a verdadeira árvore
+                        da vida.</p>
+                </div>
+
+                <div class="diff-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="diff-icon">📏</div>
+                    <h3>Escala com Humano</h3>
+                    <p>Visualize o tamanho real. Esqueletos ao lado de reconstruções vivas, sempre com escala para
+                        comparação.</p>
+                </div>
+
+                <div class="diff-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="diff-icon">🤔</div>
+                    <h3>Controvérsias Científicas</h3>
+                    <p>Não escondemos debates. Spinosaurus era aquático? T. rex era predador ativo? Saiba o que a
+                        ciência ainda discute.</p>
+                </div>
+
+                <div class="diff-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="diff-icon">❓</div>
+                    <h3>O Que NÃO Sabemos</h3>
+                    <p>Uma seção rara que mostra o limite do conhecimento. Cores exatas? Metabolismo? Comportamento?
+                        Honestidade científica.</p>
+                </div>
+
+                <div class="diff-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="diff-icon">🕊️</div>
+                    <h3>Aves São Dinossauros</h3>
+                    <p>Deixamos claro: as aves modernas são tecnicamente dinossauros. Confira fósseis transicionais e
+                        filogenia atual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: PERÍODOS DO MESOZOICO -->
+    <section class="periods" id="timeline">
+        <div class="container">
+            <h2 class="section-title">Os Três Períodos do Mesozoico</h2>
+            <p class="section-subtitle">165 milhões de anos divididos em três épocas distintas</p>
+
+            <div class="periods-grid">
+                <!-- TRIÁSSICO -->
+                <div class="period-card triassic" data-aos="fade-right">
+                    <div class="period-header">
+                        <h3>Triássico</h3>
+                        <p class="period-dates">252 - 201 Ma</p>
+                    </div>
+                    <div class="period-content">
+                        <p><strong>Duração:</strong> 51 milhões de anos</p>
+                        <p><strong>Características:</strong></p>
+                        <ul>
+                            <li>Supercontiente Pangeia</li>
+                            <li>Primeiros dinossauros</li>
+                            <li>Clima árido e quente</li>
+                            <li>Fauna dominada por répteis</li>
+                        </ul>
+                        <p class="period-highlight">⚠️ Evento: Extinção do Permiano-Triássico (a maior de todas)</p>
+                    </div>
+                    <!-- Ajustado para GitHub Pages - removido 'pages/' -->
+                    <a href="timeline.html?period=triassic" class="btn btn-outline">Explorar Triássico</a>
+                </div>
+
+                <!-- JURÁSSICO -->
+                <div class="period-card jurassic" data-aos="fade-up">
+                    <div class="period-header">
+                        <h3>Jurássico</h3>
+                        <p class="period-dates">201 - 145 Ma</p>
+                    </div>
+                    <div class="period-content">
+                        <p><strong>Duração:</strong> 56 milhões de anos</p>
+                        <p><strong>Características:</strong></p>
+                        <ul>
+                            <li>Continentes se separam</li>
+                            <li>Saurópodes gigantescos</li>
+                            <li>Surgem as primeiras aves</li>
+                            <li>Vegetação: Gimnospermas</li>
+                        </ul>
+                        <p class="period-highlight">🦕 Era de Ouro: Gigantismo em saurópodes</p>
+                    </div>
+                    <!-- Ajustado para GitHub Pages - removido 'pages/' -->
+                    <a href="timeline.html?period=jurassic" class="btn btn-outline">Explorar Jurássico</a>
+                </div>
+
+                <!-- CRETÁCEO -->
+                <div class="period-card cretaceous" data-aos="fade-left">
+                    <div class="period-header">
+                        <h3>Cretáceo</h3>
+                        <p class="period-dates">145 - 66 Ma</p>
+                    </div>
+                    <div class="period-content">
+                        <p><strong>Duração:</strong> 79 milhões de anos</p>
+                        <p><strong>Características:</strong></p>
+                        <ul>
+                            <li>Continentes em posição moderna</li>
+                            <li>Surgem as plantas com flores</li>
+                            <li>Apogeu dos terópodes</li>
+                            <li>Maior diversidade de dinossauros</li>
+                        </ul>
+                        <p class="period-highlight">💥 Evento: Impacto do asteroide (K-Pg extinction)</p>
+                    </div>
+                    <!-- Ajustado para GitHub Pages - removido 'pages/' -->
+                    <a href="timeline.html?period=cretaceous" class="btn btn-outline">Explorar Cretáceo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: CLADOS PRINCIPAIS -->
+    <section class="clados" id="clados">
+        <div class="container">
+            <h2 class="section-title">Estrutura Taxonômica</h2>
+            <p class="section-subtitle">Dinossauros organizados por filogenia, não por fama</p>
+
+            <div class="clados-wrapper">
+                <div class="clade-branch" data-aos="fade-up">
+                    <h3>Dinosauria</h3>
+                    <div class="clade-content">
+                        <div class="sub-clade">
+                            <h4>🦖 Saurischia (Bacia de Réptil)</h4>
+                            <div class="subclade-items">
+                                <div class="subclade-item">
+                                    <strong>Sauropodomorfos</strong>
+                                    <p>Gigantes herbívoros: Brachiosaurus, Apatosaurus</p>
+                                </div>
+                                <div class="subclade-item">
+                                    <strong>Terópodes</strong>
+                                    <p>Bípedes carnívoros: T. rex, Velociraptor, Aves</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sub-clade">
+                            <h4>🦕 Ornithischia (Bacia de Ave)</h4>
+                            <div class="subclade-items">
+                                <div class="subclade-item">
+                                    <strong>Ceratopsianos</strong>
+                                    <p>Com chifres: Triceratops, Protoceratops</p>
+                                </div>
+                                <div class="subclade-item">
+                                    <strong>Hadrossauros</strong>
+                                    <p>Herbívoros com bico: Parasaurolophus, Edmontosaurus</p>
+                                </div>
+                                <div class="subclade-item">
+                                    <strong>Tireóforos</strong>
+                                    <p>Com armadura: Stegosaurus, Ankylosaurus</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" onclick="navigateTo('taxonomia')">Ver Taxonomia Completa</button>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: DESTAQUE - ESPÉCIES POPULARES -->
+    <section class="featured-species">
+        <div class="container">
+            <h2 class="section-title">Espécies em Destaque</h2>
+
+            <div class="species-showcase">
+                <div class="species-card featured" data-aos="zoom-in">
+                    <div class="species-image-placeholder">🦖</div>
+                    <h3>Tyrannosaurus rex</h3>
+                    <p class="species-period">Cretáceo Superior</p>
+                    <p class="species-description">O predador mais icônico. Mas afinal, ele caçava ou era oportunista?
+                    </p>
+                    <a href="#" class="btn btn-small">Conhecer Controvérsia</a>
+                </div>
+
+                <div class="species-card featured" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="species-image-placeholder">🦞</div>
+                    <h3>Spinosaurus aegyptiacus</h3>
+                    <p class="species-period">Cretáceo Inicial</p>
+                    <p class="species-description">Predador aquático? Terrestre? A ciência mudou de opinião
+                        recentemente.</p>
+                    <a href="#" class="btn btn-small">Ver Debate</a>
+                </div>
+
+                <div class="species-card featured" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="species-image-placeholder">🦕</div>
+                    <h3>Brachiosaurus brancai</h3>
+                    <p class="species-period">Jurássico Superior</p>
+                    <p class="species-description">Como um animal de 80 toneladas se movia? Metabolismo desconhecido.
+                    </p>
+                    <a href="#" class="btn btn-small">Ver Mistério</a>
+                </div>
+
+                <div class="species-card featured" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="species-image-placeholder">🦕</div>
+                    <h3>Archaeopteryx lithographica</h3>
+                    <p class="species-period">Jurássico Superior</p>
+                    <p class="species-description">Fóssil transicional entre dinossauros e aves. A prova da evolução.
+                    </p>
+                    <a href="#" class="btn btn-small">Ver Evidências</a>
+                </div>
+            </div>
+
+            <!-- Ajustado para GitHub Pages - removido 'pages/' -->
+            <button class="btn btn-primary" onclick="window.location.href='species-list.html'">Ver Todas as
+                Espécies</button>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: O QUE A CIÊNCIA NÃO SABE -->
+    <section class="unknowns" id="ciencia">
+        <div class="container">
+            <h2 class="section-title">❓ O Que a Ciência NÃO Sabe</h2>
+            <p class="section-subtitle">Diferenciando o que é comprovado do que ainda é mistério</p>
+
+            <div class="unknowns-grid">
+                <div class="unknown-card" data-aos="fade-up">
+                    <h3>🎨 Cores Exatas</h3>
+                    <p>Sabemos que alguns dinossauros tinham penas coloridas, mas qual era a distribuição exata de cores
+                        em espécies como o T. rex?</p>
+                    <a href="#" class="link">Leia o artigo científico →</a>
+                </div>
+
+                <div class="unknown-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>🔋 Metabolismo de Saurópodes</h3>
+                    <p>Como animais de 80+ toneladas conseguiam energia suficiente para se mover? Metabolismo
+                        mesotérmico? Ectotérmico?</p>
+                    <a href="#" class="link">Leia o artigo científico →</a>
+                </div>
+
+                <div class="unknown-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>🏹 T. rex: Caçador Ativo ou Necrófago?</h3>
+                    <p>O debate continua. Evidências para ambos os lados. Pode ter sido ambos?</p>
+                    <a href="#" class="link">Leia o artigo científico →</a>
+                </div>
+
+                <div class="unknown-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>📊 Quantas Espécies Conhecemos por Fragmentos?</h3>
+                    <p>Muitas "espécies" são definidas por um dente, uma vértebra. Quantos nomes falsos no catálogo?</p>
+                    <a href="#" class="link">Leia o artigo científico →</a>
+                </div>
+
+                <div class="unknown-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>🧬 Comportamento Social</h3>
+                    <p>Alguns tinham comportamento de rebanho? Cuidado parental? As evidências são limitadas.</p>
+                    <a href="#" class="link">Leia o artigo científico →</a>
+                </div>
+
+                <div class="unknown-card" data-aos="fade-up" data-aos-delay="500">
+                    <h3>🦅 Capacidade de Voo</h3>
+                    <p>Archaeopteryx voava ou apenas planava? Como eram as asas dos terópodes com penas?</p>
+                    <a href="#" class="link">Leia o artigo científico →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: AVES SÃO DINOSSAUROS -->
+    <section class="birds-dinosaurs">
+        <div class="container">
+            <h2 class="section-title">🕊️ Aves SÃO Dinossauros</h2>
+            <p class="section-subtitle">A evolução não terminou há 66 milhões de anos</p>
+
+            <div class="birds-content" data-aos="fade-up">
+                <div class="birds-text">
+                    <h3>Fato científico:</h3>
+                    <p>As aves modernas são tecnicamente uma ramificação viva da árvore evolutiva dos dinossauros. Não
+                        são descendentes de dinossauros—<strong>elas são dinossauros</strong>.</p>
+
+                    <h4>Similaridades Anatômicas:</h4>
+                    <ul>
+                        <li>✓ Estrutura óssea semelhante</li>
+                        <li>✓ Penas em ambas (alguns dinossauros tinham penas)</li>
+                        <li>✓ Asas com mesma estrutura básica</li>
+                        <li>✓ Postura bípede (nos terópodes)</li>
+                        <li>✓ Ovos com casca rígida</li>
+                    </ul>
+
+                    <h4>Fósseis Transicionais:</h4>
+                    <p><strong>Archaeopteryx lithographica</strong> (Jurássico Superior) é um exemplo perfeito: tem
+                        características de terópode (dentes, cauda longa) e características de ave (penas, asas).</p>
+                </div>
+
+                <div class="phylogeny-illustration">
+                    <div class="phylogeny-box">
+                        <h4>Árvore Filogenética Simplificada</h4>
+                        <pre>
+Dinosauria
+├── Saurischia
+│   ├── Sauropodomorfos (extintos)
+│   └── Terópodes
+│       ├── Grupos extintos (T. rex, Velociraptor, etc.)
+│       └── Aves (vivas até hoje!)
+└── Ornithischia (extintos)
+                        </pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ajustado para GitHub Pages - removido 'pages/' -->
+            <button onclick="window.location.href='birds-dinosaurs.html'">Aves</button>
+        </div>
+    </section>
+
+    <!-- SEÇÃO: HARD MODE -->
+    <section class="hard-mode" id="hard-mode">
+        <div class="container">
+            <h2 class="section-title">🔬 Hard Mode - Para Entusiastas</h2>
+            <p class="section-subtitle">Profundidade científica: Papers, filogenias, mapas paleogeográficos e muito mais
+            </p>
+
+            <div class="hard-mode-grid">
+                <div class="hard-mode-card" data-aos="fade-up">
+                    <h3>📚 Base de Papers</h3>
+                    <p>Acesso a centenas de artigos científicos através de integração com APIs como Crossref e Semantic
+                        Scholar.</p>
+                    <button class="btn btn-outline">Acessar Papers</button>
+                </div>
+
+                <div class="hard-mode-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>🗺️ Mapas Paleogeográficos</h3>
+                    <p>Visualize continentes em cada período. Veja onde os fósseis foram encontrados em contexto
+                        geológico real.</p>
+                    <button class="btn btn-outline">Ver Mapas</button>
+                </div>
+
+                <div class="hard-mode-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>📊 Árvores Filogenéticas Completas</h3>
+                    <p>Grafos interativos mostrando relações evolutivas. Clique para explorar cada nó da filogenia.</p>
+                    <button class="btn btn-outline">Explorar Filogenia</button>
+                </div>
+
+                <div class="hard-mode-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>🧪 Formações Geológicas</h3>
+                    <p>Cada espécie é associada a formações específicas. Conheça a geologia do Mesozoico.</p>
+                    <button class="btn btn-outline">Ver Formações</button>
+                </div>
+
+                <div class="hard-mode-card" data-aos="fade-up" data-aos-delay="400">
+                    <h3>📥 Downloads</h3>
+                    <p>Baixe mapas, árvores filogenéticas e comparações em alta resolução.</p>
+                    <button class="btn btn-outline">Downloads</button>
+                </div>
+
+                <div class="hard-mode-card" data-aos="fade-up" data-aos-delay="500">
+                    <h3>🔗 Links Externos</h3>
+                    <p>Referências para museus, universidades, e bases de dados paleontológicas.</p>
+                    <button class="btn btn-outline">Ver Recursos</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Pronto para explorar 165 milhões de anos?</h2>
+            <p>Escolha o seu caminho:</p>
+
+            <div class="cta-buttons">
+                <!-- Ajustado para GitHub Pages - removido 'pages/' -->
+                <button class="btn btn-large btn-primary" onclick="window.location.href='species-list.html'">🦖 Explorar Espécies</button>
+                <button class="btn btn-large btn-secondary" onclick="window.location.href='timeline.html'">📊 Linha do Tempo
+                    Interativa</button>
+                <button class="btn btn-large btn-outline" onclick="window.location.href='#hard-mode'">🔬 Hard Mode</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Dino Explorer</h4>
+                    <p>Divulgação científica sobre a era Mesozoica com rigor paleontológico.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="#explore">Explorar</a></li>
+                        <li><a href="#timeline">Linha do Tempo</a></li>
+                        <li><a href="#clados">Taxonomia</a></li>
+                        <li><a href="#ciencia">Ciência</a></li>
+                        <li><a href="species-list.html">Espécies</a></li> <!-- Adicionei link direto -->
+                        <li><a href="birds-dinosaurs.html">Aves</a></li> <!-- Adicionei link direto -->
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Papers Científicos</a></li>
+                        <li><a href="#">Sobre o Site</a></li>
+                        <li><a href="#">Contato</a></li>
+                        <li><a href="#">Contribuir</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="#">GitHub</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">YouTube</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dino Explorer. Conteúdo sob licença CC-BY-4.0. Desenvolvido com 🦕 e ciência.</p>
+                <!-- Mudei o ano para 2025, que é mais comum -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts - Ajustado para GitHub Pages -->
+    <script src="animations.js"></script>
+    <script src="main.js"></script>
+    
+    <!-- Script inline para funções de navegação que podem não estar nos arquivos JS -->
+    <script>
+        // Função de navegação básica caso não esteja definida nos arquivos JS
+        function navigateTo(page) {
+            const pages = {
+                'taxonomia': '#clados',
+                'species': 'species-list.html',
+                'timeline': 'timeline.html',
+                'hard-mode': '#hard-mode'
+            };
+            
+            if (pages[page]) {
+                if (pages[page].startsWith('#')) {
+                    // É uma âncora na mesma página
+                    const element = document.querySelector(pages[page]);
+                    if (element) {
+                        element.scrollIntoView({behavior: 'smooth'});
+                    }
+                } else {
+                    // É outra página HTML
+                    window.location.href = pages[page];
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

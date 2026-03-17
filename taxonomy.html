@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Taxonomia dos dinossauros - Entenda a classificação científica e as relações evolutivas entre os grupos de dinossauros">
+    <meta name="keywords" content="taxonomia, dinossauros, classificação, filogenia, clados, saurischia, ornithischia">
+    <meta name="author" content="Dino Explorer">
+    <title>Taxonomia - Dino Explorer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🦖</text></svg>">
+    
+    <!-- CSS - Ajustado para GitHub Pages (raiz) -->
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="taxonomy.css">
+    
+    <style>
+        /* Estilos de fallback */
+        .loading-indicator { text-align: center; padding: 40px; color: #666; font-size: 1.2rem; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-btn.active { background: var(--primary-color, #0066cc); color: white; }
+        .tree-ascii { font-family: monospace; white-space: pre; line-height: 1.5; background: #f5f5f5; padding: 20px; border-radius: 8px; overflow-x: auto; }
+        .accordion-content { display: none; }
+        .accordion-content.active { display: block; }
+        .accordion-header { cursor: pointer; }
+        .accordion-icon { display: inline-block; transition: transform 0.3s; }
+        .accordion-header.active .accordion-icon { transform: rotate(90deg); }
+    </style>
+</head>
+<body>
+    <!-- HEADER / NAVEGAÇÃO -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">🦖 <span class="brand">Dino Explorer</span></a>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="index.html#explore" class="nav-link">Explorar</a>
+                <a href="timeline.html" class="nav-link">Linha do Tempo</a>
+                <a href="species-list.html" class="nav-link">Espécies</a>
+                <a href="taxonomia.html" class="nav-link active">Taxonomia</a> <!-- Ajustado de taxonomy.html para taxonomia.html -->
+                <a href="birds-dinosaurs.html" class="nav-link">Aves</a> <!-- Adicionado link para consistência -->
+                <a href="index.html#ciencia" class="nav-link">Ciência</a>
+            </nav>
+
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-btn" title="Alternar tema">🌙</button>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="taxonomy-hero">
+            <div class="hero-background">
+                <div class="hero-gradient"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content" data-aos="fade-up">
+                    <h1>🧬 Taxonomia dos Dinossauros</h1>
+                    <p>Entenda a estrutura evolutiva e as relações filogenéticas</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTRODUCTION -->
+        <section class="taxonomy-intro">
+            <div class="container">
+                <div class="intro-content" data-aos="fade-up">
+                    <h2 class="section-title">O que é Taxonomia?</h2>
+                    <p>
+                        A taxonomia é a ciência que classifica e organiza os seres vivos em categorias hierárquicas. 
+                        Para dinossauros, organizamos por <strong>clados</strong> (grupos evolutivos) em vez de características visuais apenas.
+                    </p>
+                    
+                    <div class="taxonomic-ranks">
+                        <h3>Categorias Taxonômicas (do mais geral ao mais específico):</h3>
+                        <div class="ranks-grid">
+                            <div class="rank-card">
+                                <div class="rank-number">1</div>
+                                <div class="rank-name">Reino</div>
+                                <div class="rank-example">Animalia</div>
+                            </div>
+                            <div class="rank-card">
+                                <div class="rank-number">2</div>
+                                <div class="rank-name">Filo</div>
+                                <div class="rank-example">Chordata</div>
+                            </div>
+                            <div class="rank-card">
+                                <div class="rank-number">3</div>
+                                <div class="rank-name">Classe</div>
+                                <div class="rank-example">Reptilia</div>
+                            </div>
+                            <div class="rank-card">
+                                <div class="rank-number">4</div>
+                                <div class="rank-name">Clado</div>
+                                <div class="rank-example">Dinosauria</div>
+                            </div>
+                            <div class="rank-card">
+                                <div class="rank-number">5</div>
+                                <div class="rank-name">Clado</div>
+                                <div class="rank-example">Saurischia</div>
+                            </div>
+                            <div class="rank-card">
+                                <div class="rank-number">6</div>
+                                <div class="rank-name">Ordem</div>
+                                <div class="rank-example">Theropoda</div>
+                            </div>
+                            <div class="rank-card">
+                                <div class="rank-number">7</div>
+                                <div class="rank-name">Família</div>
+                                <div class="rank-example">Tyrannosauridae</div>
+                            </div>
+                            <div class="rank-card">
+                                <div class="rank-number">8</div>
+                                <div class="rank-name">Gênero</div>
+                                <div class="rank-example">Tyrannosaurus</div>
+                            </div>
+                            <div class="rank-card">
+                                <div class="rank-number">9</div>
+                                <div class="rank-name">Espécie</div>
+                                <div class="rank-example">T. rex</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÁRVORE FILOGENÉTICA PRINCIPAL -->
+        <section class="phylogenetic-tree-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">📊 Árvore Filogenética Principal</h2>
+                <p class="section-subtitle">Clique nos nós para expandir/recolher ramos</p>
+
+                <div class="tree-controls" data-aos="fade-up">
+                    <button class="btn btn-small btn-outline" id="expand-all">⬇️ Expandir Tudo</button>
+                    <button class="btn btn-small btn-outline" id="collapse-all">⬆️ Recolher Tudo</button>
+                    <button class="btn btn-small btn-outline" id="reset-tree">🔄 Resetar</button>
+                </div>
+
+                <div class="phylogenetic-tree-container" data-aos="zoom-in">
+                    <div class="phylogenetic-tree" id="phylogenetic-tree">
+                        <!-- Carregado dinamicamente pelo taxonomy.js -->
+                        <div class="loading-indicator">Carregando árvore filogenética...</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLADOS PRINCIPAIS -->
+        <section class="main-clades">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🦖 Clados Principais</h2>
+                <p class="section-subtitle">Conheça os grandes grupos de dinossauros</p>
+
+                <div class="clades-accordion">
+                    <!-- DINOSAURIA -->
+                    <div class="accordion-item" data-aos="fade-up">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-icon">▶</span>
+                            <h3>🦖 Dinosauria</h3>
+                            <span class="clade-info">Todos os dinossauros</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="clade-description">
+                                <p><strong>Definição:</strong> Todos os animais que descendem do ancestral comum mais recente de <em>Triceratops</em> e <em>Tyrannosaurus rex</em>.</p>
+                                <p><strong>Período:</strong> Triássico Superior - Presente (aves)</p>
+                                <p><strong>Características:</strong> Membros posicionados embaixo do corpo, estrutura de pelve especializada</p>
+                            </div>
+                            <div class="subclade-section">
+                                <h4>Subdivide-se em:</h4>
+                                <div class="subclade-list">
+                                    <div class="subclade-item">
+                                        <strong>Saurischia</strong> - Dinossauros com bacia de réptil
+                                    </div>
+                                    <div class="subclade-item">
+                                        <strong>Ornithischia</strong> - Dinossauros com bacia de ave
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SAURISCHIA -->
+                    <div class="accordion-item" data-aos="fade-up">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-icon">▶</span>
+                            <h3>🦕 Saurischia (Bacia de Réptil)</h3>
+                            <span class="clade-info">Saurópodes + Terópodes</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="clade-description">
+                                <p><strong>Definição:</strong> Dinossauros com púbis apontando para frente (como répteis modernos).</p>
+                                <p><strong>Período:</strong> Triássico Superior - Presente</p>
+                                <p><strong>Características:</strong> Púbis dirigido para frente, frequentemente bipedais ou quadrupedais especializados</p>
+                            </div>
+                            <div class="subclade-section">
+                                <h4>Subdivide-se em:</h4>
+                                <div class="subclade-list">
+                                    <div class="subclade-item">
+                                        <strong>Sauropodomorfos</strong> - Herbívoros gigantescos quadrúpedes (<em>Brachiosaurus</em>, <em>Diplodocus</em>)
+                                    </div>
+                                    <div class="subclade-item">
+                                        <strong>Terópodes</strong> - Carnívoros bípedes e onívoros (<em>T. rex</em>, <em>Velociraptor</em>, Aves)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- THEROPODA -->
+                    <div class="accordion-item" data-aos="fade-up">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-icon">▶</span>
+                            <h3>🦖 Theropoda (Dinossauros Carnívoros)</h3>
+                            <span class="clade-info">Carnívoros bípedes + Aves</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="clade-description">
+                                <p><strong>Definição:</strong> Terópodes bípedes com membros posteriores especializados para locomoção rápida.</p>
+                                <p><strong>Período:</strong> Triássico Superior - Presente</p>
+                                <p><strong>Características:</strong> Membros anteriores reduzidos (geralmente), garras, posição ereta</p>
+                            </div>
+                            <div class="subclade-section">
+                                <h4>Subdivide-se em:</h4>
+                                <div class="subclade-list">
+                                    <div class="subclade-item">
+                                        <strong>Carnosauria</strong> - Grandes predadores (<em>T. rex</em>, <em>Allosaurus</em>, <em>Spinosaurus</em>)
+                                    </div>
+                                    <div class="subclade-item">
+                                        <strong>Coelurosauria</strong> - Terópodes menores (<em>Velociraptor</em>, <em>Deinonychus</em>)
+                                    </div>
+                                    <div class="subclade-item">
+                                        <strong>Aves</strong> - Dinossauros avianos (todos os pássaros vivos)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ORNITHISCHIA -->
+                    <div class="accordion-item" data-aos="fade-up">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-icon">▶</span>
+                            <h3>🦕 Ornithischia (Bacia de Ave)</h3>
+                            <span class="clade-info">Herbívoros especializados</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="clade-description">
+                                <p><strong>Definição:</strong> Dinossauros com púbis apontando para trás (como aves modernas).</p>
+                                <p><strong>Período:</strong> Jurássico Inferior - Cretáceo Superior</p>
+                                <p><strong>Características:</strong> Todos herbívoros, púbis para trás, frequentemente quadrúpedes</p>
+                            </div>
+                            <div class="subclade-section">
+                                <h4>Subdivide-se em:</h4>
+                                <div class="subclade-list">
+                                    <div class="subclade-item">
+                                        <strong>Ceratopsia</strong> - Com chifres e frilos (<em>Triceratops</em>, <em>Styracosaurus</em>)
+                                    </div>
+                                    <div class="subclade-item">
+                                        <strong>Hadrosauridae</strong> - Com bico de pato (<em>Parasaurolophus</em>, <em>Edmontosaurus</em>)
+                                    </div>
+                                    <div class="subclade-item">
+                                        <strong>Thyreophora</strong> - Com armadura (<em>Stegosaurus</em>, <em>Ankylosaurus</em>)
+                                    </div>
+                                    <div class="subclade-item">
+                                        <strong>Ornithopoda</strong> - Dinossauros bípedes herbívoros (<em>Iguanodon</em>)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SAUROPODOMORFOS -->
+                    <div class="accordion-item" data-aos="fade-up">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            <span class="accordion-icon">▶</span>
+                            <h3>🦕 Sauropodomorfos (Gigantes Herbívoros)</h3>
+                            <span class="clade-info">Maiores animais terrestres</span>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="clade-description">
+                                <p><strong>Definição:</strong> Saurópodes e seus ancestrais proximais.</p>
+                                <p><strong>Período:</strong> Triássico Superior - Cretáceo Superior</p>
+                                <p><strong>Características:</strong> Pescoço longo, corpo massivo, membros pilares, quadrúpedes</p>
+                            </div>
+                            <div class="subclade-section">
+                                <h4>Famílias principais:</h4>
+                                <div class="subclade-list">
+                                    <div class="subclade-item">
+                                        <strong>Diplodocidae</strong> - Pescoço comprido (<em>Diplodocus</em>, <em>Apatosaurus</em>)
+                                    </div>
+                                    <div class="subclade-item">
+                                        <strong>Brachiosauridae</strong> - Membros anteriores muito compridos (<em>Brachiosaurus</em>)
+                                    </div>
+                                    <div class="subclade-item">
+                                        <strong>Titanosauria</strong> - Grupo de saurópodes especializados (<em>Argentinosaurus</em>)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPARAÇÃO VISUAL -->
+        <section class="taxonomy-comparison">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">⚖️ Diferenças Entre Saurischia e Ornithischia</h2>
+                <p class="section-subtitle">A forma da pelve diferencia os dois clados principais</p>
+
+                <div class="comparison-grid" data-aos="zoom-in">
+                    <div class="comparison-item">
+                        <h3>🦖 Saurischia (Bacia de Réptil)</h3>
+                        
+                        <div class="pelvis-diagram">
+                            <svg viewBox="0 0 100 100" class="pelvis-svg">
+                                <!-- Pelvis de réptil -->
+                                <ellipse cx="50" cy="50" rx="20" ry="25" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="50" y1="50" x2="70" y2="35" stroke="currentColor" stroke-width="2"/>
+                                <line x1="50" y1="50" x2="30" y2="35" stroke="currentColor" stroke-width="2"/>
+                                <line x1="50" y1="50" x2="50" y2="75" stroke="currentColor" stroke-width="2"/>
+                                <text x="50" y="90" text-anchor="middle" font-size="10">Púbis para frente</text>
+                            </svg>
+                        </div>
+
+                        <h4>Características:</h4>
+                        <ul>
+                            <li>Púbis apontando para FRENTE</li>
+                            <li>Ísquio apontando para trás</li>
+                            <li>Estrutura "em tripé"</li>
+                        </ul>
+
+                        <h4>Exemplos:</h4>
+                        <ul>
+                            <li>🦕 Brachiosaurus</li>
+                            <li>🦖 Tyrannosaurus rex</li>
+                            <li>🦖 Velociraptor</li>
+                            <li>🕊️ Aves (descendentes)</li>
+                        </ul>
+                    </div>
+
+                    <div class="comparison-item">
+                        <h3>🦕 Ornithischia (Bacia de Ave)</h3>
+                        
+                        <div class="pelvis-diagram">
+                            <svg viewBox="0 0 100 100" class="pelvis-svg">
+                                <!-- Pelvis de ave -->
+                                <ellipse cx="50" cy="50" rx="20" ry="25" fill="none" stroke="currentColor" stroke-width="2"/>
+                                <line x1="50" y1="50" x2="30" y2="35" stroke="currentColor" stroke-width="2"/>
+                                <line x1="50" y1="50" x2="30" y2="65" stroke="currentColor" stroke-width="2"/>
+                                <line x1="50" y1="50" x2="70" y2="50" stroke="currentColor" stroke-width="2"/>
+                                <text x="50" y="90" text-anchor="middle" font-size="10">Púbis para trás</text>
+                            </svg>
+                        </div>
+
+                        <h4>Características:</h4>
+                        <ul>
+                            <li>Púbis apontando para TRÁS</li>
+                            <li>Ísquio também para trás</li>
+                            <li>Estrutura "paralela"</li>
+                        </ul>
+
+                        <h4>Exemplos:</h4>
+                        <ul>
+                            <li>🦕 Triceratops</li>
+                            <li>🦕 Stegosaurus</li>
+                            <li>🦕 Parasaurolophus</li>
+                            <li>🦕 Ankylosaurus</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÁRVORE INTERATIVA POR CLADO -->
+        <section class="clade-trees">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🔍 Explorar Árvores Específicas</h2>
+
+                <div class="clade-tabs" data-aos="fade-up">
+                    <button class="tab-btn active" data-tab="saurischia">Saurischia</button>
+                    <button class="tab-btn" data-tab="ornithischia">Ornithischia</button>
+                    <button class="tab-btn" data-tab="theropoda">Theropoda</button>
+                </div>
+
+                <!-- SAURISCHIA TREE -->
+                <div class="tab-content active" id="saurischia-content" data-aos="fade-up">
+                    <pre class="tree-ascii">
+Saurischia
+├── Sauropodomorfos
+│   ├── Diplodocidae
+│   │   ├── Diplodocus
+│   │   └── Apatosaurus
+│   ├── Brachiosauridae
+│   │   └── Brachiosaurus
+│   └── Titanosauria
+│       ├── Argentinosaurus
+│       └── Mamenchisaurus
+└── Theropoda
+    ├── Carnosauria
+    │   ├── Tyrannosauridae
+    │   │   └── Tyrannosaurus rex
+    │   ├── Allosauridae
+    │   │   └── Allosaurus
+    │   └── Spinosauridae
+    │       └── Spinosaurus
+    ├── Coelurosauria
+    │   ├── Dromaeosauria
+    │   │   ├── Velociraptor
+    │   │   └── Deinonychus
+    │   ├── Troodontidae
+    │   │   └── Troodon
+    │   └── Aves
+    │       └── Todas as aves vivas!
+                    </pre>
+                </div>
+
+                <!-- ORNITHISCHIA TREE -->
+                <div class="tab-content" id="ornithischia-content" data-aos="fade-up">
+                    <pre class="tree-ascii">
+Ornithischia
+├── Thyreophora
+│   ├── Stegosauridae
+│   │   └── Stegosaurus
+│   └── Ankylosauria
+│       ├── Nodosauridae
+│       └── Ankylosauridae
+│           └── Ankylosaurus
+├── Ceratopsia
+│   ├── Protoceratopidae
+│   │   └── Protoceratops
+│   └── Neoceratopsia
+│       ├── Triceratopsidae
+│       │   └── Triceratops
+│       └── Chasmosauridae
+│           └── Styracosaurus
+├── Hadrosauridae
+│   ├── Lambeosaurinae
+│   │   └── Parasaurolophus
+│   └── Hadrosaurinae
+│       └── Edmontosaurus
+└── Ornithopoda
+    ├── Hypsilophodontidae
+    └── Iguanodontia
+        └── Iguanodon
+                    </pre>
+                </div>
+
+                <!-- THEROPODA TREE -->
+                <div class="tab-content" id="theropoda-content" data-aos="fade-up">
+                    <pre class="tree-ascii">
+Theropoda
+├── Carnosauria
+│   ├── Tyrannosauroidea
+│   │   ├── Proceratosaurus
+│   │   └── Tyrannosauridae
+│   │       ├── Albertosaurus
+│   │       ├── Tarbosaurus
+│   │       └── Tyrannosaurus rex
+│   ├── Allosauridae
+│   │   ├── Allosaurus
+│   │   └── Sinraptor
+│   └── Spinosauridae
+│       ├── Spinosaurus
+│       └── Baryonyx
+├── Coelurosauria
+│   ├── Dromaeosauridae
+│   │   ├── Velociraptorinae
+│   │   │   ├── Velociraptor
+│   │   │   └── Deinonychus
+│   │   └── Microraptorinae
+│   │       └── Microraptor
+│   ├── Troodontidae
+│   │   ├── Troodon
+│   │   └── Saurornithoides
+│   └── Avialae
+│       ├── Archaeopteryx
+│       └── Aves (modernas)
+└── Aves
+    ├── Archaeornithes
+    ├── Enantiornithes
+    └── Neornithes (Aves vivas)
+                    </pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE EVOLUTIVO -->
+        <section class="evolution-timeline">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">⏳ Timeline Evolutivo</h2>
+                <p class="section-subtitle">Quando cada grupo evoluiu?</p>
+
+                <div class="timeline-events" data-aos="fade-up">
+                    <div class="timeline-event">
+                        <div class="event-marker">📍</div>
+                        <div class="event-content">
+                            <h4>Dinosauria</h4>
+                            <p>~230 Ma (Triássico Médio)</p>
+                            <span class="event-label">Primeira aparição</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event">
+                        <div class="event-marker">📍</div>
+                        <div class="event-content">
+                            <h4>Saurischia / Ornithischia se dividem</h4>
+                            <p>~225 Ma (Triássico Superior)</p>
+                            <span class="event-label">Divergência</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event">
+                        <div class="event-marker">📍</div>
+                        <div class="event-content">
+                            <h4>Sauropodomorfos gigantescos</h4>
+                            <p>~180 Ma (Jurássico Médio)</p>
+                            <span class="event-label">Radiação</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event">
+                        <div class="event-marker">📍</div>
+                        <div class="event-content">
+                            <h4>Primeiras aves (Archaeopteryx)</h4>
+                            <p>~150 Ma (Jurássico Superior)</p>
+                            <span class="event-label">Evolução</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event">
+                        <div class="event-marker">📍</div>
+                        <div class="event-content">
+                            <h4>Ceratopsios diversificam</h4>
+                            <p>~100 Ma (Cretáceo Inferior)</p>
+                            <span class="event-label">Radiação</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event">
+                        <div class="event-marker">📍</div>
+                        <div class="event-content">
+                            <h4>T. rex no apogeu</h4>
+                            <p>~68 Ma (Cretáceo Superior)</p>
+                            <span class="event-label">Apogeu</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event">
+                        <div class="event-marker">📍</div>
+                        <div class="event-content">
+                            <h4>Extinção K-Pg (não-avianos)</h4>
+                            <p>~66 Ma (Fim do Cretáceo)</p>
+                            <span class="event-label">Extinção</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-event">
+                        <div class="event-marker">📍</div>
+                        <div class="event-content">
+                            <h4>Aves continuam evoluindo</h4>
+                            <p>~66 Ma - Presente</p>
+                            <span class="event-label">Hoje</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GLOSSÁRIO -->
+        <section class="taxonomy-glossary">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">📚 Glossário Taxonômico</h2>
+
+                <div class="glossary-grid" data-aos="fade-up">
+                    <div class="glossary-item">
+                        <h4>Clado</h4>
+                        <p>Um grupo de organismos que compartilham um ancestral comum exclusivo. Base moderna da classificação.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <h4>Monofilético</h4>
+                        <p>Um grupo que inclui um ancestral comum e TODOS os seus descendentes.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <h4>Sinapomorfia</h4>
+                        <p>Uma característica compartilhada por um grupo que não estava presente em seus ancestrais mais antigos.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <h4>Filogenia</h4>
+                        <p>O histórico evolutivo de um organismo ou grupo. Representado em árvores filogenéticas.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <h4>Homoplasia</h4>
+                        <p>Quando características similares evoluem independentemente em linhagens diferentes (não herdadas do ancestral).</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <h4>Nó da Árvore</h4>
+                        <p>Ponto onde duas linhagens evolutivas divergem de um ancestral comum.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <h4>Ramo da Árvore</h4>
+                        <p>Linha que conecta organismos mostrando relações evolutivas.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <h4>Holótipo</h4>
+                        <p>O espécime único designado como referência para uma espécie quando ela é descrita.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <h4>Paráfiletico</h4>
+                        <p>Quando um grupo inclui um ancestral comum mas NÃO todos seus descendentes.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <h4>Raiz da Árvore</h4>
+                        <p>O ponto de partida representando o ancestral comum mais antigo de todos os táxons.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <h4>Táxon (plural: Táxons)</h4>
+                        <p>Um grupo de organismos em qualquer nível de classificação taxonômica.</p>
+                    </div>
+
+                    <div class="glossary-item">
+                        <h4>Bacia (Pelve)</h4>
+                        <p>Estrutura óssea que suporta os membros posteriores; sua forma é crucial para classificação de dinossauros.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Dino Explorer</h4>
+                    <p>Taxonomia e filogenia com rigor científico.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="timeline.html">Linha do Tempo</a></li>
+                        <li><a href="species-list.html">Espécies</a></li>
+                        <li><a href="taxonomia.html">Taxonomia</a></li>
+                        <li><a href="birds-dinosaurs.html">Aves</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Contribuir</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dino Explorer. Desenvolvido com 🦕 e ciência.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts - Ajustado para GitHub Pages -->
+    <script src="theme-toggle.js"></script>
+    <script src="animations.js"></script>
+    <script src="taxonomy.js"></script>
+    
+    <!-- Script inline para funções essenciais -->
+    <script>
+        // Função para alternar accordion
+        function toggleAccordion(header) {
+            header.classList.toggle('active');
+            const content = header.nextElementSibling;
+            content.classList.toggle('active');
+            
+            // Mudar ícone
+            const icon = header.querySelector('.accordion-icon');
+            if (icon) {
+                icon.textContent = content.classList.contains('active') ? '▼' : '▶';
+            }
+        }
+        
+        // Inicializar tabs
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar tabs
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remover active de todos os botões
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Adicionar active ao botão clicado
+                    this.classList.add('active');
+                    
+                    // Esconder todos os conteúdos
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    
+                    // Mostrar o conteúdo correspondente
+                    const tabId = this.getAttribute('data-tab');
+                    document.getElementById(tabId + '-content').classList.add('active');
+                });
+            });
+            
+            // Configurar botões da árvore (placeholder - será substituído pelo taxonomy.js)
+            document.getElementById('expand-all')?.addEventListener('click', function() {
+                alert('Função expandir será implementada no taxonomy.js');
+            });
+            
+            document.getElementById('collapse-all')?.addEventListener('click', function() {
+                alert('Função recolher será implementada no taxonomy.js');
+            });
+            
+            document.getElementById('reset-tree')?.addEventListener('click', function() {
+                alert('Função reset será implementada no taxonomy.js');
+            });
+            
+            // Inicializar accordions com ícones corretos
+            document.querySelectorAll('.accordion-header').forEach(header => {
+                const icon = header.querySelector('.accordion-icon');
+                if (icon) icon.textContent = '▶';
+            });
+        });
+    </script>
+</body>
+</html>

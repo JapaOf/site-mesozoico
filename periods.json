@@ -1,0 +1,201 @@
+{
+  "periods": [
+    {
+      "id": "triassic",
+      "name": "Triássico",
+      "displayName": "🌋 Triássico",
+      "startMa": 252,
+      "endMa": 201,
+      "duration": 51,
+      "durationText": "51 milhões de anos",
+      "description": "Período inicial do Mesozoico. Pangeia ainda unida. Primeiros dinossauros aparecem.",
+      "longDescription": "O Triássico marca o início da Era Mesozoica, após a maior extinção em massa da história. A vida se recupera lentamente e os primeiros dinossauros evoluem de arcossauros primitivos. O supercontinente Pangeia domina a paisagem, com desertos extensos no interior e clima sazonal extremo.",
+      "characteristics": [
+        "Supercontinente Pangeia unido",
+        "Clima árido e quente no interior",
+        "Primeiros dinossauros (pequenos e ágeis)",
+        "Fauna dominada por répteis e anfíbios primitivos",
+        "Primeiros mamíferos aparecem (pequenos e noturnos)",
+        "Oceano Tétis a leste"
+      ],
+      "majorEvents": [
+        {
+          "id": "pt-extinction",
+          "name": "Extinção Permiano-Triássico",
+          "age": "252 Ma",
+          "description": "A maior extinção em massa de todos os tempos. 96% da vida marinha e 70% da vida terrestre desaparecem.",
+          "type": "extinction"
+        },
+        {
+          "id": "first-dinosaurs",
+          "name": "Primeiros dinossauros",
+          "age": "~230 Ma",
+          "description": "Eoraptor, Herrerasaurus e outros pequenos dinossauros aparecem na América do Sul.",
+          "type": "evolution"
+        },
+        {
+          "id": "dinosaur-divergence",
+          "name": "Divergência Saurischia/Ornithischia",
+          "age": "~225 Ma",
+          "description": "Os dinossauros se dividem nos dois grandes grupos: Saurischia e Ornithischia.",
+          "type": "evolution"
+        },
+        {
+          "id": "triassic-extinction",
+          "name": "Extinção do Triássico",
+          "age": "201 Ma",
+          "description": "Extinção em massa que marca o fim do Triássico, permitindo a ascensão dos dinossauros no Jurássico.",
+          "type": "extinction"
+        }
+      ],
+      "famousSpecies": [
+        "Eoraptor",
+        "Herrerasaurus",
+        "Coelophysis",
+        "Plateosaurus",
+        "Mussaurus"
+      ],
+      "climate": "Quente e seco no interior, tropical nas costas, com monções sazonais",
+      "temperature": "18-25°C (média global)",
+      "vegetation": "Coníferas, Cicadófitas, Gimnospermas, Samambaias",
+      "continents": "Pangeia (supercontinente único)",
+      "ocean": "Oceano Tétis (leste), Panthalassa (oeste)",
+      "atmosphere": "Níveis baixos de oxigênio (15%), altos de CO₂",
+      "image": "triassic-landscape.jpg",
+      "color": "#8B4513"
+    },
+    {
+      "id": "jurassic",
+      "name": "Jurássico",
+      "displayName": "🦕 Jurássico",
+      "startMa": 201,
+      "endMa": 145,
+      "duration": 56,
+      "durationText": "56 milhões de anos",
+      "description": "A idade de ouro dos dinossauros. Saurópodes gigantescos. Surgem as primeiras aves.",
+      "longDescription": "O Jurássico é o período em que os dinossauros realmente dominam a Terra. Pangeia começa a se dividir, criando mares rasos e quentes. A vegetação é exuberante, com florestas de coníferas cobrindo grande parte dos continentes. Saurópodes atingem tamanhos nunca vistos antes ou depois, e as primeiras aves evoluem de pequenos terópodes.",
+      "characteristics": [
+        "Pangeia se divide em Laurásia (N) e Gondwana (S)",
+        "Continentes começam a se separar",
+        "Saurópodes gigantescos dominam a paisagem",
+        "Surgem as primeiras aves (Archaeopteryx)",
+        "Mares rasos, quentes e cheios de vida",
+        "Florestas tropicais globais",
+        "Primeiros estegossauros"
+      ],
+      "majorEvents": [
+        {
+          "id": "pangea-split",
+          "name": "Separação da Pangeia",
+          "age": "~190 Ma",
+          "description": "Pangeia começa a se dividir, formando o Oceano Atlântico Norte.",
+          "type": "geological"
+        },
+        {
+          "id": "giant-sauropods",
+          "name": "Gigantismo de Saurópodes",
+          "age": "~160 Ma",
+          "description": "Brachiosaurus, Diplodocus e outros atingem tamanhos máximos de até 30-40 metros.",
+          "type": "evolution"
+        },
+        {
+          "id": "first-birds",
+          "name": "Primeiras aves",
+          "age": "~150 Ma",
+          "description": "Archaeopteryx e outros avialanos aparecem, com penas e capacidade de voo limitada.",
+          "type": "evolution"
+        },
+        {
+          "id": "flowering-plants",
+          "name": "Primeiras angiospermas",
+          "age": "~145 Ma",
+          "description": "Plantas com flores (angiospermas) começam a aparecer no final do período.",
+          "type": "evolution"
+        }
+      ],
+      "famousSpecies": [
+        "Brachiosaurus",
+        "Diplodocus",
+        "Apatosaurus",
+        "Stegosaurus",
+        "Archaeopteryx",
+        "Allosaurus",
+        "Camarasaurus"
+      ],
+      "climate": "Tropical a subtropical, quente e úmido, sem gelo nos polos",
+      "temperature": "20-25°C (média global)",
+      "vegetation": "Gimnospermas dominam (coníferas, cicadáceas), primeiras angiospermas no final",
+      "continents": "Laurásia (Norte) e Gondwana (Sul)",
+      "ocean": "Oceano Atlântico começa a se formar",
+      "atmosphere": "Níveis de oxigênio aumentam (20%)",
+      "image": "jurassic-landscape.jpg",
+      "color": "#228B22"
+    },
+    {
+      "id": "cretaceous",
+      "name": "Cretáceo",
+      "displayName": "🦖 Cretáceo",
+      "startMa": 145,
+      "endMa": 66,
+      "duration": 79,
+      "durationText": "79 milhões de anos",
+      "description": "O último período dos dinossauros não-avianos. Maior diversidade. Termina com impacto catastrófico.",
+      "longDescription": "O Cretáceo é o auge da diversidade dos dinossauros, com novas formas evoluindo em todos os continentes. As plantas com flores se diversificam e mudam completamente a paisagem. Os continentes se aproximam de suas posições modernas. O período termina abruptamente com o impacto de um asteroide que extingue todos os dinossauros não-avianos, abrindo caminho para a ascensão dos mamíferos.",
+      "characteristics": [
+        "Continentes em posição quase moderna",
+        "Surgem plantas com flores (angiospermas)",
+        "Maior diversidade de dinossauros de todos os tempos",
+        "Apogeu dos terópodes predadores",
+        "Ceratopsianos e Hadrossauros proliferam",
+        "Répteis marinhos dominam os oceanos",
+        "Pterossauros gigantes nos céus"
+      ],
+      "majorEvents": [
+        {
+          "id": "angiosperm-radiation",
+          "name": "Radiação das Angiospermas",
+          "age": "~130-90 Ma",
+          "description": "Plantas com flores se diversificam e se tornam dominantes em muitos ecossistemas.",
+          "type": "evolution"
+        },
+        {
+          "id": "trex-apogeu",
+          "name": "Apogeu de Tyrannosaurus rex",
+          "age": "~68-66 Ma",
+          "description": "Tyrannosaurus rex domina como predador ápice no oeste da América do Norte.",
+          "type": "evolution"
+        },
+        {
+          "id": "kpg-extinction",
+          "name": "Extinção K-Pg (Cretáceo-Paleogeno)",
+          "age": "66 Ma",
+          "description": "Asteroide de 10 km atinge Yucatán. Dinossauros não-avianos, pterossauros e répteis marinhos são extintos. Apenas as aves sobrevivem.",
+          "type": "extinction"
+        }
+      ],
+      "famousSpecies": [
+        "Tyrannosaurus rex",
+        "Triceratops horridus",
+        "Velociraptor mongoliensis",
+        "Spinosaurus aegyptiacus",
+        "Parasaurolophus",
+        "Ankylosaurus",
+        "Pachycephalosaurus"
+      ],
+      "climate": "Tropical a subtropical, quente, com períodos de resfriamento nos polos",
+      "temperature": "18-22°C (média global)",
+      "vegetation": "Angiospermas dominam, primeiras árvores modernas",
+      "continents": "Próximos da configuração atual",
+      "ocean": "Níveis do mar mais altos da história",
+      "atmosphere": "Altos níveis de CO₂, clima estufa",
+      "image": "cretaceous-landscape.jpg",
+      "color": "#4169E1"
+    }
+  ],
+  "timeline": {
+    "totalDuration": 165,
+    "totalDurationText": "165 milhões de anos",
+    "start": "252 Ma",
+    "end": "66 Ma"
+  }
+}

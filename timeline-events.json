@@ -1,0 +1,358 @@
+{
+  "events": [
+    {
+      "id": "pt-extinction",
+      "title": "Extinção Permiano-Triássico",
+      "period": "triassic",
+      "ageRange": "252 Ma",
+      "age": 252,
+      "type": "extinction",
+      "location": "Global",
+      "continents": ["north-america", "south-america", "europe", "africa", "asia", "australia", "antarctica"],
+      "significance": "⭐⭐⭐⭐⭐ A maior extinção em massa de todos os tempos",
+      "description": "A maior extinção em massa. 96% da vida marinha desapareceu.",
+      "detailedDescription": "A extinção Permiano-Triássica (P-Tr), também conhecida como a 'Grande Morte', foi a maior extinção em massa na história da vida na Terra. Aproximadamente 96% de todas as espécies marinhas e 70% das famílias de vertebrados terrestres foram extintos. O principal culpado foi o vulcanismo massivo na Sibéria (erupções de Siberian Traps), que causou aquecimento global extremo, queda de oxigênio nos oceanos e acidificação. A recuperação levou milhões de anos.",
+      "species": [
+        "Trilobitas (extintos)",
+        "Corais tabulados (extintos)",
+        "Blastoides (extintos)",
+        "Répteis pelicossauros (extintos)"
+      ],
+      "image": "events/pt-extinction.jpg",
+      "references": [
+        {
+          "title": "The End-Permian Extinction (Nature Geoscience)",
+          "url": "https://doi.org/10.1038/ngeo",
+          "authors": "Benton, M.J."
+        },
+        {
+          "title": "Siberian Traps and the Great Dying",
+          "url": "https://doi.org/10.1126/science.1177234",
+          "authors": "Svensen, H. et al."
+        }
+      ]
+    },
+
+    {
+      "id": "first-dinosaurs",
+      "title": "Primeiros Dinossauros Aparecem",
+      "period": "triassic",
+      "ageRange": "230 Ma",
+      "age": 230,
+      "type": "evolution",
+      "location": "Argentina, Brasil",
+      "continents": ["south-america"],
+      "significance": "🦖 Revolução na vida terrestre",
+      "description": "Pequenos dinossauros como Eoraptor surgem e começam a dominar.",
+      "detailedDescription": "Os primeiros dinossauros eram pequenos, bípedes, carnívoros e provavelmente ativos. Eoraptor (1 metro) é um dos mais antigos conhecidos, encontrado na Argentina. Começam em ambiente árido do interior de Pangeia, mas rapidamente diversificam. Seu sucesso evolutivo levaria à sua dominação dos ecossistemas terrestres durante os próximos 165 milhões de anos.",
+      "species": ["Eoraptor", "Herrerasaurus", "Staurikosaurus", "Panphagia"],
+      "image": "events/first-dinosaurs.jpg",
+      "references": [
+        {
+          "title": "The rise of the dinosaurs (Science)",
+          "url": "https://doi.org/10.1126/science.aaa4141",
+          "authors": "Brusatte, S.L."
+        },
+        {
+          "title": "Early dinosaurs and the Triassic radiation",
+          "url": "https://doi.org/10.1146/annurev-earth-060614-105355",
+          "authors": "Nesbitt, S.J."
+        }
+      ]
+    },
+
+    {
+      "id": "early-mammals",
+      "title": "Primeiros Mamíferos",
+      "period": "triassic",
+      "ageRange": "220 Ma",
+      "age": 220,
+      "type": "evolution",
+      "location": "Pangeia",
+      "continents": ["europe", "asia", "south-america"],
+      "significance": "🐭 Ancestrais distantes de nós",
+      "description": "Mamíferos primitivos começam a diversificar.",
+      "detailedDescription": "Mamíferos primitivos como Morganucodon (pequenos, cerca de 20 cm) começam a surgir no Triássico Superior. Eram noturnos, pequenos e provavelmente insetívoros. Permaneceriam pequenos e obscuros durante toda a era dos dinossauros.",
+      "species": ["Morganucodon", "Sinoconodon", "Megazostrodon"],
+      "image": "events/early-mammals.jpg",
+      "references": []
+    },
+
+    {
+      "id": "triassic-jurassic-extinction",
+      "title": "Extinção Triássico-Jurássico",
+      "period": "triassic",
+      "ageRange": "201 Ma",
+      "age": 201,
+      "type": "extinction",
+      "location": "Global",
+      "continents": ["north-america", "south-america", "europe", "africa", "asia", "australia", "antarctica"],
+      "significance": "⭐⭐⭐⭐ Evento importante na história dos dinossauros",
+      "description": "50% das espécies marinhas extintas. Abre espaço para dinossauros.",
+      "detailedDescription": "A extinção Triássico-Jurássica eliminou aproximadamente 50% das espécies marinhas, incluindo muitos competidores dos primeiros dinossauros. Foram 200.000 anos de vulcanismo no rift do Atlântico Norte que causou aquecimento e queda de oxigênio. Para os dinossauros, foi ótimo—deixou muitos nichos ecológicos vazios, permitindo que se tornassem dominantes no Jurássico.",
+      "species": [
+        "Rauissuquianos (extintos)",
+        "Cinodontes em declínio",
+        "Grandes anfíbios (extintos)"
+      ],
+      "image": "events/triassic-extinction.jpg",
+      "references": [
+        {
+          "title": "The Triassic-Jurassic mass extinction",
+          "url": "https://doi.org/10.1016/j.palaeo.2017.02.023",
+          "authors": "Tanner, L.H."
+        }
+      ]
+    },
+
+    {
+      "id": "pangeia-divides",
+      "title": "Pangeia Começa a se Dividir",
+      "period": "jurassic",
+      "ageRange": "190 Ma",
+      "age": 190,
+      "type": "geological",
+      "location": "Oceano Atlântico Norte",
+      "continents": ["north-america", "europe"],
+      "significance": "🗺️ Continentes se separam",
+      "description": "Rifting continental começa. Oceano Atlântico Norte é aberto.",
+      "detailedDescription": "Pangeia não era estável. A deriva continental começou a separar os continentes. O rifting do Atlântico Norte criou nova crosta oceânica. Isso teria implicações massivas para a evolução dos dinossauros—populações isoladas evoluiriam de formas diferentes, levando à diversificação que vemos no Jurássico.",
+      "species": [],
+      "image": "events/pangea-split.jpg",
+      "references": []
+    },
+
+    {
+      "id": "sauropod-radiation",
+      "title": "Radiação de Saurópodes",
+      "period": "jurassic",
+      "ageRange": "180-160 Ma",
+      "age": 170,
+      "type": "evolution",
+      "location": "Pangeia",
+      "continents": ["north-america", "south-america", "europe", "africa", "asia"],
+      "significance": "🦕 Gigantismo extremo",
+      "description": "Saurópodes gigantescos dominam os ecossistemas.",
+      "detailedDescription": "Durante o Jurássico Médio e Superior, os saurópodes atingem seu pico de gigantismo. Brachiosaurus (85 toneladas), Diplodocus (25 metros), Apatosaurus (20+ toneladas) dominam. Como conseguiam energia? Ainda é debatido. Provavelmente tinham metabolismo mesotérmico (intermediário entre ectotérmico e endotérmico).",
+      "species": ["Brachiosaurus", "Diplodocus", "Apatosaurus", "Camarasaurus", "Supersaurus"],
+      "image": "events/sauropods.jpg",
+      "references": [
+        {
+          "title": "Sauropod gigantism: how an elephant-sized embryo evolved into a 60-ton adult (PNAS)",
+          "url": "https://doi.org/10.1073/pnas.1301913110",
+          "authors": "Sander, P.M."
+        },
+        {
+          "title": "Biology of the sauropod dinosaurs",
+          "url": "https://doi.org/10.1111/j.1469-185X.2010.00137.x",
+          "authors": "Sander, P.M. et al."
+        }
+      ]
+    },
+
+    {
+      "id": "archaeopteryx",
+      "title": "Archaeopteryx - Primeira Ave",
+      "period": "jurassic",
+      "ageRange": "150 Ma",
+      "age": 150,
+      "type": "evolution",
+      "location": "Alemanha",
+      "continents": ["europe"],
+      "significance": "🕊️ Transição para aves",
+      "description": "Fóssil transicional entre dinossauros e aves.",
+      "detailedDescription": "Archaeopteryx lithographica é o fóssil mais famoso do Mesozoico. Tem características de ambos os dinossauros (dentes, cauda longa com vértebras) e aves (penas, asas, fúrcula). Descoberto em 1861 na Baviera. É a evidência primária de que as aves evoluíram de dinossauros terópodes.",
+      "species": ["Archaeopteryx lithographica"],
+      "image": "events/archaeopteryx.jpg",
+      "references": [
+        {
+          "title": "Archaeopteryx and the origin of bird flight (BioEssays)",
+          "url": "https://doi.org/10.1002/bies.20134",
+          "authors": "Wellnhofer, P."
+        }
+      ]
+    },
+
+    {
+      "id": "flowers-appear",
+      "title": "Primeiras Plantas com Flores (Angiospermas)",
+      "period": "cretaceous",
+      "ageRange": "140 Ma",
+      "age": 140,
+      "type": "evolution",
+      "location": "Global",
+      "continents": ["south-america", "asia", "africa", "europe"],
+      "significance": "🌸 Revolução botânica",
+      "description": "Angiospermas (plantas com flores) aparecem e revolucionam os ecossistemas.",
+      "detailedDescription": "O surgimento das angiospermas no Cretáceo Inicial foi uma revolução ecológica. Plantas com flores, sementes protegidas e reprodução sexuada eficiente. Mudou toda a dinâmica de herbívoros e polinizadores. Os dinossauros herbívoros tiveram que se adaptar a essa nova fonte de alimento. Também coincidiu com o surgimento de insetos modernos.",
+      "species": ["Archamfructus", "Primeiras magnólias", "Primeiras monocotiledôneas"],
+      "image": "events/flowers.jpg",
+      "references": [
+        {
+          "title": "The origin and early evolution of angiosperms",
+          "url": "https://doi.org/10.1146/annurev.ecolsys.38.091206.095653",
+          "authors": "Friis, E.M. et al."
+        }
+      ]
+    },
+
+    {
+      "id": "triceratops-era",
+      "title": "Apogeu dos Ceratopsídeos",
+      "period": "cretaceous",
+      "ageRange": "80-66 Ma",
+      "age": 73,
+      "type": "evolution",
+      "location": "América do Norte, Ásia",
+      "continents": ["north-america", "asia"],
+      "significance": "🦕 Herbívoros cornutos dominam",
+      "description": "Ceratopsídeos com chifres diversificam e dominam as planícies.",
+      "detailedDescription": "Triceratops e seus parentes diversificam durante o Cretáceo Superior. Herbívoros robustos com chifres e frilos ósseos. Viviam em rebanhos. Competiam por recursos com hadrossauros. Sua anatomia sugere comportamento combativo (combates entre machos pelos chifres). Eram uma das principais presas do T. rex.",
+      "species": ["Triceratops horridus", "Styracosaurus albertensis", "Protoceratops andrewsi", "Chasmosaurus"],
+      "image": "events/ceratopsians.jpg",
+      "references": []
+    },
+
+    {
+      "id": "t-rex-dominance",
+      "title": "T. rex no Apogeu",
+      "period": "cretaceous",
+      "ageRange": "68-66 Ma",
+      "age": 67,
+      "type": "evolution",
+      "location": "América do Norte",
+      "continents": ["north-america"],
+      "significance": "🦖 Predador supremo do final do Cretáceo",
+      "description": "Tyrannosaurus rex domina os últimos 2 milhões de anos do Cretáceo.",
+      "detailedDescription": "Tyrannosaurus rex evoluiu há ~68 milhões de anos e dominou até a extinção há 66 milhões. O predador mais icônico de todos. Debate: era predador ativo ou necrófago oportunista? Evidência recente sugere ambos. Tamanho: 12-13 metros, 9.000-14.000 kg. Força de mordida: ~12.000 N. Velocidade: ~25 km/h em rajadas. Cérebro relativamente grande e olfato apurado.",
+      "species": ["Tyrannosaurus rex"],
+      "image": "events/trex.jpg",
+      "references": [
+        {
+          "title": "The Tyrant Lizard King: How T. rex Ruled for 2 Million Years (Current Biology)",
+          "url": "https://doi.org/10.1016/j.cub.2021.09.000",
+          "authors": "Brusatte, S.L."
+        },
+        {
+          "title": "Tyrannosaurus rex: The anatomy of a superpredator",
+          "url": "https://doi.org/10.1002/ar.24935",
+          "authors": "Bates, K.T."
+        }
+      ]
+    },
+
+    {
+      "id": "k-pg-extinction",
+      "title": "Impacto do Asteroide - Extinção K-Pg",
+      "period": "cretaceous",
+      "ageRange": "66 Ma",
+      "age": 66,
+      "type": "extinction",
+      "location": "Chicxulub, Yucatán, México",
+      "continents": ["north-america"],
+      "significance": "💥 ⭐⭐⭐⭐⭐ Fim dos dinossauros não-avianos",
+      "description": "Asteroide de 10 km atinge a Terra. 75% da vida extinta.",
+      "detailedDescription": "A extinção K-Pg (Cretáceo-Paleógeno) foi catastrófica. Um asteroide de ~10 km colidiu perto de Chicxulub, Yucatán. Impacto: ~100 bilhões de megatons TNT. Criou tsunami, escuridão global por meses (inverno de impacto), chuva ácida e incêndios florestais. 75% de toda a vida foi extinta. Os dinossauros não-avianos desapareceram. As aves (dinossauros avianos) sobreviveram.",
+      "species": [
+        "Tyrannosaurus rex (extinto)",
+        "Triceratops (extinto)",
+        "Ankylosaurus (extinto)",
+        "Pterossauros (extintos)",
+        "Répteis marinhos (extintos)",
+        "Aves (sobrevivem)"
+      ],
+      "image": "events/asteroid-impact.jpg",
+      "references": [
+        {
+          "title": "The Chicxulub asteroid impact and mass extinction at the Cretaceous-Paleogene boundary (Science)",
+          "url": "https://doi.org/10.1126/science.1177265",
+          "authors": "Schulte, P. et al."
+        },
+        {
+          "title": "The K-Pg Extinction Event (National Geographic)",
+          "url": "https://www.nationalgeographic.com/science/article/what-killed-the-dinosaurs",
+          "authors": "National Geographic"
+        }
+      ]
+    },
+
+    {
+      "id": "spinosaurus-aquatic",
+      "title": "Spinosaurus - O Predador Aquático",
+      "period": "cretaceous",
+      "ageRange": "100 Ma",
+      "age": 100,
+      "type": "evolution",
+      "location": "Marrocos, Egito",
+      "continents": ["africa"],
+      "significance": "🦞 Predador aquático único",
+      "description": "Spinosaurus possivelmente era aquático. Debate científico recente.",
+      "detailedDescription": "Spinosaurus é o terópode mais longo (18+ metros). Debate recente (2020): era aquático? Tinha o pé palmado, narina no topo da cabeça, densidade óssea aumentada e cauda achatada. Mais adaptado para água que T. rex. Comia peixes. Alguns estudos ainda contestam isso. Um exemplo de como a ciência paleontológica evolui.",
+      "species": ["Spinosaurus aegyptiacus"],
+      "image": "events/spinosaurus.jpg",
+      "references": [
+        {
+          "title": "Aquatic adaptation in the skull of Spinosaurus (Nature)",
+          "url": "https://doi.org/10.1038/nature21100",
+          "authors": "Ibrahim, N. et al."
+        },
+        {
+          "title": "Spinosaurus as a semi-aquatic dinosaur",
+          "url": "https://doi.org/10.1126/science.1258750",
+          "authors": "Ibrahim, N. et al."
+        }
+      ]
+    },
+
+    {
+      "id": "hadrosaurus-herds",
+      "title": "Hadrossauros em Rebanhos",
+      "period": "cretaceous",
+      "ageRange": "85-66 Ma",
+      "age": 75,
+      "type": "evolution",
+      "location": "América do Norte, Ásia",
+      "continents": ["north-america", "asia"],
+      "significance": "🦕 Comportamento social complexo",
+      "description": "Hadrossauros com bico de pato vivem em grandes rebanhos.",
+      "detailedDescription": "Hadrossauros (Parasaurolophus, Edmontosaurus, Maiasaura) são herbívoros com bico de pato adaptados para folhas. Fósseis mostram que viviam em rebanhos (múltiplos indivíduos juntos). Alguns tinham cristas ósseas elaboradas—usadas para sinais acústicos/visuais. Evidências de cuidado parental (ninhos com filhotes). Comportamento social complexo.",
+      "species": ["Parasaurolophus walkeri", "Edmontosaurus annectens", "Maiasaura peeblesorum"],
+      "image": "events/hadrosaurs.jpg",
+      "references": []
+    },
+
+    {
+      "id": "ankylosaurs-armor",
+      "title": "Anquilossauros Blindados",
+      "period": "cretaceous",
+      "ageRange": "125-66 Ma",
+      "age": 95,
+      "type": "evolution",
+      "location": "América do Norte, Ásia",
+      "continents": ["north-america", "asia"],
+      "significance": "🛡️ Defesa máxima contra predadores",
+      "description": "Anquilossauros desenvolvem armadura pesada e clava na cauda.",
+      "detailedDescription": "Anquilossauros como Ankylosaurus são herbívoros blindados com placas ósseas e espinhos. Defesa extrema contra predadores. Cauda em forma de clava que poderia causar dano significativo a predadores. Baixo metabolismo. Dieta de plantas duras. Bem-sucedidos até a extinção.",
+      "species": ["Ankylosaurus magniventris", "Euoplocephalus tutus", "Gastonia burgei"],
+      "image": "events/ankylosaurs.jpg",
+      "references": []
+    },
+
+    {
+      "id": "mammals-cenozoic",
+      "title": "Ascensão dos Mamíferos no Cenozoico",
+      "period": "cretaceous",
+      "ageRange": "66 Ma",
+      "age": 66,
+      "type": "evolution",
+      "location": "Global",
+      "continents": ["north-america", "south-america", "europe", "africa", "asia", "australia", "antarctica"],
+      "significance": "🐭 Após a extinção dos dinossauros não-avianos",
+      "description": "Com o fim dos dinossauros, mamíferos começam a dominar.",
+      "detailedDescription": "Após a extinção K-Pg, os mamíferos (que eram pequenos e noturnos durante o Mesozoico) passam por uma radiação adaptativa explosiva. Ocupam os nichos deixados vagos pelos dinossauros. Em poucos milhões de anos, evoluem para formas grandes, diversificadas e dominantes.",
+      "species": ["Purgatorius (primatas primitivos)", "Eoconodon (carnívoro)", "Pantodontes (herbívoros)"],
+      "image": "events/mammals-rise.jpg",
+      "references": []
+    }
+  ]
+}

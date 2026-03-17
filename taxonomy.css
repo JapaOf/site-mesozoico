@@ -1,0 +1,1206 @@
+/* ============================================
+   DINO EXPLORER - TAXONOMIA.CSS
+   Estilos para página de taxonomia e filogenia
+   ============================================ */
+
+/* ============================================
+   VARIÁVEIS E RESET
+   ============================================ */
+
+:root {
+    /* Cores principais */
+    --hero-gradient-1: #233347;
+    --hero-gradient-2: #47827a;
+    --hero-gradient-3: #ffd700;
+    --accent-primary: #47827a;
+    --accent-secondary: #5a9e94;
+    --accent-rgb: 71, 130, 122;
+    --border-color: #e3eaf2;
+    --card-bg: #f6fafc;
+    --text-primary: #233347;
+    --text-secondary: #788894;
+    
+    /* Espaçamento */
+    --spacing-unit: 2rem;
+    --border-radius: 16px;
+    --transition: all 0.35s cubic-bezier(0.43, 0.96, 0.49, 1);
+    --max-width: 1200px;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(var(--accent-rgb), 0.08);
+    --shadow-md: 0 4px 16px rgba(var(--accent-rgb), 0.12);
+    --shadow-lg: 0 8px 32px rgba(var(--accent-rgb), 0.16);
+    --shadow-hover: 0 20px 40px rgba(var(--accent-rgb), 0.22);
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.taxonomy-hero {
+    position: relative;
+    padding: 4rem var(--spacing-unit);
+    background: linear-gradient(135deg, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 100%);
+    min-height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border-radius: 0 0 32px 32px;
+}
+
+.taxonomy-hero .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.taxonomy-hero .hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 50%, var(--hero-gradient-3) 100%);
+    animation: gradientShift 16s ease-in-out infinite;
+    opacity: 0.85;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(2px) saturate(1.1);
+}
+
+@keyframes gradientShift {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+}
+
+.taxonomy-hero .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(3px);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    box-shadow: var(--shadow-md);
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.taxonomy-hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+    background: linear-gradient(120deg, var(--text-primary) 0%, var(--accent-primary) 45%, var(--hero-gradient-3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.taxonomy-hero p {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   INTRODUCTION SECTION
+   ============================================ */
+
+.taxonomy-intro {
+    padding: 4rem var(--spacing-unit);
+    background: rgba(var(--accent-rgb), 0.03);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.intro-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro-content p {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.taxonomic-ranks h3 {
+    color: var(--accent-primary);
+    margin: 2rem 0 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.ranks-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.rank-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    text-align: center;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.rank-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.rank-number {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: var(--accent-primary);
+    color: white;
+    border-radius: 50%;
+    line-height: 30px;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.rank-name {
+    font-weight: 700;
+    color: var(--accent-primary);
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.rank-example {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-style: italic;
+}
+
+/* ============================================
+   PHYLOGENETIC TREE SECTION
+   ============================================ */
+
+.phylogenetic-tree-section {
+    padding: 4rem var(--spacing-unit);
+}
+
+.tree-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.phylogenetic-tree-container {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    overflow-x: auto;
+    box-shadow: var(--shadow-sm);
+}
+
+.phylogenetic-tree {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    color: var(--accent-primary);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    min-width: min-content;
+}
+
+.tree-node {
+    margin-bottom: 0.25rem;
+    transition: var(--transition);
+}
+
+.tree-node-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.25rem 0;
+}
+
+.tree-node-content:hover {
+    background: rgba(var(--accent-rgb), 0.05);
+}
+
+.tree-connector {
+    color: var(--text-secondary);
+    font-family: monospace;
+    font-weight: 400;
+    opacity: 0.5;
+}
+
+.tree-toggle {
+    color: var(--accent-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    width: 20px;
+    text-align: center;
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.tree-toggle.collapsed {
+    transform: rotate(-90deg);
+}
+
+.tree-node-name {
+    color: var(--text-primary);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.tree-node-name:hover {
+    color: var(--accent-primary);
+}
+
+.tree-node-desc {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+}
+
+.tree-node-period {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+    font-style: italic;
+}
+
+.tree-children {
+    margin-left: 1.5rem;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.tree-children.tree-collapsed {
+    max-height: 0 !important;
+}
+
+/* ============================================
+   CLADOS PRINCIPAIS (ACCORDION)
+   ============================================ */
+
+.main-clades {
+    padding: 4rem var(--spacing-unit);
+    background: rgba(var(--accent-rgb), 0.03);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.clades-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.accordion-item {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.accordion-item.active {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.accordion-header {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    user-select: none;
+}
+
+.accordion-header:hover {
+    background: rgba(var(--accent-rgb), 0.05);
+}
+
+.accordion-header h3 {
+    flex: 1;
+    color: var(--text-primary);
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.accordion-icon {
+    color: var(--accent-primary);
+    font-weight: 700;
+    transition: transform 0.3s ease;
+    font-size: 1rem;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(90deg);
+}
+
+.clade-info {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.accordion-content {
+    padding: 0 1.5rem 1.5rem;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 2000px;
+    padding: 1.5rem;
+}
+
+.clade-description {
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.clade-description p {
+    margin-bottom: 0.75rem;
+}
+
+.clade-description strong {
+    color: var(--text-primary);
+}
+
+.subclade-section {
+    margin-bottom: 1.5rem;
+}
+
+.subclade-section:last-child {
+    margin-bottom: 0;
+}
+
+.subclade-section h4 {
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.subclade-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.subclade-item {
+    padding: 0.75rem 1rem;
+    background: rgba(var(--accent-rgb), 0.05);
+    border-left: 4px solid var(--accent-primary);
+    border-radius: 4px;
+    color: var(--text-secondary);
+    transition: var(--transition);
+}
+
+.subclade-item:hover {
+    background: rgba(var(--accent-rgb), 0.1);
+    transform: translateX(5px);
+}
+
+.subclade-item strong {
+    color: var(--accent-primary);
+    font-weight: 700;
+}
+
+/* ============================================
+   COMPARAÇÃO VISUAL (PELVIS)
+   ============================================ */
+
+.taxonomy-comparison {
+    padding: 4rem var(--spacing-unit);
+}
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.comparison-item {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.comparison-item:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.comparison-item h3 {
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.pelvis-diagram {
+    width: 100%;
+    max-width: 200px;
+    margin: 1.5rem auto;
+    padding: 1rem;
+    background: rgba(var(--accent-rgb), 0.05);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.pelvis-svg {
+    width: 100%;
+    height: auto;
+    stroke: var(--accent-primary);
+}
+
+.comparison-item h4 {
+    color: var(--text-primary);
+    margin: 1.5rem 0 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.comparison-item ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.comparison-item li {
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.5;
+}
+
+.comparison-item li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-size: 1rem;
+}
+
+/* ============================================
+   CLADE TABS
+   ============================================ */
+
+.clade-trees {
+    padding: 4rem var(--spacing-unit);
+    background: rgba(var(--accent-rgb), 0.03);
+    border-top: 1px solid var(--border-color);
+}
+
+.clade-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--border-color);
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) var(--border-color);
+    -webkit-overflow-scrolling: touch;
+}
+
+.tab-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 600;
+    border-bottom: 3px solid transparent;
+    transition: var(--transition);
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+.tab-btn:hover {
+    color: var(--accent-primary);
+    background: rgba(var(--accent-rgb), 0.05);
+}
+
+.tab-btn.active {
+    color: var(--accent-primary);
+    border-bottom-color: var(--accent-primary);
+    background: rgba(var(--accent-rgb), 0.1);
+}
+
+.tab-content {
+    display: none;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    animation: fadeIn 0.4s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tree-ascii {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    color: var(--accent-primary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 0;
+    padding: 1rem;
+    background: rgba(var(--accent-rgb), 0.05);
+    border-radius: 4px;
+    white-space: pre;
+}
+
+/* ============================================
+   EVOLUTION TIMELINE
+   ============================================ */
+
+.evolution-timeline {
+    padding: 4rem var(--spacing-unit);
+}
+
+.timeline-events {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.timeline-event {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-left: 4px solid var(--accent-primary);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.timeline-event:hover {
+    border-left-color: var(--hero-gradient-3);
+    transform: translateX(5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.event-marker {
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent-primary);
+}
+
+.event-content h4 {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.event-content p {
+    color: var(--accent-primary);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.event-label {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: rgba(var(--accent-rgb), 0.15);
+    color: var(--accent-primary);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* ============================================
+   GLOSSARY
+   ============================================ */
+
+.taxonomy-glossary {
+    padding: 4rem var(--spacing-unit);
+    background: rgba(var(--accent-rgb), 0.03);
+    border-top: 1px solid var(--border-color);
+}
+
+.glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.glossary-item {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.glossary-item:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.glossary-item h4 {
+    color: var(--accent-primary);
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.glossary-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   TOOLTIP
+   ============================================ */
+
+.tooltip {
+    position: absolute;
+    background: var(--text-primary);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    pointer-events: none;
+    white-space: nowrap;
+    animation: fadeIn 0.2s ease;
+    box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   SEARCH BOX
+   ============================================ */
+
+.tree-search {
+    margin-bottom: 1.5rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-size: 1rem;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.2);
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+
+.loading-indicator {
+    text-align: center;
+    padding: 3rem;
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+    :root {
+        --spacing-unit: 1.5rem;
+    }
+
+    .taxonomy-hero {
+        min-height: 35vh;
+        padding: 3rem var(--spacing-unit);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-unit: 1.2rem;
+        --border-radius: 12px;
+    }
+
+    .taxonomy-hero {
+        min-height: 30vh;
+        padding: 2rem var(--spacing-unit);
+        border-radius: 0 0 24px 24px;
+    }
+
+    .taxonomy-hero h1 {
+        font-size: 2rem;
+    }
+
+    .taxonomy-hero p {
+        font-size: 1rem;
+    }
+
+    .taxonomy-hero .hero-content {
+        padding: 1.5rem;
+    }
+
+    .ranks-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.75rem;
+    }
+
+    .rank-card {
+        padding: 0.75rem;
+    }
+
+    .phylogenetic-tree {
+        font-size: 0.85rem;
+    }
+
+    .tree-children {
+        margin-left: 1rem;
+    }
+
+    .comparison-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .comparison-item {
+        padding: 1.5rem;
+    }
+
+    .clade-tabs {
+        gap: 0.5rem;
+    }
+
+    .tab-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .tree-ascii {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        padding: 0.75rem;
+    }
+
+    .accordion-header {
+        padding: 1rem;
+    }
+
+    .accordion-header h3 {
+        font-size: 1rem;
+    }
+
+    .clade-info {
+        font-size: 0.8rem;
+    }
+
+    .accordion-content {
+        padding: 0 1rem;
+    }
+
+    .accordion-item.active .accordion-content {
+        padding: 1rem;
+    }
+
+    .timeline-event {
+        grid-template-columns: 40px 1fr;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .event-marker {
+        font-size: 1.2rem;
+    }
+
+    .glossary-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-unit: 1rem;
+        --border-radius: 8px;
+    }
+
+    .taxonomy-hero {
+        min-height: 25vh;
+        padding: 1.5rem var(--spacing-unit);
+    }
+
+    .taxonomy-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .taxonomy-hero p {
+        font-size: 0.9rem;
+    }
+
+    .taxonomy-hero .hero-content {
+        padding: 1rem;
+    }
+
+    .ranks-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+    }
+
+    .rank-card {
+        padding: 0.5rem;
+    }
+
+    .rank-number {
+        width: 25px;
+        height: 25px;
+        line-height: 25px;
+        font-size: 0.8rem;
+    }
+
+    .rank-name {
+        font-size: 0.9rem;
+    }
+
+    .rank-example {
+        font-size: 0.75rem;
+    }
+
+    .phylogenetic-tree {
+        font-size: 0.75rem;
+    }
+
+    .tree-children {
+        margin-left: 0.75rem;
+    }
+
+    .tree-node-name {
+        font-size: 0.9rem;
+    }
+
+    .tree-node-desc,
+    .tree-node-period {
+        font-size: 0.7rem;
+    }
+
+    .tree-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .tree-controls .btn {
+        width: 100%;
+    }
+
+    .comparison-item {
+        padding: 1rem;
+    }
+
+    .comparison-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .pelvis-diagram {
+        max-width: 150px;
+    }
+
+    .clade-tabs {
+        flex-direction: column;
+        border-bottom: none;
+        gap: 0.25rem;
+    }
+
+    .tab-btn {
+        border-bottom: none;
+        border-left: 3px solid transparent;
+        padding: 0.5rem 1rem;
+        text-align: left;
+    }
+
+    .tab-btn.active {
+        border-left-color: var(--accent-primary);
+        border-bottom: none;
+    }
+
+    .tree-ascii {
+        font-size: 0.7rem;
+        line-height: 1.3;
+        padding: 0.5rem;
+    }
+
+    .accordion-header {
+        padding: 0.75rem;
+        gap: 0.5rem;
+    }
+
+    .accordion-header h3 {
+        font-size: 0.95rem;
+    }
+
+    .clade-info {
+        display: none;
+    }
+
+    .subclade-item {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .timeline-event {
+        grid-template-columns: 30px 1fr;
+        gap: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    .event-marker {
+        font-size: 1rem;
+    }
+
+    .event-content h4 {
+        font-size: 0.95rem;
+    }
+
+    .event-content p {
+        font-size: 0.85rem;
+    }
+
+    .event-label {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .glossary-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .glossary-item {
+        padding: 1rem;
+    }
+
+    .glossary-item h4 {
+        font-size: 1rem;
+    }
+
+    .glossary-item p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --card-bg: #1a2a33;
+        --border-color: #2a404a;
+        --text-primary: #ffffff;
+        --text-secondary: #b0c4d9;
+        --hero-gradient-1: #1a2a33;
+        --hero-gradient-2: #2a5a5a;
+        --hero-gradient-3: #d4a900;
+    }
+
+    body {
+        background: #142028;
+    }
+
+    .taxonomy-hero .hero-content {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .rank-card,
+    .phylogenetic-tree-container,
+    .accordion-item,
+    .comparison-item,
+    .tab-content,
+    .timeline-event,
+    .glossary-item {
+        background: #1e303a;
+    }
+
+    .tree-node-name {
+        color: #e0e0e0;
+    }
+
+    .tree-node-content:hover {
+        background: #2a404a;
+    }
+
+    .tree-ascii {
+        background: #2a404a;
+    }
+
+    .subclade-item {
+        background: #2a404a;
+    }
+
+    .subclade-item:hover {
+        background: #3a505a;
+    }
+
+    .pelvis-diagram {
+        background: #2a404a;
+    }
+
+    .search-input {
+        background: #1e303a;
+        color: var(--text-primary);
+        border-color: #2a404a;
+    }
+
+    .search-input:focus {
+        border-color: var(--accent-primary);
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .navbar,
+    .footer,
+    .tree-controls,
+    .tab-btn,
+    .btn,
+    .search-input {
+        display: none !important;
+    }
+
+    .taxonomy-hero {
+        min-height: auto;
+        padding: 2rem;
+        background: none;
+        box-shadow: none;
+    }
+
+    .taxonomy-hero .hero-gradient {
+        display: none;
+    }
+
+    .taxonomy-hero .hero-content {
+        background: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .phylogenetic-tree-container,
+    .accordion-item,
+    .comparison-item,
+    .tab-content,
+    .timeline-event,
+    .glossary-item {
+        break-inside: avoid;
+        border: 1px solid #000;
+        box-shadow: none;
+    }
+
+    .tree-children {
+        max-height: none !important;
+    }
+
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+}
+
+/* ============================================
+   SCROLLBAR PERSONALIZADA
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--card-bg);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--hero-gradient-3);
+}
+
+/* ============================================
+   FIM DO ARQUIVO
+   ============================================ */

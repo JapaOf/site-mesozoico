@@ -1,0 +1,1927 @@
+/* ============================================
+   DINO EXPLORER - SPECIES.CSS
+   Estilos para página de detalhe da espécie
+   ============================================ */
+
+/* ============================================
+   VARIÁVEIS E RESET
+   ============================================ */
+
+:root {
+    /* Cores principais */
+    --hero-gradient-1: #233347;
+    --hero-gradient-2: #47827a;
+    --hero-gradient-3: #ffd700;
+    --accent-primary: #47827a;
+    --accent-secondary: #5a9e94;
+    --accent-rgb: 71, 130, 122;
+    --border-color: #e3eaf2;
+    --card-bg: #f6fafc;
+    --text-primary: #233347;
+    --text-secondary: #788894;
+    
+    /* Espaçamento */
+    --spacing-unit: 2rem;
+    --border-radius: 16px;
+    --transition: all 0.35s cubic-bezier(0.43, 0.96, 0.49, 1);
+    --max-width: 1200px;
+    
+    /* Cores de feedback */
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --info-color: #3b82f6;
+    
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(var(--accent-rgb), 0.08);
+    --shadow-md: 0 4px 16px rgba(var(--accent-rgb), 0.12);
+    --shadow-lg: 0 8px 32px rgba(var(--accent-rgb), 0.16);
+    --shadow-hover: 0 22px 44px rgba(var(--accent-rgb), 0.22);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #fafffc;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+a:hover {
+    color: var(--hero-gradient-3);
+    text-decoration: underline;
+}
+
+/* ============================================
+   UTILITÁRIOS
+   ============================================ */
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+
+.section-title {
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-primary), var(--hero-gradient-3));
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+    background: transparent;
+    color: var(--text-primary);
+    gap: 0.5rem;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+.btn-primary:hover {
+    background: #3a6f68;
+    border-color: #3a6f68;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+.btn-outline {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+    background: transparent;
+}
+
+.btn-outline:hover {
+    background: rgba(var(--accent-rgb), 0.1);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--text-secondary);
+    color: white;
+    border-color: var(--text-secondary);
+}
+
+.btn-secondary:hover {
+    background: #5a6b78;
+    transform: translateY(-2px);
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* ============================================
+   BREADCRUMB
+   ============================================ */
+
+.breadcrumb-section {
+    background: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem var(--spacing-unit);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: var(--shadow-sm);
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    font-size: 0.95rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    font-weight: 500;
+}
+
+.breadcrumb a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+    color: var(--hero-gradient-3);
+}
+
+.breadcrumb .separator {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.breadcrumb span:last-child {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+/* ============================================
+   HERO SECTION - SPECIES
+   ============================================ */
+
+.species-hero {
+    position: relative;
+    padding: 4rem var(--spacing-unit);
+    background: linear-gradient(135deg, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 100%);
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    border-radius: 0 0 32px 32px;
+}
+
+.species-hero .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.species-hero .hero-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 50%, var(--hero-gradient-3) 100%);
+    animation: gradientShift 16s ease-in-out infinite;
+    opacity: 0.85;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(2px) saturate(1.1);
+}
+
+@keyframes gradientShift {
+    0%, 100% { opacity: 0.85; }
+    50% { opacity: 1; }
+}
+
+.species-hero .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(3px);
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-md);
+    animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-title-section h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    background: linear-gradient(120deg, var(--text-primary) 0%, var(--accent-primary) 37%, var(--hero-gradient-3) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.scientific-name {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 2rem;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.hero-quick-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.info-badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.info-badge:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.badge-label {
+    display: block;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-value {
+    display: block;
+    color: var(--accent-primary);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* ============================================
+   PALEOARTE COMPARISON
+   ============================================ */
+
+.comparison-paleoart {
+    padding: 4rem var(--spacing-unit);
+}
+
+.paleoart-comparison {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.paleoart-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+}
+
+.paleoart-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+}
+
+.paleoart-card.ancient {
+    border-left: 4px solid #8B4513;
+}
+
+.paleoart-card.modern {
+    border-left: 4px solid var(--hero-gradient-3);
+}
+
+.paleoart-header {
+    padding: 1.5rem;
+    background: rgba(var(--accent-rgb), 0.08);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.paleoart-header h3 {
+    color: var(--accent-primary);
+    margin-bottom: 0.25rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.date-info {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.paleoart-image-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.1), rgba(var(--accent-rgb), 0.05));
+}
+
+.placeholder-content {
+    text-align: center;
+}
+
+.placeholder-emoji {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--accent-primary);
+}
+
+.placeholder-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.paleoart-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.paleoart-info h4 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.paleoart-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+.paleoart-info li {
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.5;
+}
+
+.paleoart-info li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-size: 1rem;
+}
+
+.comparison-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vs-text {
+    font-weight: 800;
+    color: var(--accent-primary);
+    font-size: 1.5rem;
+    background: var(--card-bg);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 2px solid var(--accent-primary);
+    box-shadow: var(--shadow-sm);
+}
+
+.change-history {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.change-history h3 {
+    color: var(--accent-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.timeline-changes {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.change-item {
+    flex: 1;
+    min-width: 150px;
+    text-align: center;
+}
+
+.year {
+    font-weight: 700;
+    color: var(--accent-primary);
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.arrow {
+    color: var(--accent-primary);
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+/* ============================================
+   SKELETON vs RECONSTRUCTION
+   ============================================ */
+
+.skeleton-reconstruction {
+    padding: 4rem var(--spacing-unit);
+    background: rgba(var(--accent-rgb), 0.03);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.skeleton-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: stretch;
+    margin-bottom: 3rem;
+}
+
+.skeleton-card,
+.reconstruction-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.skeleton-card:hover,
+.reconstruction-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.skeleton-header,
+.reconstruction-header {
+    padding: 1.5rem;
+    background: rgba(var(--accent-rgb), 0.08);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.skeleton-header h3,
+.reconstruction-header h3 {
+    color: var(--accent-primary);
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+}
+
+.skeleton-header p,
+.reconstruction-header p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.skeleton-image-placeholder,
+.reconstruction-image-placeholder {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.1), rgba(var(--accent-rgb), 0.05));
+}
+
+.skeleton-features,
+.reconstruction-features {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.skeleton-features h4,
+.reconstruction-features h4 {
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.skeleton-features ul,
+.reconstruction-features ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skeleton-features li,
+.reconstruction-features li {
+    color: var(--text-secondary);
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.5;
+}
+
+.skeleton-features li::before,
+.reconstruction-features li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-size: 1rem;
+}
+
+.transformation-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.arrow-icon {
+    font-size: 2rem;
+    color: var(--accent-primary);
+}
+
+.arrow-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.anatomy-details {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.anatomy-details h3 {
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.anatomy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.anatomy-item {
+    padding: 1rem;
+    background: rgba(var(--accent-rgb), 0.05);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--accent-primary);
+    transition: var(--transition);
+}
+
+.anatomy-item:hover {
+    background: rgba(var(--accent-rgb), 0.1);
+    transform: translateX(5px);
+}
+
+.anatomy-item h4 {
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.anatomy-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   SCALE COMPARISON
+   ============================================ */
+
+.scale-comparison {
+    padding: 4rem var(--spacing-unit);
+}
+
+.scale-visualizer {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 3rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.scale-comparison-visual {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.scale-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.scale-figure {
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--accent-primary);
+    transition: transform 0.3s ease;
+}
+
+.scale-item:hover .scale-figure {
+    transform: scale(1.1);
+}
+
+.scale-item.human .scale-figure {
+    font-size: 4rem;
+}
+
+.scale-item.dinosaur .scale-figure {
+    font-size: clamp(4rem, 15vw, 10rem);
+}
+
+.scale-label {
+    text-align: center;
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.scale-height {
+    display: block;
+    color: var(--accent-primary);
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.scale-separator {
+    color: var(--text-secondary);
+    font-size: 1.5rem;
+    align-self: flex-end;
+    margin-bottom: 2rem;
+}
+
+.scale-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+    background: rgba(var(--accent-rgb), 0.08);
+    border-radius: var(--border-radius);
+}
+
+.scale-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    text-align: center;
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.stat-value {
+    color: var(--accent-primary);
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.size-comparison-table {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.size-comparison-table h3 {
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.comparison-table {
+    overflow-x: auto;
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.table-row.header {
+    background: rgba(var(--accent-rgb), 0.1);
+    font-weight: 700;
+    color: var(--accent-primary);
+}
+
+.table-col {
+    display: flex;
+    align-items: center;
+    color: var(--text-secondary);
+}
+
+.relative-size {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+/* ============================================
+   TECHNICAL SHEET
+   ============================================ */
+
+.species-details {
+    padding: 4rem var(--spacing-unit);
+    background: rgba(var(--accent-rgb), 0.03);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.detail-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.detail-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.detail-card h3 {
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-color);
+    gap: 1rem;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-label {
+    color: var(--text-secondary);
+    font-weight: 600;
+    min-width: 140px;
+    font-size: 0.95rem;
+}
+
+.detail-value {
+    color: var(--accent-primary);
+    font-weight: 600;
+    text-align: right;
+}
+
+/* ============================================
+   PALEOECOLOGY
+   ============================================ */
+
+.paleoecology {
+    padding: 4rem var(--spacing-unit);
+}
+
+.paleoecology-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.paleoecology-card {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.paleoecology-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.paleoecology-card h3 {
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.paleoecology-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ============================================
+   CONTROVERSIES
+   ============================================ */
+
+.controversies {
+    padding: 4rem var(--spacing-unit);
+    background: rgba(var(--accent-rgb), 0.03);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.controversies-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.controversy-item {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.controversy-item:hover {
+    border-color: var(--warning-color);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.controversy-item h4 {
+    color: var(--warning-color);
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.controversy-desc {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.controversy-sides {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.controversy-side {
+    padding: 1rem;
+    background: rgba(var(--accent-rgb), 0.05);
+    border-radius: 8px;
+}
+
+.side-label {
+    display: block;
+    color: var(--accent-primary);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.side-value {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ============================================
+   INTERPRETATION HISTORY
+   ============================================ */
+
+.interpretation-history {
+    padding: 4rem var(--spacing-unit);
+}
+
+.history-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.history-item {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 2rem;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-left: 4px solid var(--accent-primary);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.history-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.history-year {
+    color: var(--accent-primary);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.history-content {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ============================================
+   PHYLOGENY
+   ============================================ */
+
+.phylogeny {
+    padding: 4rem var(--spacing-unit);
+    background: rgba(var(--accent-rgb), 0.03);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.phylogeny-container {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.phylogeny-tree {
+    background: rgba(var(--accent-rgb), 0.05);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    overflow-x: auto;
+    margin-bottom: 2rem;
+}
+
+.tree-ascii {
+    color: var(--accent-primary);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+    white-space: pre;
+}
+
+.related-species h3 {
+    color: var(--accent-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.related-species-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.related-species-card {
+    background: rgba(var(--accent-rgb), 0.1);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.related-species-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.related-species-card h4 {
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.related-species-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   REFERENCES
+   ============================================ */
+
+.references {
+    padding: 4rem var(--spacing-unit);
+}
+
+.references-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.reference-item {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.reference-item:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+.reference-item p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.reference-item strong {
+    color: var(--text-primary);
+}
+
+.reference-item em {
+    color: var(--accent-primary);
+    font-style: italic;
+}
+
+.reference-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.reference-link:hover {
+    text-decoration: underline;
+    color: var(--hero-gradient-3);
+}
+
+.paper-search {
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.paper-search h3 {
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.paper-search p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* ============================================
+   GALLERY
+   ============================================ */
+
+.species-gallery {
+    padding: 4rem var(--spacing-unit);
+    background: rgba(var(--accent-rgb), 0.03);
+    border-top: 1px solid var(--border-color);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.gallery-item {
+    aspect-ratio: 1;
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-item:hover {
+    border-color: var(--accent-primary);
+    transform: scale(1.05);
+    box-shadow: var(--shadow-hover);
+}
+
+.gallery-placeholder {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.1), rgba(var(--accent-rgb), 0.05));
+    color: var(--accent-primary);
+}
+
+.gallery-item p {
+    text-align: center;
+    padding: 0.5rem;
+    background: rgba(var(--accent-rgb), 0.1);
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   GALLERY MODAL
+   ============================================ */
+
+.gallery-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s ease;
+}
+
+.gallery-modal-content {
+    position: relative;
+    margin: auto;
+    padding: 2rem;
+    width: 90%;
+    max-width: 800px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.gallery-modal-image {
+    text-align: center;
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+}
+
+.gallery-modal-image span {
+    font-size: 8rem;
+    line-height: 1;
+}
+
+.gallery-modal-caption {
+    text-align: center;
+    color: white;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+.gallery-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.gallery-modal-close:hover {
+    color: var(--error-color);
+}
+
+.gallery-modal-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 1rem;
+    transition: var(--transition);
+}
+
+.gallery-modal-nav:hover {
+    color: var(--accent-primary);
+}
+
+.gallery-modal-nav.prev {
+    left: 1rem;
+}
+
+.gallery-modal-nav.next {
+    right: 1rem;
+}
+
+/* ============================================
+   SPECIES NAVIGATION
+   ============================================ */
+
+.species-navigation {
+    padding: 4rem var(--spacing-unit);
+}
+
+.species-nav-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* ============================================
+   SHARE BUTTON
+   ============================================ */
+
+.share-btn {
+    margin-left: 1rem;
+}
+
+/* ============================================
+   TOAST NOTIFICATIONS
+   ============================================ */
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-primary);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    z-index: 1000;
+    animation: slideUp 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
+    box-shadow: var(--shadow-lg);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+
+.error-container {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--card-bg);
+    border: 2px solid var(--error-color);
+    border-radius: var(--border-radius);
+    max-width: 500px;
+    margin: 4rem auto;
+}
+
+.error-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--error-color);
+}
+
+.error-container h2 {
+    color: var(--error-color);
+    margin-bottom: 1rem;
+}
+
+.error-container p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+    :root {
+        --spacing-unit: 1.5rem;
+    }
+
+    .species-hero {
+        min-height: 40vh;
+        padding: 3rem var(--spacing-unit);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --spacing-unit: 1.2rem;
+        --border-radius: 12px;
+    }
+
+    .breadcrumb-section {
+        padding: 0.75rem var(--spacing-unit);
+        position: static;
+    }
+
+    .breadcrumb {
+        font-size: 0.9rem;
+    }
+
+    .species-hero {
+        min-height: 35vh;
+        padding: 2rem var(--spacing-unit);
+        border-radius: 0 0 24px 24px;
+    }
+
+    .species-hero .container {
+        padding: 1.5rem;
+    }
+
+    .species-hero h1 {
+        font-size: 2rem;
+    }
+
+    .scientific-name {
+        font-size: 1rem;
+    }
+
+    .hero-quick-info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .paleoart-comparison {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .comparison-divider {
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+    }
+
+    .timeline-changes {
+        flex-direction: column;
+    }
+
+    .arrow {
+        transform: rotate(90deg);
+    }
+
+    .skeleton-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .transformation-arrow {
+        transform: rotate(90deg);
+        margin: 0.5rem 0;
+    }
+
+    .anatomy-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .scale-comparison-visual {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .scale-separator {
+        align-self: center;
+        margin: 0.5rem 0;
+    }
+
+    .scale-info {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .table-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .table-row.header {
+        display: none;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+
+    .detail-value {
+        text-align: left;
+    }
+
+    .paleoecology-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .controversies-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .controversy-sides {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .history-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .phylogeny-container {
+        padding: 1rem;
+    }
+
+    .related-species-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .references-list {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .species-nav-grid {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .species-nav-grid .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-unit: 1rem;
+        --border-radius: 8px;
+    }
+
+    .species-hero {
+        min-height: 30vh;
+        padding: 1.5rem var(--spacing-unit);
+    }
+
+    .species-hero .container {
+        padding: 1rem;
+    }
+
+    .species-hero h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-quick-info {
+        grid-template-columns: 1fr;
+    }
+
+    .info-badge {
+        padding: 0.75rem;
+    }
+
+    .badge-label {
+        font-size: 0.8rem;
+    }
+
+    .badge-value {
+        font-size: 1rem;
+    }
+
+    .paleoart-header {
+        padding: 1rem;
+    }
+
+    .paleoart-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .paleoart-info {
+        padding: 1rem;
+    }
+
+    .placeholder-emoji {
+        font-size: 3rem;
+    }
+
+    .vs-text {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .skeleton-header,
+    .reconstruction-header {
+        padding: 1rem;
+    }
+
+    .skeleton-features,
+    .reconstruction-features {
+        padding: 1rem;
+    }
+
+    .scale-figure {
+        font-size: 4rem;
+    }
+
+    .scale-item.human .scale-figure {
+        font-size: 3rem;
+    }
+
+    .scale-item.dinosaur .scale-figure {
+        font-size: 5rem;
+    }
+
+    .detail-card {
+        padding: 1rem;
+    }
+
+    .detail-card h3 {
+        font-size: 1rem;
+    }
+
+    .detail-label {
+        font-size: 0.85rem;
+        min-width: 100px;
+    }
+
+    .detail-value {
+        font-size: 0.85rem;
+    }
+
+    .paleoecology-card {
+        padding: 1rem;
+    }
+
+    .controversy-item {
+        padding: 1rem;
+    }
+
+    .controversy-item h4 {
+        font-size: 1rem;
+    }
+
+    .history-item {
+        padding: 1rem;
+    }
+
+    .history-year {
+        font-size: 1.1rem;
+    }
+
+    .tree-ascii {
+        font-size: 0.7rem;
+    }
+
+    .reference-item {
+        padding: 1rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-placeholder {
+        font-size: 2.5rem;
+    }
+
+    .gallery-modal-image span {
+        font-size: 4rem;
+    }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --card-bg: #1a2a33;
+        --border-color: #2a404a;
+        --text-primary: #ffffff;
+        --text-secondary: #b0c4d9;
+        --hero-gradient-1: #1a2a33;
+        --hero-gradient-2: #2a5a5a;
+        --hero-gradient-3: #d4a900;
+    }
+
+    body {
+        background: #142028;
+    }
+
+    .species-hero .container {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .info-badge {
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .paleoart-card,
+    .skeleton-card,
+    .reconstruction-card,
+    .scale-visualizer,
+    .size-comparison-table,
+    .detail-card,
+    .paleoecology-card,
+    .controversy-item,
+    .history-item,
+    .phylogeny-container,
+    .reference-item,
+    .paper-search,
+    .gallery-item {
+        background: #1e303a;
+    }
+
+    .change-history,
+    .anatomy-details {
+        background: #1e303a;
+    }
+
+    .paleoart-header,
+    .skeleton-header,
+    .reconstruction-header {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .table-row.header {
+        background: #2a404a;
+    }
+
+    .scale-info {
+        background: #2a404a;
+    }
+
+    .gallery-modal-image {
+        background: #1e303a;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    .navbar,
+    .footer,
+    .breadcrumb-section,
+    .species-navigation,
+    .btn,
+    .share-btn,
+    .gallery-modal-nav,
+    .gallery-modal-close {
+        display: none !important;
+    }
+
+    .species-hero {
+        min-height: auto;
+        padding: 2rem;
+        background: none;
+        box-shadow: none;
+    }
+
+    .species-hero .hero-gradient {
+        display: none;
+    }
+
+    .species-hero .container {
+        background: none;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .info-badge {
+        border: 1px solid #000;
+        background: none;
+    }
+
+    .paleoart-card,
+    .skeleton-card,
+    .reconstruction-card,
+    .detail-card,
+    .paleoecology-card,
+    .controversy-item,
+    .history-item,
+    .phylogeny-container,
+    .reference-item {
+        break-inside: avoid;
+        border: 1px solid #000;
+        box-shadow: none;
+    }
+
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+
+    .gallery-item {
+        break-inside: avoid;
+    }
+}
+
+/* ============================================
+   SCROLLBAR PERSONALIZADA
+   ============================================ */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--card-bg);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--hero-gradient-3);
+}
+
+/* ============================================
+   FIM DO ARQUIVO
+   ============================================ */

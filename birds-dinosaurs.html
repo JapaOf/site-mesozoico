@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubra a verdade científica: aves SÃO dinossauros! Evidências fósseis, anatômicas e genéticas mostram que as aves modernas são dinossauros avianos vivos.">
+    <meta name="keywords" content="aves, dinossauros, evolução, archaeopteryx, terópodes, penas, filogenia">
+    <meta name="author" content="Dino Explorer">
+    <title>Aves vs Dinossauros - Dino Explorer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🦖</text></svg>">
+    
+    <!-- CSS - Ajustado para GitHub Pages (raiz) -->
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="birds-dinosaurs.css">
+    
+    <style>
+        /* Estilos de fallback */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .truth-content { text-align: center; padding: 60px 20px; background: #f0f8ff; border-radius: 8px; margin: 40px 0; }
+        .truth-icon { font-size: 48px; color: #4CAF50; }
+        .evidence-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin: 40px 0; }
+        .evidence-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .evidence-icon { font-size: 48px; text-align: center; margin-bottom: 15px; }
+        .fossil-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0; }
+        .fossil-placeholder { background: #f0f0f0; border-radius: 8px; padding: 40px; text-align: center; }
+        .placeholder-emoji { font-size: 64px; display: block; }
+        .placeholder-text { color: #666; margin-top: 10px; }
+        .other-fossils-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 40px 0; }
+        .fossil-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .fossil-timeline-marker { background: #0066cc; color: white; padding: 5px 10px; border-radius: 4px; display: inline-block; margin-bottom: 10px; }
+        .anatomy-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin: 20px 0; }
+        .anatomy-tab-btn { padding: 10px 20px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px; }
+        .anatomy-tab-btn.active { background: #0066cc; color: white; border-color: #0066cc; }
+        .anatomy-content { display: none; }
+        .anatomy-content.active { display: block; }
+        .anatomy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0; }
+        .anatomy-item { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .anatomy-image { font-size: 48px; text-align: center; margin: 15px 0; }
+        .tree-diagram { background: #f5f5f5; padding: 20px; border-radius: 8px; font-family: monospace; line-height: 1.8; overflow-x: auto; }
+        .quiz-container { max-width: 800px; margin: 0 auto; }
+        .quiz-item { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .quiz-options { display: flex; gap: 10px; flex-wrap: wrap; margin: 15px 0; }
+        .quiz-btn { padding: 10px 20px; border: 1px solid #ddd; background: white; cursor: pointer; border-radius: 4px; flex: 1; }
+        .quiz-btn:hover { background: #f0f0f0; }
+        .quiz-feedback { padding: 10px; border-radius: 4px; margin-top: 10px; }
+        .implications-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; margin: 40px 0; }
+        .implication-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .resources-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 40px 0; }
+        .resource-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .section-title { text-align: center; margin: 40px 0 20px; }
+        .section-subtitle { text-align: center; color: #666; margin-bottom: 40px; }
+        .btn { display: inline-block; padding: 10px 20px; background: #0066cc; color: white; text-decoration: none; border-radius: 4px; border: none; cursor: pointer; }
+        .btn-small { padding: 5px 10px; font-size: 14px; }
+        .btn-primary { background: #0066cc; }
+        
+        @media (max-width: 768px) {
+            .fossil-grid { grid-template-columns: 1fr; }
+            .quiz-options { flex-direction: column; }
+            .anatomy-tabs { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER / NAVEGAÇÃO -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">🦖 <span class="brand">Dino Explorer</span></a>
+            </div>
+            
+            <nav class="nav-menu">
+                <a href="index.html#explore" class="nav-link">Explorar</a>
+                <a href="timeline.html" class="nav-link">Linha do Tempo</a>
+                <a href="species-list.html" class="nav-link">Espécies</a>
+                <a href="taxonomia.html" class="nav-link">Taxonomia</a>
+                <a href="birds-dinosaurs.html" class="nav-link active">Aves</a>
+                <a href="hard-mode.html" class="nav-link">Hard Mode</a>
+            </nav>
+
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-btn" title="Alternar tema">🌙</button>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="birds-hero">
+            <div class="hero-background">
+                <div class="hero-gradient"></div>
+            </div>
+            
+            <div class="container">
+                <div class="hero-content" data-aos="fade-up">
+                    <h1>🕊️ Aves SÃO Dinossauros</h1>
+                    <p>A verdade científica: as aves modernas são dinossauros avianos que sobreviveram à extinção</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- GRANDE VERDADE -->
+        <section class="big-truth">
+            <div class="container">
+                <div class="truth-content" data-aos="fade-up">
+                    <div class="truth-icon">✓</div>
+                    <h2>A Verdade Científica</h2>
+                    <p>
+                        Aves não são <em>descendentes</em> de dinossauros. Aves <strong>SÃO dinossauros</strong>.
+                        Especificamente, são dinossauros terópodes avianos que evoluíram pequenas asas e conseguiram voar.
+                    </p>
+                    <p>
+                        Filogeneticamente, as aves têm o mesmo status que qualquer outro grupo de dinossauros.
+                        São tão dinossauros quanto <em>Tyrannosaurus rex</em> e <em>Triceratops</em>.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVIDÊNCIAS PRINCIPAIS -->
+        <section class="main-evidence">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🧬 Por que Aves SÃO Dinossauros?</h2>
+                <p class="section-subtitle">Evidências científicas incontestáveis</p>
+
+                <div class="evidence-grid">
+                    <div class="evidence-card" data-aos="zoom-in">
+                        <div class="evidence-icon">🦴</div>
+                        <h3>Estrutura Óssea Idêntica</h3>
+                        <p>
+                            Aves compartilham caracteres esqueléticos únicos com terópodes dinossauros:
+                        </p>
+                        <ul>
+                            <li>✓ Fúrcula (osso em forma de V)</li>
+                            <li>✓ Esterno em forma de quilha</li>
+                            <li>✓ Estrutura de membros idêntica</li>
+                            <li>✓ Palato especial (neognato)</li>
+                            <li>✓ Coluna vertebral fusionada</li>
+                        </ul>
+                    </div>
+
+                    <div class="evidence-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="evidence-icon">🧬</div>
+                        <h3>Genética Molecular</h3>
+                        <p>
+                            Análises de DNA confirmam que aves são terópodes:
+                        </p>
+                        <ul>
+                            <li>✓ DNA mitocondrial compatível com répteis</li>
+                            <li>✓ Genes homeobox compartilhados</li>
+                            <li>✓ Divergência genética calculada</li>
+                            <li>✓ Cromossomos microcromossomos</li>
+                            <li>✓ Síntese proteica de terópode</li>
+                        </ul>
+                    </div>
+
+                    <div class="evidence-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="evidence-icon">🪶</div>
+                        <h3>Penas</h3>
+                        <p>
+                            Penas não são exclusivas de aves! Muitos dinossauros tinham penas:
+                        </p>
+                        <ul>
+                            <li>✓ Velociraptor tinha penas</li>
+                            <li>✓ Troodon tinha penas</li>
+                            <li>✓ Alguns terópodes maiores também</li>
+                            <li>✓ Diferentes tipos de penas</li>
+                            <li>✓ Função: isolamento térmico, exibição</li>
+                        </ul>
+                    </div>
+
+                    <div class="evidence-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="evidence-icon">🥚</div>
+                        <h3>Reprodução e Ovos</h3>
+                        <p>
+                            Aves herdam características reprodutivas direto de dinossauros:
+                        </p>
+                        <ul>
+                            <li>✓ Ovos com casca calcária</li>
+                            <li>✓ Incubação parental</li>
+                            <li>✓ Ninhos especializados</li>
+                            <li>✓ Cuidado com filhotes</li>
+                            <li>✓ Postura em ninhos</li>
+                        </ul>
+                    </div>
+
+                    <div class="evidence-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="evidence-icon">⚡</div>
+                        <h3>Metabolismo e Fisiologia</h3>
+                        <p>
+                            Aves têm metabolismo similar ao de terópodes mesotérmicos:
+                        </p>
+                        <ul>
+                            <li>✓ Sangue quente (como terópodes ativos)</li>
+                            <li>✓ Frequência cardíaca elevada</li>
+                            <li>✓ Taxa metabólica alta</li>
+                            <li>✓ Regulação térmica ativa</li>
+                            <li>✓ Respiração com sacos aéreos</li>
+                        </ul>
+                    </div>
+
+                    <div class="evidence-card" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="evidence-icon">🪨</div>
+                        <h3>Registro Fóssil</h3>
+                        <p>
+                            Fósseis transicionais ligam aves a dinossauros terópodes:
+                        </p>
+                        <ul>
+                            <li>✓ Archaeopteryx (fóssil chave)</li>
+                            <li>✓ Microraptor (4 asas)</li>
+                            <li>✓ Anchiornis (plumagem preservada)</li>
+                            <li>✓ Série completa de transições</li>
+                            <li>✓ Datação radiométrica precisa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FÓSSEIS TRANSICIONAIS -->
+        <section class="transitional-fossils">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🪨 Fósseis Transicionais</h2>
+                <p class="section-subtitle">O elo perdido entre dinossauros e aves</p>
+
+                <!-- ARCHAEOPTERYX -->
+                <div class="fossil-card featured" data-aos="zoom-in">
+                    <div class="fossil-timeline-marker">150 Ma</div>
+                    <div class="fossil-grid">
+                        <div class="fossil-image">
+                            <div class="fossil-placeholder">
+                                <span class="placeholder-emoji">🦴</span>
+                                <span class="placeholder-text">Archaeopteryx</span>
+                            </div>
+                        </div>
+                        <div class="fossil-info">
+                            <h3>Archaeopteryx lithographica</h3>
+                            <p class="fossil-scientific">Jurássico Superior (~150-148 Ma)</p>
+                            
+                            <div class="fossil-importance">
+                                ⭐⭐⭐⭐⭐ A EVIDÊNCIA MAIS IMPORTANTE
+                            </div>
+
+                            <h4>Características de Dinossauro Terópode:</h4>
+                            <ul>
+                                <li>✓ Dentes afiados (aves modernas não têm)</li>
+                                <li>✓ Cauda longa com vértebras (não fusionada)</li>
+                                <li>✓ Garras nas asas (tipo Velociraptor)</li>
+                                <li>✓ Membros posteriores de terópode</li>
+                                <li>✓ Pélvis de estrutura terópode</li>
+                            </ul>
+
+                            <h4>Características de Ave Moderna:</h4>
+                            <ul>
+                                <li>✓ Penas claramente preservadas</li>
+                                <li>✓ Asas em padrão de ave</li>
+                                <li>✓ Fúrcula presente</li>
+                                <li>✓ Pigmentação fóssil visível</li>
+                            </ul>
+
+                            <p class="fossil-conclusion">
+                                <strong>Conclusão:</strong> Archaeopteryx é literalmente um dinossauro com penas e asas.
+                                É a prova fóssil de que aves evoluíram de terópodes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OUTROS FÓSSEIS -->
+                <div class="other-fossils-grid">
+                    <div class="fossil-card" data-aos="zoom-in">
+                        <div class="fossil-timeline-marker">125 Ma</div>
+                        <div class="fossil-image">
+                            <div class="fossil-placeholder">
+                                <span class="placeholder-emoji">🦴</span>
+                            </div>
+                        </div>
+                        <h3>Microraptor</h3>
+                        <p class="fossil-period">Cretáceo Inferior</p>
+                        <ul>
+                            <li>✓ 4 asas (2 nos membros posteriores!)</li>
+                            <li>✓ Penas pretas iridescentes</li>
+                            <li>✓ Muito similar a Velociraptor</li>
+                            <li>✓ Provavelmente planador</li>
+                        </ul>
+                        <p class="fossil-note">Mostra estágios intermediários de evolução do voo</p>
+                    </div>
+
+                    <div class="fossil-card" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="fossil-timeline-marker">160 Ma</div>
+                        <div class="fossil-image">
+                            <div class="fossil-placeholder">
+                                <span class="placeholder-emoji">🦴</span>
+                            </div>
+                        </div>
+                        <h3>Anchiornis</h3>
+                        <p class="fossil-period">Jurássico Superior</p>
+                        <ul>
+                            <li>✓ Pequeno terópode (40 cm)</li>
+                            <li>✓ 4 asas com padrão de cor preservado</li>
+                            <li>✓ Muito primitivo</li>
+                            <li>✓ Estrutura corporal típica de terópode</li>
+                        </ul>
+                        <p class="fossil-note">Ancestral próximo de aves volantes primitivas</p>
+                    </div>
+
+                    <div class="fossil-card" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="fossil-timeline-marker">130 Ma</div>
+                        <div class="fossil-image">
+                            <div class="fossil-placeholder">
+                                <span class="placeholder-emoji">🦴</span>
+                            </div>
+                        </div>
+                        <h3>Confuciusornis</h3>
+                        <p class="fossil-period">Cretáceo Inferior</p>
+                        <ul>
+                            <li>✓ Sem dentes (primeiro registro)</li>
+                            <li>✓ Asas bem formadas</li>
+                            <li>✓ Cauda encurtada</li>
+                            <li>✓ Penas longas na cauda</li>
+                        </ul>
+                        <p class="fossil-note">Transição para aves modernas</p>
+                    </div>
+
+                    <div class="fossil-card" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="fossil-timeline-marker">120 Ma</div>
+                        <div class="fossil-image">
+                            <div class="fossil-placeholder">
+                                <span class="placeholder-emoji">🦴</span>
+                            </div>
+                        </div>
+                        <h3>Enantiornithes</h3>
+                        <p class="fossil-period">Cretáceo</p>
+                        <ul>
+                            <li>✓ Aves "opostas" (ramo extinto)</li>
+                            <li>✓ Garras nas asas ainda presentes</li>
+                            <li>✓ Estrutura muito similar a aves modernas</li>
+                            <li>✓ Muito diversas</li>
+                        </ul>
+                        <p class="fossil-note">Prova que havia múltiplas linhagens de aves no Cretáceo</p>
+                    </div>
+
+                    <div class="fossil-card" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="fossil-timeline-marker">100 Ma</div>
+                        <div class="fossil-image">
+                            <div class="fossil-placeholder">
+                                <span class="placeholder-emoji">🦴</span>
+                            </div>
+                        </div>
+                        <h3>Hesperornis</h3>
+                        <p class="fossil-period">Cretáceo Superior</p>
+                        <ul>
+                            <li>✓ Ave mergulhadora (sem capacidade de voo)</li>
+                            <li>✓ Ainda com dentes</li>
+                            <li>✓ Membros posteriores especializados</li>
+                            <li>✓ Mostra diversificação das aves</li>
+                        </ul>
+                        <p class="fossil-note">Prova que aves já haviam se diversificado muito</p>
+                    </div>
+
+                    <div class="fossil-card" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="fossil-timeline-marker">66 Ma</div>
+                        <div class="fossil-image">
+                            <div class="fossil-placeholder">
+                                <span class="placeholder-emoji">🕊️</span>
+                            </div>
+                        </div>
+                        <h3>Neornithes (Aves Modernas)</h3>
+                        <p class="fossil-period">Cretáceo Superior - Presente</p>
+                        <ul>
+                            <li>✓ Sem dentes</li>
+                            <li>✓ Cauda reduzida a pigóstilo</li>
+                            <li>✓ Voo altamente especializado</li>
+                            <li>✓ Sobrevivem à extinção K-Pg</li>
+                        </ul>
+                        <p class="fossil-note">Todos os pássaros de hoje = dinossauros terópodes avianos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPARAÇÃO ANATÔMICA LADO A LADO -->
+        <section class="anatomy-comparison">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">⚖️ Comparação Anatômica Detalhada</h2>
+
+                <div class="anatomy-tabs">
+                    <button class="anatomy-tab-btn active" data-anatomy="skull" onclick="switchAnatomyTab('skull')">🦴 Crânio</button>
+                    <button class="anatomy-tab-btn" data-anatomy="skeleton" onclick="switchAnatomyTab('skeleton')">💀 Esqueleto</button>
+                    <button class="anatomy-tab-btn" data-anatomy="wings" onclick="switchAnatomyTab('wings')">🪶 Asas/Membros</button>
+                    <button class="anatomy-tab-btn" data-anatomy="pelvis" onclick="switchAnatomyTab('pelvis')">🦴 Pelve</button>
+                    <button class="anatomy-tab-btn" data-anatomy="tail" onclick="switchAnatomyTab('tail')">🪶 Cauda</button>
+                </div>
+
+                <!-- CRÂNIO -->
+                <div class="anatomy-content active" id="skull-content" data-aos="fade-up">
+                    <h3>Comparação de Crânio</h3>
+                    <div class="anatomy-grid">
+                        <div class="anatomy-item">
+                            <h4>Terópode (Velociraptor)</h4>
+                            <div class="anatomy-image">🦖</div>
+                            <ul>
+                                <li>Olhos grandes, dirigidos para frente</li>
+                                <li>Dentes afiados e serrilhados</li>
+                                <li>Fossas temporais grandes</li>
+                                <li>Mandíbula forte</li>
+                                <li>Fenestra pré-maxilar</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-item">
+                            <h4>Ave Primitiva (Archaeopteryx)</h4>
+                            <div class="anatomy-image">🕊️</div>
+                            <ul>
+                                <li>✓ Olhos grandes, dirigidos para frente</li>
+                                <li>✓ Dentes afiados (como Velociraptor!)</li>
+                                <li>✓ Fossas temporais presentes</li>
+                                <li>✓ Mandíbula forte</li>
+                                <li>✓ Fenestra pré-maxilar presente</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-item">
+                            <h4>Ave Moderna (Pomba)</h4>
+                            <div class="anatomy-image">🕊️</div>
+                            <ul>
+                                <li>Olhos grandes, lateralizados</li>
+                                <li>Sem dentes (bico queratinoso)</li>
+                                <li>Fossas temporais reduzidas</li>
+                                <li>Mandíbula leve</li>
+                                <li>Estrutura craniofacial especializada</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ESQUELETO -->
+                <div class="anatomy-content" id="skeleton-content" data-aos="fade-up" style="display: none;">
+                    <h3>Comparação de Esqueleto</h3>
+                    <div class="anatomy-grid">
+                        <div class="anatomy-item">
+                            <h4>Terópode (Deinonychus)</h4>
+                            <div class="anatomy-image">🦖</div>
+                            <ul>
+                                <li>Coluna vertebral flexível</li>
+                                <li>Ossos pneumáticos (ocos)</li>
+                                <li>Esterno plano ou levemente quilhado</li>
+                                <li>Membros finos e leves</li>
+                                <li>Estrutura corporal ágil</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-item">
+                            <h4>Ave Primitiva (Archaeopteryx)</h4>
+                            <div class="anatomy-image">🕊️</div>
+                            <ul>
+                                <li>✓ Coluna vertebral flexível</li>
+                                <li>✓ Ossos pneumáticos (ocos)</li>
+                                <li>✓ Esterno com quilha presente</li>
+                                <li>✓ Membros finos e leves</li>
+                                <li>✓ Estrutura corporal de terópode</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-item">
+                            <h4>Ave Moderna (Falcão)</h4>
+                            <div class="anatomy-image">🕊️</div>
+                            <ul>
+                                <li>Coluna vertebral parcialmente rígida</li>
+                                <li>Ossos pneumáticos (altamente ocos)</li>
+                                <li>Esterno com quilha desenvolvida</li>
+                                <li>Membros posteriores robustos</li>
+                                <li>Estrutura otimizada para voo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ASAS / MEMBROS -->
+                <div class="anatomy-content" id="wings-content" data-aos="fade-up" style="display: none;">
+                    <h3>Comparação de Asas e Membros</h3>
+                    <div class="anatomy-grid">
+                        <div class="anatomy-item">
+                            <h4>Terópode (Velociraptor)</h4>
+                            <div class="anatomy-image">🦖</div>
+                            <ul>
+                                <li>Membros anteriores com garras</li>
+                                <li>3 dedos funcionais</li>
+                                <li>Ossos longos e finos</li>
+                                <li>Articulações muito flexíveis</li>
+                                <li>Possivelmente com penas</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-item">
+                            <h4>Ave Primitiva (Archaeopteryx)</h4>
+                            <div class="anatomy-image">🕊️</div>
+                            <ul>
+                                <li>✓ Membros anteriores com garras</li>
+                                <li>✓ 3 dedos funcionais</li>
+                                <li>✓ Ossos longos e finos</li>
+                                <li>✓ Articulações muito flexíveis</li>
+                                <li>✓ Penas claramente presentes</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-item">
+                            <h4>Ave Moderna (Galinha)</h4>
+                            <div class="anatomy-image">🐔</div>
+                            <ul>
+                                <li>Membros anteriores transformados em asas</li>
+                                <li>Dedos reduzidos e fusionados</li>
+                                <li>Ossos fusionados para resistência</li>
+                                <li>Articulações especializadas</li>
+                                <li>Penas altamente desenvolvidas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PELVE -->
+                <div class="anatomy-content" id="pelvis-content" data-aos="fade-up" style="display: none;">
+                    <h3>Comparação de Pelve</h3>
+                    <div class="anatomy-grid">
+                        <div class="anatomy-item">
+                            <h4>Terópode</h4>
+                            <div class="anatomy-image">🦴</div>
+                            <ul>
+                                <li>Púbis para FRENTE</li>
+                                <li>Ísquio para TRÁS</li>
+                                <li>Acetábulo profundo</li>
+                                <li>Estrutura "tripé"</li>
+                                <li>Forame obturado presente</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-item">
+                            <h4>Ave Primitiva (Archaeopteryx)</h4>
+                            <div class="anatomy-image">🕊️</div>
+                            <ul>
+                                <li>✓ Púbis para FRENTE (ainda!)</li>
+                                <li>✓ Ísquio para TRÁS (ainda!)</li>
+                                <li>✓ Acetábulo profundo</li>
+                                <li>✓ Estrutura intermediária</li>
+                                <li>✓ Forame obturado presente</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-item">
+                            <h4>Ave Moderna</h4>
+                            <div class="anatomy-image">🕊️</div>
+                            <ul>
+                                <li>Púbis para TRÁS (modificado)</li>
+                                <li>Ísquio para TRÁS</li>
+                                <li>Acetábulo mais raso</li>
+                                <li>Estrutura paralela</li>
+                                <li>Forame obturado reduzido</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CAUDA -->
+                <div class="anatomy-content" id="tail-content" data-aos="fade-up" style="display: none;">
+                    <h3>Comparação de Cauda</h3>
+                    <div class="anatomy-grid">
+                        <div class="anatomy-item">
+                            <h4>Terópode (Velociraptor)</h4>
+                            <div class="anatomy-image">🦖</div>
+                            <ul>
+                                <li>Cauda longa com muitas vértebras</li>
+                                <li>Usada para equilíbrio</li>
+                                <li>Muito flexível</li>
+                                <li>Com processos pré-zigapofisários</li>
+                                <li>Rígida na base</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-item">
+                            <h4>Ave Primitiva (Archaeopteryx)</h4>
+                            <div class="anatomy-image">🕊️</div>
+                            <ul>
+                                <li>✓ Cauda longa com muitas vértebras</li>
+                                <li>✓ Usada para equilíbrio</li>
+                                <li>✓ Muito flexível</li>
+                                <li>✓ Com processos pré-zigapofisários</li>
+                                <li>✓ Penas preservadas na cauda</li>
+                            </ul>
+                        </div>
+
+                        <div class="anatomy-item">
+                            <h4>Ave Moderna</h4>
+                            <div class="anatomy-image">🕊️</div>
+                            <ul>
+                                <li>Cauda reduzida a pigóstilo</li>
+                                <li>Apenas vértebras fundidas</li>
+                                <li>Pouco flexível</li>
+                                <li>Sem processos pré-zigapofisários</li>
+                                <li>Penas de cauda presas ao pigóstilo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FILOGENIA MODERNA -->
+        <section class="modern-phylogeny">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🧬 Filogenia Moderna: Onde as Aves se Encaixam</h2>
+
+                <div class="phylogeny-visual" data-aos="zoom-in">
+                    <pre class="tree-diagram">
+Dinosauria
+│
+├─ Saurischia
+│  │
+│  ├─ Sauropodomorpha (extintos)
+│  │
+│  └─ Theropoda
+│     │
+│     ├─ Carnosauria (extintos)
+│     │  └─ Tyrannosaurus rex
+│     │
+│     ├─ Coelurosauria
+│     │  ├─ Dromaeosauridae (Velociraptor, Deinonychus)
+│     │  ├─ Troodontidae (Troodon)
+│     │  └─ ★ AVES (VIVAS!) ★
+│     │       ├─ Archaeopteryx (extinta)
+│     │       ├─ Enantiornithes (extintas)
+│     │       └─ Neornithes (todas as aves vivas!)
+│     │            ├─ Paleognathae (avestruzes, emas)
+│     │            └─ Neognathae (galinhas, patos, águias, pombas...)
+│     │
+│     └─ Outros terópodes
+│
+└─ Ornithischia (extintos)
+   ├─ Thyreophora (Stegosaurus, Ankylosaurus)
+   ├─ Ceratopsia (Triceratops)
+   └─ Ornithopoda (Iguanodon, Hadrossauros)
+                    </pre>
+                </div>
+
+                <div class="phylogeny-explanation" data-aos="fade-up">
+                    <p>
+                        <strong>Interpretação:</strong> Tecnicamente, quando você vê um pássaro na janela, você está olhando para um <strong>dinossauro</strong> vivo. 
+                        As aves são o único grupo de dinossauros que sobreviveu até os dias atuais!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIZ: DINOSSAURO OU AVE? -->
+        <section class="fossil-quiz">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🎯 Quiz: Dinossauro ou Ave?</h2>
+                <p class="section-subtitle">Teste seus conhecimentos sobre características transicionais</p>
+
+                <div class="quiz-container">
+                    <div class="quiz-item" data-aos="zoom-in">
+                        <h4>1. Tem dentes, asas, penas e garras nas asas. O que é?</h4>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'archaeopteryx')">A) Archaeopteryx</button>
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'wrong')">B) Uma pomba moderna</button>
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'wrong')">C) Um Velociraptor</button>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-1"></div>
+                    </div>
+
+                    <div class="quiz-item" data-aos="zoom-in" data-aos-delay="100">
+                        <h4>2. Três dedos com garras, cauda longa flexível, sem voo. O que é?</h4>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'wrong')">A) Uma ave primitiva</button>
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'theropod')">B) Um terópode (Velociraptor)</button>
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'wrong')">C) Uma mistura dos dois</button>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-2"></div>
+                    </div>
+
+                    <div class="quiz-item" data-aos="zoom-in" data-aos-delay="200">
+                        <h4>3. Ossos ocos, esterno quilhado, sem dentes. O que é?</h4>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'wrong')">A) Sempre um dinossauro</button>
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'wrong')">B) Sempre uma ave</button>
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'both')">C) Pode ser ambos! (porque aves são dinossauros)</button>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-3"></div>
+                    </div>
+
+                    <div class="quiz-item" data-aos="zoom-in" data-aos-delay="300">
+                        <h4>4. Qual é a relação filogenética correta?</h4>
+                        <div class="quiz-options">
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'wrong')">A) Aves descendem de dinossauros</button>
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'correct')">B) Aves SÃO dinossauros (terópodes avianos)</button>
+                            <button class="quiz-btn" onclick="checkAnswer(this, 'wrong')">C) Aves e dinossauros são distantemente relacionados</button>
+                        </div>
+                        <div class="quiz-feedback" id="feedback-4"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- IMPLICAÇÕES PRÁTICAS -->
+        <section class="practical-implications">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">💡 Implicações Práticas</h2>
+                <p class="section-subtitle">Se aves SÃO dinossauros, então...</p>
+
+                <div class="implications-grid">
+                    <div class="implication-card" data-aos="fade-up">
+                        <h3>🐓 Os dinossauros NÃO foram extintos</h3>
+                        <p>
+                            A extinção K-Pg eliminou os dinossauros não-avianos, mas os dinossauros avianos (aves) sobreviveram 
+                            e prosperaram. Existem cerca de 10.000 espécies de dinossauros voando agora no planeta!
+                        </p>
+                    </div>
+
+                    <div class="implication-card" data-aos="fade-up" data-aos-delay="100">
+                        <h3>🦅 Aves são dinossauros especializados</h3>
+                        <p>
+                            Assim como o Tyrannosaurus era especializado em predação, a águia é um dinossauro especializado em voo. 
+                            Ambas são dinossauros - apenas em diferentes contextos evolutivos.
+                        </p>
+                    </div>
+
+                    <div class="implication-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3>🐧 Até pinguins são dinossauros</h3>
+                        <p>
+                            Pinguins perderam a capacidade de voo mas continuam sendo dinossauros avianos. Sua estrutura óssea, 
+                            DNA e filogenia são 100% de dinossauro terópode.
+                        </p>
+                    </div>
+
+                    <div class="implication-card" data-aos="fade-up" data-aos-delay="300">
+                        <h3>🔬 Estudar aves = Estudar biologia de dinossauros</h3>
+                        <p>
+                            Toda descoberta sobre fisiologia, comportamento ou reprodução de aves nos diz algo sobre dinossauros 
+                            extintos. Aves vivas são "janelas" para o passado mesozoico.
+                        </p>
+                    </div>
+
+                    <div class="implication-card" data-aos="fade-up" data-aos-delay="400">
+                        <h3>🎓 Educação científica</h3>
+                        <p>
+                            Escolas que ensinam "dinossauros foram extintos" estão tecnicamente incorretas. Devem ensinar 
+                            "dinossauros não-avianos foram extintos, mas os avianos (aves) continuam evoluindo".
+                        </p>
+                    </div>
+
+                    <div class="implication-card" data-aos="fade-up" data-aos-delay="500">
+                        <h3>🌍 Ecologia moderna</h3>
+                        <p>
+                            Quando estudamos impacto ambiental em aves, estamos estudando como o ambiente afeta dinossauros. 
+                            A perda de habitat de aves é a perda de habitat de dinossauros vivos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECURSOS PARA APROFUNDAMENTO -->
+        <section class="deep-dive-resources">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">📚 Aprofunde Seu Conhecimento</h2>
+
+                <div class="resources-grid">
+                    <div class="resource-card" data-aos="zoom-in">
+                        <h3>📖 Livros Recomendados</h3>
+                        <ul>
+                            <li><strong>"Dinosaur Paleobiology"</strong> - Stephen Brusatte</li>
+                            <li><strong>"The Rise and Fall of the Dinosaurs"</strong> - Steve Brusatte</li>
+                            <li><strong>"Bringing Fossils to Life"</strong> - Donald Prothero</li>
+                            <li><strong>"Evolution"</strong> - Carl Zimmer</li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card" data-aos="zoom-in" data-aos-delay="100">
+                        <h3>🔬 Papers Científicos</h3>
+                        <ul>
+                            <li>Archaeopteryx papers (PloS Biology, 2007)</li>
+                            <li>Microraptor evolution (Nature, 2012)</li>
+                            <li>Theropod-bird transition (Science, 2009)</li>
+                            <li>Feather evolution (Proceedings Royal Society, 2014)</li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card" data-aos="zoom-in" data-aos-delay="200">
+                        <h3>🎬 Documentários</h3>
+                        <ul>
+                            <li>Dinosaurs: The Untold Story (Netflix)</li>
+                            <li>Planet Dinosaur (BBC)</li>
+                            <li>The Story of Life (BBC)</li>
+                            <li>Evolution (NOVA/PBS)</li>
+                        </ul>
+                    </div>
+
+                    <div class="resource-card" data-aos="zoom-in" data-aos-delay="300">
+                        <h3>🌐 Sites Científicos</h3>
+                        <ul>
+                            <li>University of Chicago - Dinosaur Systematics</li>
+                            <li>Institute of Vertebrate Paleontology</li>
+                            <li>Natural History Museum (Londres)</li>
+                            <li>Smithsonian - Dinosaur Collections</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Dino Explorer</h4>
+                    <p>Aves e dinossauros com rigor científico.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="timeline.html">Linha do Tempo</a></li>
+                        <li><a href="species-list.html">Espécies</a></li>
+                        <li><a href="taxonomia.html">Taxonomia</a></li>
+                        <li><a href="birds-dinosaurs.html">Aves</a></li>
+                        <li><a href="hard-mode.html">Hard Mode</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Contribuir</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dino Explorer. Desenvolvido com 🦕 e ciência.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts - Ajustado para GitHub Pages -->
+    <script src="theme-toggle.js"></script>
+    <script src="animations.js"></script>
+    <script src="birds-dinosaurs.js"></script>
+    
+    <!-- Script inline para funções essenciais -->
+    <script>
+        // Função para alternar abas de anatomia
+        function switchAnatomyTab(tabId) {
+            // Esconder todos os conteúdos
+            document.querySelectorAll('.anatomy-content').forEach(content => {
+                content.style.display = 'none';
+                content.classList.remove('active');
+            });
+            
+            // Mostrar o conteúdo selecionado
+            const selectedContent = document.getElementById(tabId + '-content');
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+                selectedContent.classList.add('active');
+            }
+            
+            // Atualizar botões ativos
+            document.querySelectorAll('.anatomy-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-anatomy') === tabId) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            console.log('Aba de anatomia alterada para:', tabId);
+        }
+        
+        // Função para verificar respostas do quiz
+        function checkAnswer(button, answerType) {
+            const quizItem = button.closest('.quiz-item');
+            const feedbackDiv = quizItem.querySelector('.quiz-feedback');
+            
+            // Remover feedback anterior
+            feedbackDiv.innerHTML = '';
+            
+            // Feedback visual
+            if (answerType === 'archaeopteryx' || answerType === 'theropod' || answerType === 'both' || answerType === 'correct') {
+                feedbackDiv.innerHTML = '<p style="color: #4CAF50; font-weight: bold;">✅ Correto! Muito bem!</p>';
+                button.style.background = '#4CAF50';
+                button.style.color = 'white';
+            } else {
+                feedbackDiv.innerHTML = '<p style="color: #f44336; font-weight: bold;">❌ Não é isso. Tente novamente!</p>';
+                button.style.background = '#f44336';
+                button.style.color = 'white';
+            }
+            
+            // Desabilitar todos os botões desta questão
+            quizItem.querySelectorAll('.quiz-btn').forEach(btn => {
+                btn.disabled = true;
+                btn.style.opacity = '0.7';
+            });
+        }
+        
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurar tema
+            const themeToggle = document.getElementById('theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    document.body.classList.toggle('dark-theme');
+                    themeToggle.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+                });
+            }
+            
+            // Menu toggle para mobile
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            if (menuToggle && navMenu) {
+                menuToggle.addEventListener('click', function() {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            console.log('Página Aves vs Dinossauros inicializada');
+        });
+    </script>
+</body>
+</html>

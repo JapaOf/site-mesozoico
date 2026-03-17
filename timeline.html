@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Linha do tempo interativa da era Mesozoica - Explore 165 milhões de anos de evolução dos dinossauros">
+    <meta name="keywords" content="linha do tempo, dinossauros, triássico, jurássico, cretáceo, eventos, extinção">
+    <meta name="author" content="Dino Explorer">
+    <title>Linha do Tempo Interativa - Dino Explorer</title>
+
+    <!-- CSS - Ajustado para GitHub Pages (raiz) -->
+    <link rel="stylesheet" href="theme.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="timeline.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'>🦖</text></svg>">
+    
+    <style>
+        /* Estilos de fallback caso os CSS externos não carreguem */
+        .loading-indicator { text-align: center; padding: 20px; color: #666; }
+        .map-placeholder { display: none; }
+        .map-placeholder.active { display: block; }
+        .btn.btn-small.active { background: var(--primary-color, #0066cc); color: white; }
+    </style>
+</head>
+<body>
+    <!-- HEADER / NAVEGAÇÃO -->
+    <header class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <a href="index.html">🦖 <span class="brand">Dino Explorer</span></a>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="index.html#explore" class="nav-link">Explorar</a>
+                <a href="timeline.html" class="nav-link active">Linha do Tempo</a>
+                <a href="taxonomia.html" class="nav-link">Taxonomia</a> <!-- Ajustado de taxonomy.html para taxonomia.html -->
+                <a href="species-list.html" class="nav-link">Espécies</a>
+                <a href="index.html#ciencia" class="nav-link">Ciência</a>
+                <a href="birds-dinosaurs.html" class="nav-link">Aves</a> <!-- Adicionei link para consistência -->
+            </nav>
+
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-btn" title="Alternar tema">🌙</button>
+                <button id="menu-toggle" class="menu-toggle">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="timeline-hero">
+            <div class="container">
+                <div class="hero-content" data-aos="fade-up">
+                    <h1>⏳ Linha do Tempo Interativa</h1>
+                    <p>Explore 165 milhões de anos de evolução, com eventos, espécies e mudanças climáticas</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTROLES / FILTROS -->
+        <section class="timeline-controls">
+            <div class="container">
+                <div class="controls-grid">
+                    <div class="filter-group">
+                        <label for="period-filter">📅 Período:</label>
+                        <select id="period-filter">
+                            <option value="">Todos os períodos</option>
+                            <option value="triassic">Triássico (252-201 Ma)</option>
+                            <option value="jurassic">Jurássico (201-145 Ma)</option>
+                            <option value="cretaceous">Cretáceo (145-66 Ma)</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="continent-filter">🌍 Continente:</label>
+                        <select id="continent-filter">
+                            <option value="">Todos os continentes</option>
+                            <option value="north-america">América do Norte</option>
+                            <option value="south-america">América do Sul</option>
+                            <option value="europe">Europa</option>
+                            <option value="africa">África</option>
+                            <option value="asia">Ásia</option>
+                            <option value="australia">Oceania</option>
+                            <option value="antarctica">Antártida</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="event-type-filter">🎯 Tipo de Evento:</label>
+                        <select id="event-type-filter">
+                            <option value="">Todos os tipos</option>
+                            <option value="extinction">Extinção</option>
+                            <option value="evolution">Evolução</option>
+                            <option value="climate">Clima</option>
+                            <option value="geological">Geológico</option>
+                            <option value="discovery">Descoberta</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <button class="btn btn-outline" id="reset-filters">🔄 Limpar Filtros</button>
+                    </div>
+                </div>
+
+                <!-- ESTATÍSTICAS -->
+                <div class="stats-bar" id="stats-bar">
+                    <div class="stat-item">
+                        <span class="stat-label">Total de Eventos:</span>
+                        <span class="stat-value" id="event-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Espécies Mostradas:</span>
+                        <span class="stat-value" id="species-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Período Selecionado:</span>
+                        <span class="stat-value" id="period-selected">Todos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TIMELINE VISUAL -->
+        <section class="timeline-section">
+            <div class="container">
+                <!-- TRIÁSSICO -->
+                <div class="period-timeline" data-period="triassic">
+                    <div class="period-header triassic-header" data-aos="fade-right">
+                        <h2>🌋 Triássico</h2>
+                        <p>252 - 201 Milhões de Anos Atrás</p>
+                        <p class="duration">Duração: 51 milhões de anos</p>
+                    </div>
+
+                    <div class="timeline-track triassic-track">
+                        <div class="timeline-bar"></div>
+                        <div class="timeline-events" id="triassic-events">
+                            <!-- Eventos carregados via JS -->
+                            <div class="loading-indicator">Carregando eventos do Triássico...</div>
+                        </div>
+                    </div>
+
+                    <div class="period-info triassic-info">
+                        <h3>Características do Triássico</h3>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <h4>🗺️ Geografia</h4>
+                                <ul>
+                                    <li>Pangeia unida</li>
+                                    <li>Oceano Tétis</li>
+                                    <li>Clima árido no interior</li>
+                                </ul>
+                            </div>
+                            <div class="info-card">
+                                <h4>🌿 Vegetação</h4>
+                                <ul>
+                                    <li>Coníferas</li>
+                                    <li>Cicadófitas</li>
+                                    <li>Samambaias</li>
+                                </ul>
+                            </div>
+                            <div class="info-card">
+                                <h4>🦖 Fauna</h4>
+                                <ul>
+                                    <li>Primeiros dinossauros</li>
+                                    <li>Répteis marinhos</li>
+                                    <li>Anfíbios primitivos</li>
+                                </ul>
+                            </div>
+                            <div class="info-card">
+                                <h4>🌡️ Clima</h4>
+                                <ul>
+                                    <li>Quente e seco</li>
+                                    <li>Sem glaciações</li>
+                                    <li>Monções intensas</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JURÁSSICO -->
+                <div class="period-timeline" data-period="jurassic">
+                    <div class="period-header jurassic-header" data-aos="fade-right">
+                        <h2>🦕 Jurássico</h2>
+                        <p>201 - 145 Milhões de Anos Atrás</p>
+                        <p class="duration">Duração: 56 milhões de anos</p>
+                    </div>
+
+                    <div class="timeline-track jurassic-track">
+                        <div class="timeline-bar"></div>
+                        <div class="timeline-events" id="jurassic-events">
+                            <!-- Eventos carregados via JS -->
+                            <div class="loading-indicator">Carregando eventos do Jurássico...</div>
+                        </div>
+                    </div>
+
+                    <div class="period-info jurassic-info">
+                        <h3>Características do Jurássico</h3>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <h4>🗺️ Geografia</h4>
+                                <ul>
+                                    <li>Pangeia se divide</li>
+                                    <li>Mares rasos e quentes</li>
+                                    <li>Continentes se afastam</li>
+                                </ul>
+                            </div>
+                            <div class="info-card">
+                                <h4>🌿 Vegetação</h4>
+                                <ul>
+                                    <li>Gimnospermas dominam</li>
+                                    <li>Samambaias gigantes</li>
+                                    <li>Primeiras flores (final)</li>
+                                </ul>
+                            </div>
+                            <div class="info-card">
+                                <h4>🦖 Fauna</h4>
+                                <ul>
+                                    <li>Saurópodes gigantes</li>
+                                    <li>Primeiras aves</li>
+                                    <li>Répteis marinhos</li>
+                                </ul>
+                            </div>
+                            <div class="info-card">
+                                <h4>🌡️ Clima</h4>
+                                <ul>
+                                    <li>Tropical a subtropical</li>
+                                    <li>Quente e úmido</li>
+                                    <li>Sem gelo nos pólos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CRETÁCEO -->
+                <div class="period-timeline" data-period="cretaceous">
+                    <div class="period-header cretaceous-header" data-aos="fade-right">
+                        <h2>🦖 Cretáceo</h2>
+                        <p>145 - 66 Milhões de Anos Atrás</p>
+                        <p class="duration">Duração: 79 milhões de anos</p>
+                    </div>
+
+                    <div class="timeline-track cretaceous-track">
+                        <div class="timeline-bar"></div>
+                        <div class="timeline-events" id="cretaceous-events">
+                            <!-- Eventos carregados via JS -->
+                            <div class="loading-indicator">Carregando eventos do Cretáceo...</div>
+                        </div>
+                    </div>
+
+                    <div class="period-info cretaceous-info">
+                        <h3>Características do Cretáceo</h3>
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <h4>🗺️ Geografia</h4>
+                                <ul>
+                                    <li>Continentes modernos</li>
+                                    <li>Mares avançam</li>
+                                    <li>Terreno mais acidentado</li>
+                                </ul>
+                            </div>
+                            <div class="info-card">
+                                <h4>🌿 Vegetação</h4>
+                                <ul>
+                                    <li>Angiospermas diversas</li>
+                                    <li>Primeiras árvores modernas</li>
+                                    <li>Gimnospermas declinam</li>
+                                </ul>
+                            </div>
+                            <div class="info-card">
+                                <h4>🦖 Fauna</h4>
+                                <ul>
+                                    <li>Maior diversidade de dinossauros</li>
+                                    <li>Apogeu do T. rex</li>
+                                    <li>Ceratopsídeos e Hadrossauros</li>
+                                </ul>
+                            </div>
+                            <div class="info-card">
+                                <h4>🌡️ Clima</h4>
+                                <ul>
+                                    <li>Quente e tropical</li>
+                                    <li>Níveis do mar altos</li>
+                                    <li>CO₂ atmosférico alto</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MODAL DE EVENTO -->
+        <div id="event-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="modal-body">
+                    <!-- Conteúdo carregado dinamicamente -->
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPARAÇÃO VERTICAL -->
+        <section class="comparison-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">📊 Comparação Entre Períodos</h2>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card" data-aos="zoom-in">
+                        <h3>Duração</h3>
+                        <div class="comparison-chart">
+                            <div class="bar" style="width: 45%; background: #8B4513;">
+                                <span>Triássico: 51M anos</span>
+                            </div>
+                            <div class="bar" style="width: 50%; background: #228B22;">
+                                <span>Jurássico: 56M anos</span>
+                            </div>
+                            <div class="bar" style="width: 70%; background: #4169E1;">
+                                <span>Cretáceo: 79M anos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card" data-aos="zoom-in" data-aos-delay="100">
+                        <h3>Diversidade de Espécies</h3>
+                        <div class="comparison-chart">
+                            <div class="bar" style="width: 30%; background: #8B4513;">
+                                <span>Triássico: Baixa</span>
+                            </div>
+                            <div class="bar" style="width: 60%; background: #228B22;">
+                                <span>Jurássico: Média-Alta</span>
+                            </div>
+                            <div class="bar" style="width: 100%; background: #4169E1;">
+                                <span>Cretáceo: Máxima</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card" data-aos="zoom-in" data-aos-delay="200">
+                        <h3>Temperatura Média</h3>
+                        <div class="comparison-chart">
+                            <div class="bar" style="width: 75%; background: #8B4513;">
+                                <span>Triássico: ~22°C</span>
+                            </div>
+                            <div class="bar" style="width: 70%; background: #228B22;">
+                                <span>Jurássico: ~20°C</span>
+                            </div>
+                            <div class="bar" style="width: 65%; background: #4169E1;">
+                                <span>Cretáceo: ~18°C</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card" data-aos="zoom-in" data-aos-delay="300">
+                        <h3>Nível do Mar</h3>
+                        <div class="comparison-chart">
+                            <div class="bar" style="width: 40%; background: #8B4513;">
+                                <span>Triássico: Baixo</span>
+                            </div>
+                            <div class="bar" style="width: 70%; background: #228B22;">
+                                <span>Jurássico: Alto</span>
+                            </div>
+                            <div class="bar" style="width: 85%; background: #4169E1;">
+                                <span>Cretáceo: Muito Alto</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EVENTOS PRINCIPAIS -->
+        <section class="major-events">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🎯 Eventos Mais Importantes</h2>
+
+                <div class="major-events-grid">
+                    <div class="major-event-card" data-aos="fade-up">
+                        <div class="event-badge extinction">EXTINÇÃO</div>
+                        <h3>Extinção Permiano-Triássico</h3>
+                        <p><strong>Quando:</strong> 252 Ma (Limite Permiano-Triássico)</p>
+                        <p><strong>Severidade:</strong> ⭐⭐⭐⭐⭐ A maior de todas!</p>
+                        <p>96% de toda a vida marinha desapareceu. Vulcanismo massivo na Sibéria causou aquecimento global extremo.</p>
+                        <a href="#" class="link" onclick="showEventModal('permian-extinction'); return false;">Saiba mais →</a>
+                    </div>
+
+                    <div class="major-event-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="event-badge evolution">EVOLUÇÃO</div>
+                        <h3>Primeiros Dinossauros</h3>
+                        <p><strong>Quando:</strong> ~230 Ma (Triássico Médio/Superior)</p>
+                        <p><strong>Significância:</strong> 🦖 Revolução da vida terrestre</p>
+                        <p>Eoraptor e outros dinossauros primitivos surgem. Pequenos no início, mas revolucionarão o planeta por 165 milhões de anos.</p>
+                        <a href="#" class="link" onclick="showEventModal('first-dinosaurs'); return false;">Saiba mais →</a>
+                    </div>
+
+                    <div class="major-event-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="event-badge evolution">EVOLUÇÃO</div>
+                        <h3>Primeiras Aves</h3>
+                        <p><strong>Quando:</strong> ~150 Ma (Jurássico Superior)</p>
+                        <p><strong>Significância:</strong> 🕊️ Origem das aves modernas</p>
+                        <p>Archaeopteryx e outros avialanos surgem. As aves SÃO dinossauros avianos!</p>
+                        <a href="#" class="link" onclick="showEventModal('first-birds'); return false;">Saiba mais →</a>
+                    </div>
+
+                    <div class="major-event-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="event-badge extinction">EXTINÇÃO</div>
+                        <h3>Impacto do Asteroide - K-Pg</h3>
+                        <p><strong>Quando:</strong> 66 Ma (Fim do Cretáceo)</p>
+                        <p><strong>Severidade:</strong> ⭐⭐⭐⭐⭐ Catastrófico!</p>
+                        <p>Asteroide de 10 km atinge Yucatán (México). Dinossauros não-avianos extintos. Aves sobrevivem.</p>
+                        <a href="#" class="link" onclick="showEventModal('kpg-extinction'); return false;">Saiba mais →</a>
+                    </div>
+
+                    <div class="major-event-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="event-badge evolution">EVOLUÇÃO</div>
+                        <h3>Saurópodes Gigantes</h3>
+                        <p><strong>Quando:</strong> ~160 Ma (Jurássico Superior)</p>
+                        <p><strong>Significância:</strong> 📈 Pico de gigantismo</p>
+                        <p>Brachiosaurus, Diplodocus e outros atingem tamanhos máximos. Como conseguiam energia?</p>
+                        <a href="#" class="link" onclick="showEventModal('giant-sauropods'); return false;">Saiba mais →</a>
+                    </div>
+
+                    <div class="major-event-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="event-badge evolution">EVOLUÇÃO</div>
+                        <h3>Plantas com Flores</h3>
+                        <p><strong>Quando:</strong> ~145 Ma (Cretáceo Inferior)</p>
+                        <p><strong>Significância:</strong> 🌸 Revolução botânica</p>
+                        <p>Primeiras angiospermas aparecem. Mudará toda a dinâmica ecológica do planeta.</p>
+                        <a href="#" class="link" onclick="showEventModal('flowering-plants'); return false;">Saiba mais →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LINHA DO TEMPO HORIZONTAL SIMPLIFICADA -->
+        <section class="horizontal-timeline">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">📏 Linha do Tempo Horizontal</h2>
+
+                <div class="timeline-horizontal" data-aos="fade-up">
+                    <div class="timeline-point" data-period="triassic" onclick="filterByPeriod('triassic')">
+                        <div class="point-marker"></div>
+                        <div class="point-label">
+                            <h4>Triássico</h4>
+                            <p>252-201 Ma</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-connector"></div>
+
+                    <div class="timeline-point" data-period="jurassic" onclick="filterByPeriod('jurassic')">
+                        <div class="point-marker"></div>
+                        <div class="point-label">
+                            <h4>Jurássico</h4>
+                            <p>201-145 Ma</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-connector"></div>
+
+                    <div class="timeline-point" data-period="cretaceous" onclick="filterByPeriod('cretaceous')">
+                        <div class="point-marker"></div>
+                        <div class="point-label">
+                            <h4>Cretáceo</h4>
+                            <p>145-66 Ma</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-connector"></div>
+
+                    <div class="timeline-point" data-period="now">
+                        <div class="point-marker"></div>
+                        <div class="point-label">
+                            <h4>Hoje</h4>
+                            <p>0 Ma</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="timeline-note">💡 Clique em qualquer período para filtrar eventos</p>
+            </div>
+        </section>
+
+        <!-- MAPA PALEOGEOGRÁFICO -->
+        <section class="paleogeographic-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">🗺️ Mapa Paleogeográfico</h2>
+                <p class="section-subtitle">Veja como os continentes se movimentaram durante o Mesozoico</p>
+
+                <div class="paleogeographic-viewer" data-aos="zoom-in">
+                    <div class="map-controls">
+                        <button class="btn btn-small active" data-period="triassic" onclick="showMap('triassic')">Triássico</button>
+                        <button class="btn btn-small" data-period="jurassic" onclick="showMap('jurassic')">Jurássico</button>
+                        <button class="btn btn-small" data-period="cretaceous" onclick="showMap('cretaceous')">Cretáceo</button>
+                    </div>
+
+                    <div class="map-display" id="map-display">
+                        <div class="map-placeholder triassic-map active" id="map-triassic">
+                            <h3>🌍 Triássico (252-201 Ma)</h3>
+                            <p>Pangeia ainda unida com o Oceano Tétis a leste</p>
+                            <div class="map-illustration">
+                                <svg viewBox="0 0 300 150" class="map-svg">
+                                    <path d="M50,75 Q100,30 150,30 Q200,30 250,75 Q200,120 150,120 Q100,120 50,75" fill="#8B4513" opacity="0.6" stroke="currentColor"/>
+                                    <text x="150" y="75" text-anchor="middle" font-size="12">PANGEIA</text>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="map-placeholder jurassic-map" id="map-jurassic">
+                            <h3>🌍 Jurássico (201-145 Ma)</h3>
+                            <p>Pangeia se divide: Laurásia (N) e Gondwana (S)</p>
+                            <div class="map-illustration">
+                                <svg viewBox="0 0 300 150" class="map-svg">
+                                    <path d="M30,60 Q80,30 130,30 Q180,30 200,60 Q180,90 130,90 Q80,90 30,60" fill="#228B22" opacity="0.6" stroke="currentColor"/>
+                                    <path d="M100,90 Q150,70 200,90 Q220,110 180,130 Q140,130 100,110 Q80,100 100,90" fill="#228B22" opacity="0.6" stroke="currentColor"/>
+                                    <text x="80" y="50" font-size="10">LAURÁSIA</text>
+                                    <text x="150" y="120" font-size="10">GONDWANA</text>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="map-placeholder cretaceous-map" id="map-cretaceous">
+                            <h3>🌍 Cretáceo (145-66 Ma)</h3>
+                            <p>Continentes em posição próxima à atual</p>
+                            <div class="map-illustration">
+                                <svg viewBox="0 0 300 150" class="map-svg">
+                                    <path d="M20,40 Q60,20 100,30 Q140,40 150,60 Q130,80 100,85 Q70,90 40,80 Q20,70 20,40" fill="#4169E1" opacity="0.6" stroke="currentColor"/>
+                                    <path d="M180,50 Q210,30 250,40 Q280,60 260,90 Q240,110 210,100 Q180,90 180,50" fill="#4169E1" opacity="0.6" stroke="currentColor"/>
+                                    <text x="60" y="60" font-size="8">AMÉRICA</text>
+                                    <text x="200" y="70" font-size="8">EURÁSIA</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="map-note">📍 Em breve: mapa interativo com formações geológicas</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Dino Explorer</h4>
+                    <p>Linha do tempo do Mesozoico com rigor científico.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="timeline.html">Linha do Tempo</a></li>
+                        <li><a href="taxonomia.html">Taxonomia</a></li>
+                        <li><a href="species-list.html">Espécies</a></li>
+                        <li><a href="birds-dinosaurs.html">Aves</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Recursos</h4>
+                    <ul>
+                        <li><a href="#">Sobre</a></li>
+                        <li><a href="#">Contribuir</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Dino Explorer. Desenvolvido com 🦕 e ciência.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts - Ajustado para GitHub Pages -->
+    <script src="theme-toggle.js"></script>
+    <script src="animations.js"></script>
+    <script src="timeline.js"></script>
+    
+    <!-- Script inline para funções essenciais -->
+    <script>
+        // Função para mostrar modal de eventos
+        function showEventModal(eventId) {
+            const modal = document.getElementById('event-modal');
+            const modalBody = document.getElementById('modal-body');
+            
+            // Dados dos eventos (simplificado - você pode expandir)
+            const eventData = {
+                'permian-extinction': {
+                    title: 'Extinção Permiano-Triássico',
+                    content: '<h3>Extinção Permiano-Triássico</h3><p>A maior extinção em massa da história da Terra, também conhecida como "A Grande Morte". Cerca de 96% das espécies marinhas e 70% das espécies terrestres foram extintas.</p><p><strong>Causa:</strong> Vulcanismo massivo na Sibéria (Traps Siberianas) liberou enormes quantidades de CO₂ e metano, causando aquecimento global extremo e acidificação dos oceanos.</p>'
+                },
+                'first-dinosaurs': {
+                    title: 'Primeiros Dinossauros',
+                    content: '<h3>Primeiros Dinossauros</h3><p>Os primeiros dinossauros surgiram durante o Triássico Médio, há cerca de 230 milhões de anos. Eram animais pequenos, bípedes e carnívoros.</p><p><strong>Exemplos:</strong> Eoraptor, Herrerasaurus, Staurikosaurus.</p>'
+                },
+                'first-birds': {
+                    title: 'Primeiras Aves',
+                    content: '<h3>Primeiras Aves</h3><p>Archaeopteryx é o exemplo mais famoso, mas outros avialanos surgiram no Jurássico Superior. As aves modernas são descendentes diretas de dinossauros terópodes.</p>'
+                },
+                'kpg-extinction': {
+                    title: 'Extinção K-Pg',
+                    content: '<h3>Extinção Cretáceo-Paleogeno</h3><p>Há 66 milhões de anos, um asteroide de aproximadamente 10 km de diâmetro atingiu a região de Yucatán, México. O impacto causou uma cratera de 180 km e desencadeou mudanças climáticas catastróficas que extinguiram todos os dinossauros não-avianos.</p>'
+                },
+                'giant-sauropods': {
+                    title: 'Saurópodes Gigantes',
+                    content: '<h3>Saurópodes Gigantes</h3><p>Brachiosaurus, Diplodocus, Argentinosaurus e outros atingiram comprimentos de até 30-40 metros e pesos de até 80 toneladas. Ainda é um mistério como conseguiam energia suficiente para sustentar tamanho gigantesco.</p>'
+                },
+                'flowering-plants': {
+                    title: 'Plantas com Flores',
+                    content: '<h3>Plantas com Flores (Angiospermas)</h3><p>Surgiram no Cretáceo Inferior e rapidamente dominaram a paisagem. Essa revolução botânica influenciou a evolução de insetos polinizadores e herbívoros.</p>'
+                }
+            };
+            
+            const data = eventData[eventId] || { title: 'Evento', content: '<p>Detalhes não disponíveis.</p>' };
+            
+            modalBody.innerHTML = `
+                <h2>${data.title}</h2>
+                ${data.content}
+                <p><small>Fonte: Dino Explorer - Ciência baseada em evidências paleontológicas.</small></p>
+            `;
+            
+            modal.style.display = 'block';
+        }
+        
+        // Função para filtrar por período
+        function filterByPeriod(period) {
+            const periodFilter = document.getElementById('period-filter');
+            if (periodFilter) {
+                periodFilter.value = period;
+                // Disparar evento de change se timeline.js estiver carregado
+                periodFilter.dispatchEvent(new Event('change'));
+            }
+        }
+        
+        // Função para mostrar mapas
+        function showMap(period) {
+            // Esconder todos os mapas
+            document.querySelectorAll('.map-placeholder').forEach(map => {
+                map.classList.remove('active');
+            });
+            
+            // Mostrar o mapa selecionado
+            const selectedMap = document.getElementById(`map-${period}`);
+            if (selectedMap) {
+                selectedMap.classList.add('active');
+            }
+            
+            // Atualizar botões ativos
+            document.querySelectorAll('.map-controls .btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            const activeBtn = document.querySelector(`.map-controls .btn[data-period="${period}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+        }
+        
+        // Fechar modal quando clicar no X
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('event-modal');
+            const closeBtn = document.querySelector('.close');
+            
+            if (closeBtn) {
+                closeBtn.onclick = function() {
+                    modal.style.display = 'none';
+                };
+            }
+            
+            window.onclick = function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+            
+            // Botão reset filters
+            const resetBtn = document.getElementById('reset-filters');
+            if (resetBtn) {
+                resetBtn.onclick = function() {
+                    document.getElementById('period-filter').value = '';
+                    document.getElementById('continent-filter').value = '';
+                    document.getElementById('event-type-filter').value = '';
+                    
+                    // Disparar change events
+                    ['period-filter', 'continent-filter', 'event-type-filter'].forEach(id => {
+                        const el = document.getElementById(id);
+                        if (el) el.dispatchEvent(new Event('change'));
+                    });
+                };
+            }
+            
+            // Inicializar contadores
+            document.getElementById('event-count').textContent = '150+';
+            document.getElementById('species-count').textContent = '700+';
+        });
+    </script>
+</body>
+</html>

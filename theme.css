@@ -1,0 +1,867 @@
+/* ============================================
+   DINO EXPLORER - THEME.CSS
+   Variáveis de cor e tema (claro/escuro)
+   Sistema completo de temas para todo o site
+   ============================================ */
+
+/* ============================================
+   TEMA PADRÃO (ESCURO) - Base
+   ============================================ */
+
+:root {
+    /* Cores Principais - Fundos */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --card-bg: #1a1a2e;
+    --card-hover-bg: #16213e;
+    --navbar-bg: rgba(10, 10, 10, 0.98);
+    --footer-bg: #0a0a0a;
+
+    /* Cores de Texto */
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --text-muted: #808080;
+
+    /* Cores de Acento */
+    --accent-primary: #00d4ff;
+    --accent-secondary: #00a8cc;
+    --accent-tertiary: #0077be;
+    --accent-rgb: 0, 212, 255;
+
+    /* Cores Hero Gradient */
+    --hero-gradient-1: #0a0a0a;
+    --hero-gradient-2: #1a0033;
+    --hero-gradient-3: #003d66;
+
+    /* Cores de Feedback */
+    --success-color: #00cc88;
+    --success-rgb: 0, 204, 136;
+    --warning-color: #ffaa00;
+    --warning-rgb: 255, 170, 0;
+    --error-color: #ff4466;
+    --error-rgb: 255, 68, 102;
+    --info-color: #00aaff;
+    --info-rgb: 0, 170, 255;
+
+    /* Borders & Outros */
+    --border-color: #333333;
+    --border-light: #404040;
+    --border-dark: #262626;
+    
+    /* Sombras - Tema Escuro */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.6);
+
+    /* Espaçamento Padrão */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-2xl: 24px;
+
+    /* Transições */
+    --transition-fast: all 0.2s ease;
+    --transition-base: all 0.3s ease;
+    --transition-slow: all 0.5s ease;
+    --transition-bounce: all 0.35s cubic-bezier(0.43, 0.96, 0.49, 1);
+
+    /* Fontes */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+    --font-mono: 'Fira Code', 'Courier New', monospace;
+
+    /* Preferência de cores do sistema */
+    color-scheme: dark;
+}
+
+/* ============================================
+   TEMA CLARO
+   ============================================ */
+
+body.light-theme {
+    /* Cores Principais - Fundos */
+    --bg-primary: #f5f5f5;
+    --bg-secondary: #ffffff;
+    --card-bg: #ffffff;
+    --card-hover-bg: #f0f0f0;
+    --navbar-bg: rgba(255, 255, 255, 0.98);
+    --footer-bg: #f0f0f0;
+
+    /* Cores de Texto */
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-muted: #666666;
+
+    /* Cores de Acento */
+    --accent-primary: #0066cc;
+    --accent-secondary: #004c99;
+    --accent-tertiary: #003366;
+    --accent-rgb: 0, 102, 204;
+
+    /* Cores Hero Gradient */
+    --hero-gradient-1: #e0f0ff;
+    --hero-gradient-2: #ffe0f0;
+    --hero-gradient-3: #f0ffe0;
+
+    /* Cores de Feedback */
+    --success-color: #00a86b;
+    --success-rgb: 0, 168, 107;
+    --warning-color: #ff8c00;
+    --warning-rgb: 255, 140, 0;
+    --error-color: #dc143c;
+    --error-rgb: 220, 20, 60;
+    --info-color: #0077be;
+    --info-rgb: 0, 119, 190;
+
+    /* Borders & Outros */
+    --border-color: #dddddd;
+    --border-light: #eeeeee;
+    --border-dark: #cccccc;
+
+    /* Sombras - Tema Claro */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.25);
+
+    /* Preferência de cores do sistema */
+    color-scheme: light;
+}
+
+/* ============================================
+   PALETA DE CORES ESPECÍFICAS POR PERÍODO
+   ============================================ */
+
+/* Triássico - Tons terrosos/marrom */
+.theme-triassic {
+    --period-primary: #8B4513;
+    --period-secondary: #D2691E;
+    --period-gradient: linear-gradient(135deg, #8B4513, #D2691E);
+    --period-rgb: 139, 69, 19;
+}
+
+/* Jurássico - Tons verdes */
+.theme-jurassic {
+    --period-primary: #228B22;
+    --period-secondary: #32CD32;
+    --period-gradient: linear-gradient(135deg, #228B22, #32CD32);
+    --period-rgb: 34, 139, 34;
+}
+
+/* Cretáceo - Tons azuis */
+.theme-cretaceous {
+    --period-primary: #4169E1;
+    --period-secondary: #1E90FF;
+    --period-gradient: linear-gradient(135deg, #4169E1, #1E90FF);
+    --period-rgb: 65, 105, 225;
+}
+
+/* ============================================
+   CLASSES DE UTILITÁRIOS DE COR
+   ============================================ */
+
+/* Background colors */
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-card { background-color: var(--card-bg); }
+.bg-accent { background-color: var(--accent-primary); }
+.bg-success { background-color: var(--success-color); }
+.bg-warning { background-color: var(--warning-color); }
+.bg-error { background-color: var(--error-color); }
+
+/* Text colors */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+.text-accent { color: var(--accent-primary); }
+.text-success { color: var(--success-color); }
+.text-warning { color: var(--warning-color); }
+.text-error { color: var(--error-color); }
+
+/* Border colors */
+.border-primary { border-color: var(--accent-primary); }
+.border-secondary { border-color: var(--border-color); }
+.border-success { border-color: var(--success-color); }
+.border-warning { border-color: var(--warning-color); }
+.border-error { border-color: var(--error-color); }
+
+/* Gradientes */
+.gradient-accent {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+}
+.gradient-hero {
+    background: linear-gradient(135deg, var(--hero-gradient-1), var(--hero-gradient-2), var(--hero-gradient-3));
+}
+
+/* ============================================
+   TRANSIÇÕES GLOBAIS
+   ============================================ */
+
+body,
+.navbar,
+.btn,
+.card,
+.modal,
+.dropdown,
+.tooltip,
+.popover {
+    transition: background-color var(--transition-base),
+                color var(--transition-base),
+                border-color var(--transition-base),
+                box-shadow var(--transition-base);
+}
+
+/* Transições específicas */
+.transition-fast {
+    transition: var(--transition-fast);
+}
+.transition-base {
+    transition: var(--transition-base);
+}
+.transition-slow {
+    transition: var(--transition-slow);
+}
+.transition-bounce {
+    transition: var(--transition-bounce);
+}
+
+/* ============================================
+   SCROLLBAR CUSTOMIZADO
+   ============================================ */
+
+/* Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+    border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 6px;
+    border: 2px solid var(--bg-primary);
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-secondary);
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--bg-primary);
+}
+
+/* Firefox */
+* {
+    scrollbar-color: var(--accent-primary) var(--bg-secondary);
+    scrollbar-width: thin;
+}
+
+/* ============================================
+   SELEÇÃO DE TEXTO
+   ============================================ */
+
+::selection {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    text-shadow: none;
+}
+
+::-moz-selection {
+    background: var(--accent-primary);
+    color: var(--bg-primary);
+    text-shadow: none;
+}
+
+/* Para elementos específicos */
+.card ::selection {
+    background: rgba(var(--accent-rgb), 0.3);
+    color: var(--text-primary);
+}
+
+/* ============================================
+   PLACEHOLDER TEXT
+   ============================================ */
+
+::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+    font-style: italic;
+}
+
+::-webkit-input-placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+::-moz-placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+:-ms-input-placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+/* Placeholder focado */
+input:focus::placeholder {
+    opacity: 0.5;
+    transform: translateX(5px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* ============================================
+   FOCUS OUTLINE
+   ============================================ */
+
+/* Focus visível para acessibilidade */
+:focus-visible {
+    outline: 3px solid var(--accent-primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+/* Elementos interativos */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+    outline: 3px solid var(--accent-primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.3);
+}
+
+/* Remover outline para mouse, manter para teclado */
+:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+}
+
+/* ============================================
+   LINK STYLES
+   ============================================ */
+
+a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast), 
+                text-decoration var(--transition-fast),
+                transform var(--transition-fast);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+a:hover,
+a:focus {
+    color: var(--accent-secondary);
+    text-decoration: underline;
+    transform: translateY(-1px);
+}
+
+a:active {
+    transform: translateY(0);
+}
+
+/* Links em cards */
+.card a {
+    color: var(--accent-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.card a:hover {
+    text-decoration: underline;
+    transform: translateX(2px);
+}
+
+/* ============================================
+   CÓDIGO & PRE
+   ============================================ */
+
+code {
+    background: rgba(var(--accent-rgb), 0.1);
+    color: var(--accent-primary);
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.9em;
+    font-weight: 500;
+    border: 1px solid rgba(var(--accent-rgb), 0.2);
+}
+
+pre {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    font-family: var(--font-mono);
+    font-size: 0.95em;
+    line-height: 1.6;
+    box-shadow: var(--shadow-sm);
+}
+
+pre code {
+    background: none;
+    color: inherit;
+    padding: 0;
+    border: none;
+    font-size: inherit;
+}
+
+/* Destaque de sintaxe básico */
+.token.comment { color: var(--text-muted); }
+.token.keyword { color: var(--accent-primary); }
+.token.string { color: var(--success-color); }
+.token.number { color: var(--warning-color); }
+.token.function { color: var(--info-color); }
+
+/* ============================================
+   TABELAS
+   ============================================ */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+th {
+    background: rgba(var(--accent-rgb), 0.15);
+    color: var(--accent-primary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    text-align: left;
+    font-weight: 700;
+    font-size: 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+td {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover {
+    background: rgba(var(--accent-rgb), 0.05);
+}
+
+/* Tabelas responsivas */
+.table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* ============================================
+   LISTAS
+   ============================================ */
+
+ul, ol {
+    color: var(--text-secondary);
+    padding-left: var(--spacing-lg);
+}
+
+li {
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+/* Listas não ordenadas customizadas */
+ul.custom {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul.custom li {
+    padding-left: var(--spacing-lg);
+    position: relative;
+}
+
+ul.custom li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+/* Listas ordenadas */
+ol.custom {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: custom-counter;
+}
+
+ol.custom li {
+    padding-left: var(--spacing-lg);
+    position: relative;
+    counter-increment: custom-counter;
+}
+
+ol.custom li::before {
+    content: counter(custom-counter) ".";
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+    font-weight: 700;
+}
+
+/* ============================================
+   BLOCKQUOTE
+   ============================================ */
+
+blockquote {
+    border-left: 4px solid var(--accent-primary);
+    padding: var(--spacing-lg);
+    margin: var(--spacing-lg) 0;
+    background: rgba(var(--accent-rgb), 0.05);
+    border-radius: var(--radius-md);
+    color: var(--text-secondary);
+    font-style: italic;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
+
+blockquote::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    font-size: 4rem;
+    color: rgba(var(--accent-rgb), 0.2);
+    font-family: serif;
+}
+
+blockquote p {
+    margin-bottom: var(--spacing-sm);
+    position: relative;
+    z-index: 1;
+}
+
+blockquote footer {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: var(--spacing-sm);
+}
+
+blockquote cite {
+    color: var(--accent-primary);
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* ============================================
+   HR / DIVISORES
+   ============================================ */
+
+hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--border-color) 20%, 
+        var(--border-color) 80%, 
+        transparent);
+    margin: var(--spacing-xl) 0;
+}
+
+hr.dashed {
+    background: none;
+    border-top: 2px dashed var(--border-color);
+    height: 0;
+}
+
+hr.dotted {
+    background: none;
+    border-top: 2px dotted var(--border-color);
+    height: 0;
+}
+
+hr.gradient {
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--accent-primary), 
+        var(--accent-secondary), 
+        var(--accent-primary), 
+        transparent);
+    height: 2px;
+}
+
+/* ============================================
+   IMAGENS
+   ============================================ */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    transition: filter var(--transition-fast), 
+                transform var(--transition-fast),
+                box-shadow var(--transition-fast);
+}
+
+img:hover {
+    filter: brightness(1.05) contrast(1.05);
+    transform: scale(1.02);
+    box-shadow: var(--shadow-md);
+}
+
+/* Imagens responsivas */
+.img-fluid {
+    width: 100%;
+    height: auto;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+.img-thumbnail {
+    padding: 4px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+}
+
+/* Imagens com legenda */
+.figure {
+    margin: var(--spacing-lg) 0;
+}
+
+.figure img {
+    margin-bottom: var(--spacing-sm);
+}
+
+.figure-caption {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-align: center;
+    font-style: italic;
+}
+
+/* Ajuste para imagens no tema claro */
+body.light-theme img {
+    filter: brightness(1) contrast(1);
+    background: var(--bg-secondary);
+}
+
+/* ============================================
+   BADGES E ETIQUETAS
+   ============================================ */
+
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-primary {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.badge-success {
+    background: var(--success-color);
+    color: white;
+}
+
+.badge-warning {
+    background: var(--warning-color);
+    color: white;
+}
+
+.badge-error {
+    background: var(--error-color);
+    color: white;
+}
+
+.badge-outline {
+    background: transparent;
+    border: 1px solid currentColor;
+}
+
+/* ============================================
+   TOOLTIPS
+   ============================================ */
+
+[data-tooltip] {
+    position: relative;
+    cursor: help;
+}
+
+[data-tooltip]:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: var(--shadow-md);
+    pointer-events: none;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(var(--accent-rgb), 0.3);
+    border-top-color: var(--accent-primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   ACESSIBILIDADE - REDUZIR MOVIMENTO
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .spinner {
+        animation: none;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+    /* Reset de cores para impressão */
+    body {
+        background: #ffffff;
+        color: #000000;
+        font-size: 12pt;
+    }
+
+    /* Links */
+    a {
+        text-decoration: underline;
+        color: #000000 !important;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 10pt;
+        font-weight: normal;
+    }
+
+    /* Elementos que não devem ser impressos */
+    .navbar,
+    .footer,
+    .btn,
+    .no-print,
+    [data-tooltip]::before,
+    .spinner,
+    .modal,
+    .dropdown {
+        display: none !important;
+    }
+
+    /* Quebras de página */
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
+
+    table {
+        page-break-inside: avoid;
+    }
+
+    pre {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    /* Cores convertidas para preto e branco */
+    .badge,
+    .card,
+    .alert {
+        background: #f0f0f0 !important;
+        color: #000000 !important;
+        border: 1px solid #000000 !important;
+    }
+}
+
+/* ============================================
+   UTILITÁRIOS DE ESPAÇAMENTO
+   ============================================ */
+
+/* Margens */
+.m-0 { margin: 0; }
+.m-xs { margin: var(--spacing-xs); }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+
+/* Padding */
+.p-0 { padding: 0; }
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+
+/* ============================================
+   FIM DO ARQUIVO
+   ============================================ */

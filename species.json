@@ -1,0 +1,491 @@
+{
+  "species": [
+    {
+      "id": "trex",
+      "name": "Tyrannosaurus rex",
+      "scientificName": "Tyrannosaurus rex",
+      "image": "img/species/trex.jpg",
+      "period": "cretaceous",
+      "epoch": "Cretáceo Superior",
+      "dateRange": "68-66 Ma",
+      "clade": "Saurischia > Theropoda > Tyrannosauridae",
+      "family": "Tyrannosauridae",
+      "location": "América do Norte",
+      "formation": "Hell Creek Formation",
+      "rockType": "Arenito e argilito",
+      "discoveryYear": 1902,
+      "discoverer": "Barnum Brown",
+      "fossilType": "Esqueleto quase completo",
+      "holotype": "AMNH 5022",
+      "size": {
+        "length": "12.3 m",
+        "height": "4.0 m",
+        "weight": "9.000 kg"
+      },
+      "diet": "Carnívoro",
+      "locomotion": "Bípede",
+      "habitat": "Planícies fluviais",
+      "description": "O mais icônico dos dinossauros. Um predador massivo que dominou o Cretáceo Superior. Tinha a mordida mais poderosa entre todos os animais terrestres.",
+      "behavior": "Possivelmente predador ativo, caçava em emboscadas",
+      "controversy": "Predador ativo ou necrófago oportunista? Evidências sugerem ambos.",
+      "modifiedRecently": true,
+      "climate": "Quente e tropical, 18°C em média",
+      "continents": "Laurásia, América do Norte",
+      "vegetation": "Angiospermas, coníferas primitivas",
+      "fauna": "Triceratops, Edmontosaurus, Ankylosaurus",
+      "paleoart": {
+        "1990s": "Posição horizontal, cauda arrastando, sem penas",
+        "2000s": "Posição mais ereta, movimentos ágeis",
+        "2020s": "Postura ativa, possivelmente com protopenas"
+      },
+      "ancientFeatures": [
+        "Posição de lagarto",
+        "Sem penas",
+        "Movimento lento",
+        "Cauda arrastando no chão"
+      ],
+      "modernFeatures": [
+        "Posição ereta",
+        "Possíveis penas em estágios jovens",
+        "Movimento dinâmico",
+        "Comportamento social complexo"
+      ],
+      "skeletonFeatures": [
+        "Crânio maciço (1.5m)",
+        "Dentes serrilhados de 20-30cm",
+        "Membros anteriores reduzidos",
+        "Cauda longa para equilíbrio"
+      ],
+      "reconstructionFeatures": [
+        "Músculos massivos na mandíbula",
+        "Pele escamosa",
+        "Postura horizontal (dorso reto)",
+        "Movimentos rápidos"
+      ],
+      "anatomy": {
+        "skull": "Crânio enorme de 1.5m com mandíbula extremamente poderosa e dentes serrilhados de até 30cm.",
+        "spine": "Coluna vertebral robusta com 40 vértebras, adaptada para suportar impactos.",
+        "limbs": "Membros posteriores massivos para locomoção; anteriores muito reduzidos com 2 dedos.",
+        "tail": "Cauda longa e musculosa usada como contrapeso durante corridas."
+      },
+      "references": [
+        {
+          "title": "Tyrannosaurus rex: Predator or Scavenger?",
+          "authors": "Brusatte, S.L.",
+          "journal": "Nature (2010)",
+          "url": "https://doi.org/10.1038/nature"
+        },
+        {
+          "title": "Biomechanics of T. rex bite force",
+          "authors": "Bates, K.T.",
+          "journal": "The Anatomical Record (2023)",
+          "url": "https://doi.org/10.1002/ar.25123"
+        }
+      ],
+      "gallery": [
+        { "type": "🦴", "label": "Esqueleto" },
+        { "type": "🎨", "label": "Reconstrução" },
+        { "type": "🌍", "label": "Ambiente" },
+        { "type": "🦖", "label": "Comparação com humano" }
+      ]
+    },
+    {
+      "id": "spinosaurus",
+      "name": "Spinosaurus",
+      "scientificName": "Spinosaurus aegyptiacus",
+      "image": "img/species/spinosaurus.jpg",
+      "period": "cretaceous",
+      "epoch": "Cretáceo Superior",
+      "dateRange": "112-93 Ma",
+      "clade": "Saurischia > Theropoda > Spinosauridae",
+      "family": "Spinosauridae",
+      "location": "Norte da África (Egito, Marrocos)",
+      "formation": "Formação Kem Kem",
+      "rockType": "Arenito eólico e fluvial",
+      "discoveryYear": 1912,
+      "discoverer": "Ernst Stromer",
+      "fossilType": "Fragmentos ósseos, maxila",
+      "holotype": "BSP 1912 VIII 19 (perdido na guerra)",
+      "size": {
+        "length": "15-18 m",
+        "height": "4-5 m",
+        "weight": "12.000-20.000 kg"
+      },
+      "diet": "Carnívoro (principalmente peixes)",
+      "locomotion": "Bípede/Quadrúpede",
+      "habitat": "Ambientes aquáticos e costeiros",
+      "description": "Possível predador aquático com adaptações para natação. A ciência mudou de opinião sobre sua ecologia recentemente.",
+      "behavior": "Passava grande parte do tempo na água, caçando peixes",
+      "controversy": "Era aquático, terrestre ou ambos? Debate recente com novas reconstruções.",
+      "modifiedRecently": true,
+      "climate": "Quente e árido, 20°C em média",
+      "continents": "Gonduana, norte da África",
+      "vegetation": "Coníferas, samambaias, mangues",
+      "fauna": "Onchopristis (peixe), Carcharodontosaurus",
+      "paleoart": {
+        "1990s": "Bípede, vela nas costas, sem adaptações aquáticas",
+        "2000s": "Reconstrução mais robusta",
+        "2020s": "Adaptações aquáticas, cauda de nadadeira"
+      },
+      "ancientFeatures": [
+        "Reconstruído como típico terópode",
+        "Sem adaptações aquáticas",
+        "Posição bípede"
+      ],
+      "modernFeatures": [
+        "Cauda achatada para natação",
+        "Ossos densos para mergulho",
+        "Narinas altas no crânio",
+        "Membros anteriores fortes"
+      ],
+      "skeletonFeatures": [
+        "Espinhos neurais altos (vela)",
+        "Crânio longo como de crocodilo",
+        "Cauda achatada lateralmente"
+      ],
+      "reconstructionFeatures": [
+        "Pele escamosa",
+        "Corpo hidrodinâmico",
+        "Nadava ativamente"
+      ],
+      "anatomy": {
+        "skull": "Crânio longo e estreito, semelhante ao de crocodilos, com dentes cônicos.",
+        "spine": "Espinhos neurais de até 1.7m formando uma vela ou corcova.",
+        "limbs": "Membros posteriores mais curtos; anteriores fortes com garras.",
+        "tail": "Cauda achatada para propulsão na água."
+      },
+      "references": [
+        {
+          "title": "Spinosaurus as a semi-aquatic dinosaur",
+          "authors": "Ibrahim, N. et al.",
+          "journal": "Science (2014)",
+          "url": "https://doi.org/10.1126/science.1258750"
+        }
+      ],
+      "gallery": [
+        { "type": "🦴", "label": "Esqueleto" },
+        { "type": "🎨", "label": "Reconstrução" },
+        { "type": "🌊", "label": "Ambiente aquático" },
+        { "type": "🦖", "label": "Comparação" }
+      ]
+    },
+    {
+      "id": "triceratops",
+      "name": "Triceratops",
+      "scientificName": "Triceratops horridus",
+      "image": "img/species/triceratops.jpg",
+      "period": "cretaceous",
+      "epoch": "Cretáceo Superior",
+      "dateRange": "68-66 Ma",
+      "clade": "Ornithischia > Ceratopsia > Ceratopsidae",
+      "family": "Ceratopsidae",
+      "location": "América do Norte",
+      "formation": "Hell Creek Formation",
+      "rockType": "Arenito e argilito",
+      "discoveryYear": 1889,
+      "discoverer": "Othniel Charles Marsh",
+      "fossilType": "Múltiplos crânios e esqueletos",
+      "holotype": "USNM 2100",
+      "size": {
+        "length": "8-9 m",
+        "height": "2.5-3 m",
+        "weight": "6.000-8.000 kg"
+      },
+      "diet": "Herbívoro",
+      "locomotion": "Quadrúpede",
+      "habitat": "Planícies fluviais",
+      "description": "Herbívoro couraçado com três chifres. Contemporâneo do T. rex, possivelmente sua presa favorita.",
+      "behavior": "Viviam em grupos, usavam chifres para defesa",
+      "controversy": "Chifres usados em combate entre indivíduos da espécie? Evidências de fraturas curadas sugerem que sim.",
+      "modifiedRecently": false,
+      "climate": "Quente e tropical, 18°C em média",
+      "continents": "Laurásia, América do Norte",
+      "vegetation": "Angiospermas, coníferas",
+      "fauna": "T. rex, Edmontosaurus, Ankylosaurus",
+      "paleoart": {
+        "1990s": "Posição de lagarto, pernas abertas",
+        "2000s": "Postura mais ereta",
+        "2020s": "Chifres com queratina colorida"
+      },
+      "ancientFeatures": [
+        "Posição de lagarto",
+        "Cores monótonas",
+        "Frilos pequenos"
+      ],
+      "modernFeatures": [
+        "Postura ereta",
+        "Chifres coloridos",
+        "Frilos grandes",
+        "Possíveis penas/bristles"
+      ],
+      "skeletonFeatures": [
+        "Crânio enorme com frilo ósseo",
+        "Três chifres",
+        "Bico sem dentes na frente"
+      ],
+      "reconstructionFeatures": [
+        "Músculos fortes no pescoço",
+        "Pele escamosa",
+        "Cobertura queratinizada nos chifres"
+      ],
+      "anatomy": {
+        "skull": "Crânio enorme de 2m com frilo e três chifres: dois acima dos olhos, um no nariz.",
+        "spine": "Coluna robusta com vértebras fusionadas para suportar a cabeça pesada.",
+        "limbs": "Membros anteriores mais curtos, posteriores mais longos.",
+        "tail": "Cauda relativamente curta."
+      },
+      "references": [
+        {
+          "title": "Triceratops: Biography of a dinosaur",
+          "authors": "Dodson, P.",
+          "journal": "Indiana University Press (1996)",
+          "url": "https://doi.org/..."
+        }
+      ],
+      "gallery": [
+        { "type": "🦴", "label": "Esqueleto" },
+        { "type": "🎨", "label": "Reconstrução" },
+        { "type": "🌍", "label": "Ambiente" },
+        { "type": "🦕", "label": "Comparação" }
+      ]
+    },
+    {
+      "id": "brachiosaurus",
+      "name": "Brachiosaurus",
+      "scientificName": "Brachiosaurus altithorax",
+      "image": "img/species/brachiosaurus.jpg",
+      "period": "jurassic",
+      "epoch": "Jurássico Superior",
+      "dateRange": "156-145 Ma",
+      "clade": "Saurischia > Sauropodomorpha > Brachiosauridae",
+      "family": "Brachiosauridae",
+      "location": "América do Norte, Tanzânia",
+      "formation": "Morrison Formation, Tendaguru",
+      "rockType": "Arenito e calcário",
+      "discoveryYear": 1903,
+      "discoverer": "Wilhelm Janensch",
+      "fossilType": "Esqueleto completo",
+      "holotype": "HMN SII",
+      "size": {
+        "length": "22-26 m",
+        "height": "13-15 m",
+        "weight": "60.000-85.000 kg"
+      },
+      "diet": "Herbívoro (folhas altas)",
+      "locomotion": "Quadrúpede",
+      "habitat": "Savana primitiva",
+      "description": "Um dos maiores animais terrestres. Como conseguia energia para sustentar tamanho gigantesco?",
+      "behavior": "Viviam em grupos, migravam longas distâncias",
+      "controversy": "Metabolismo mesotérmico, ectotérmico ou único?",
+      "modifiedRecently": false,
+      "climate": "Tropical a subtropical, 20°C em média",
+      "continents": "Gonduana, África e América do Norte",
+      "vegetation": "Gimnospermas, coníferas",
+      "fauna": "Diplodocus, Stegosaurus, Allosaurus",
+      "paleoart": {
+        "1990s": "Animais lentos, em água para suportar peso",
+        "2000s": "Postura ereta, terrestres",
+        "2020s": "Ativos, possivelmente com cores vibrantes"
+      },
+      "ancientFeatures": [
+        "Vivendo em água",
+        "Pescoço horizontal",
+        "Movimentos lentos"
+      ],
+      "modernFeatures": [
+        "Terrestres",
+        "Pescoço ereto",
+        "Possíveis manchas coloridas",
+        "Metabolismo ativo"
+      ],
+      "skeletonFeatures": [
+        "Membros anteriores mais longos",
+        "Pescoço muito longo",
+        "Narinas no topo da cabeça"
+      ],
+      "reconstructionFeatures": [
+        "Músculos enormes no pescoço",
+        "Pele grossa",
+        "Coração enorme"
+      ],
+      "anatomy": {
+        "skull": "Crânio pequeno com narinas no topo, dentes em forma de lápis.",
+        "spine": "Vértebras enormes com cavidades pneumáticas para reduzir peso.",
+        "limbs": "Membros anteriores mais longos que os posteriores (ao contrário da maioria).",
+        "tail": "Cauda longa mas não tão longa quanto em outros saurópodes."
+      },
+      "references": [
+        {
+          "title": "Sauropod gigantism",
+          "authors": "Sander, P.M.",
+          "journal": "Biological Reviews (2022)",
+          "url": "https://doi.org/10.1111/brv.12847"
+        }
+      ],
+      "gallery": [
+        { "type": "🦴", "label": "Esqueleto" },
+        { "type": "🎨", "label": "Reconstrução" },
+        { "type": "🌳", "label": "Floresta" },
+        { "type": "🦕", "label": "Comparação" }
+      ]
+    },
+    {
+      "id": "archaeopteryx",
+      "name": "Archaeopteryx",
+      "scientificName": "Archaeopteryx lithographica",
+      "image": "img/species/archaeopteryx.jpg",
+      "period": "jurassic",
+      "epoch": "Jurássico Superior",
+      "dateRange": "150-148 Ma",
+      "clade": "Saurischia > Theropoda > Avialae",
+      "family": "Archaeopterygidae",
+      "location": "Alemanha",
+      "formation": "Solnhofen Limestone",
+      "rockType": "Calcário litográfico",
+      "discoveryYear": 1861,
+      "discoverer": "Christian Erich Hermann von Meyer",
+      "fossilType": "Esqueleto completo com penas",
+      "holotype": "BMNH 37001 (Espécime de Londres)",
+      "size": {
+        "length": "0.5 m",
+        "height": "0.2 m",
+        "weight": "0.5-1 kg"
+      },
+      "diet": "Carnívoro (insetos, pequenos vertebrados)",
+      "locomotion": "Bípede, voo limitado",
+      "habitat": "Ilhas lagunares subtropicais",
+      "description": "Fóssil transicional entre dinossauros e aves. A prova definitiva da evolução!",
+      "behavior": "Passava tempo em árvores, possivelmente planava entre elas",
+      "controversy": "Voava ativamente ou apenas planava? Posição exata na filogenia.",
+      "modifiedRecently": false,
+      "climate": "Subtropical, 20°C em média",
+      "continents": "Laurásia, Europa",
+      "vegetation": "Gimnospermas, coníferas",
+      "fauna": "Pterossauros, pequenos répteis",
+      "paleoart": {
+        "1990s": "Penas simples, sem cor",
+        "2000s": "Penas mais detalhadas",
+        "2020s": "Penas coloridas (melanossomos preservados)"
+      },
+      "ancientFeatures": [
+        "Sem penas",
+        "Réptil escamoso",
+        "Voo não representado"
+      ],
+      "modernFeatures": [
+        "Penas completas",
+        "Asas funcionais",
+        "Possivelmente colorido",
+        "Parente próximo das aves"
+      ],
+      "skeletonFeatures": [
+        "Dentes (aves modernas não têm)",
+        "Cauda longa",
+        "Garras nas asas",
+        "Fúrcula presente"
+      ],
+      "reconstructionFeatures": [
+        "Penas de voo assimétricas",
+        "Cobertura de penas",
+        "Cores escuras preservadas"
+      ],
+      "anatomy": {
+        "skull": "Crânio com dentes afiados, como terópode, mas cérebro proporcionalmente maior.",
+        "spine": "Cauda longa com muitas vértebras, diferente das aves modernas.",
+        "limbs": "Asas com garras, pernas longas de corredor.",
+        "tail": "Cauda longa com penas simétricas ao longo dela."
+      },
+      "references": [
+        {
+          "title": "Archaeopteryx: The iconic transitional fossil",
+          "authors": "Wellnhofer, P.",
+          "journal": "Biological Reviews (2019)",
+          "url": "https://doi.org/10.1111/brv.12534"
+        }
+      ],
+      "gallery": [
+        { "type": "🦴", "label": "Fóssil" },
+        { "type": "🎨", "label": "Reconstrução" },
+        { "type": "🌲", "label": "Ambiente" },
+        { "type": "🕊️", "label": "Comparação com ave" }
+      ]
+    },
+    {
+      "id": "yutyrannus",
+      "name": "Yutyrannus",
+      "scientificName": "Yutyrannus huali",
+      "image": "img/species/yutyrannus.jpg",
+      "period": "cretaceous",
+      "epoch": "Cretáceo Inferior",
+      "dateRange": "125 Ma",
+      "clade": "Saurischia > Theropoda > Tyrannosauroidea",
+      "family": "Proceratosauridae",
+      "location": "China",
+      "formation": "Yixian Formation",
+      "rockType": "Calcário e xisto",
+      "discoveryYear": 2012,
+      "discoverer": "Xu Xing et al.",
+      "fossilType": "Três esqueletos completos com penas",
+      "holotype": "ZCDM V5000",
+      "size": {
+        "length": "9 m",
+        "height": "3 m",
+        "weight": "1.400 kg"
+      },
+      "diet": "Carnívoro",
+      "locomotion": "Bípede",
+      "habitat": "Florestas temperadas",
+      "description": "O tiranossauro emplumado mais antigo conhecido. Prova de que os grandes predadores tinham penas.",
+      "behavior": "Possivelmente viviam em grupos, penas para isolamento térmico",
+      "controversy": "Função das penas: isolamento térmico ou exibição? Clima mais frio na época.",
+      "modifiedRecently": true,
+      "climate": "Temperado, 10°C em média",
+      "continents": "Laurásia, Ásia Oriental",
+      "vegetation": "Gimnospermas, coníferas",
+      "fauna": "Psittacosaurus, Sinosauropteryx",
+      "paleoart": {
+        "1990s": "Desconhecido",
+        "2000s": "Descoberto recentemente",
+        "2020s": "Tiranossauro gigante coberto de penas"
+      },
+      "ancientFeatures": [
+        "Sem representação antiga"
+      ],
+      "modernFeatures": [
+        "Coberto de penas",
+        "Possivelmente colorido",
+        "Adaptado a clima frio"
+      ],
+      "skeletonFeatures": [
+        "Crânio de tiranossauro",
+        "Membros longos",
+        "Penas preservadas"
+      ],
+      "reconstructionFeatures": [
+        "Cobertura densa de penas",
+        "Cores para camuflagem",
+        "Possível crista"
+      ],
+      "anatomy": {
+        "skull": "Crânio de tiranossauro primitivo, com cristas na face.",
+        "spine": "Coluna flexível, cauda longa.",
+        "limbs": "Membros anteriores com três dedos (diferente de T. rex).",
+        "tail": "Cauda longa com penas preservadas."
+      },
+      "references": [
+        {
+          "title": "A gigantic feathered dinosaur from the Lower Cretaceous of China",
+          "authors": "Xu, X. et al.",
+          "journal": "Nature (2012)",
+          "url": "https://doi.org/10.1038/nature10906"
+        }
+      ],
+      "gallery": [
+        { "type": "🦴", "label": "Esqueleto" },
+        { "type": "🪶", "label": "Reconstrução com penas" },
+        { "type": "❄️", "label": "Ambiente frio" },
+        { "type": "🦖", "label": "Comparação" }
+      ]
+    }
+  ]
+}
